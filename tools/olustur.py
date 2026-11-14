@@ -86,18 +86,30 @@ def adim(vid, anahtar, ikon, baslik, govde):
 
 
 # Doğru şıkların yeri: bütün sorularda dengeli ve her derlemede aynı (yazım sırasındaki 2. şık eğilimini giderir).
-# Tarayıcıda kayıtlı yanıtlar şık konumuyla saklandığı için ilk 42 sorunun yerleri dondurulmuştur (13 Kasım 2026 sürümü);
-# sonradan eklenen sorular (yeni oturumlar) ayrı bir karıştırmayla yerleşir. Var olan bir oturuma soru eklemek ya da soruların
-# sırasını değiştirmek, kayıtlı yanıtları bozar; yeni sorular yalnızca yeni oturumlara eklenmelidir.
+# Tarayıcıda kayıtlı yanıtlar şık konumuyla saklandığı için yerler dondurulmuştur: ilk 42 soru (oturum 1-14, 13 Kasım 2026
+# sürümü) ve sonraki 15 soru (oturum 15-19, 14 Kasım 2026 sürümü) sabit karıştırmalarla yerleşir. Oturum 20 ve sonrasında her
+# oturumun yerleri yalnızca kendi numarasından türetilir; böylece yeni oturum eklemek eski soruların yerini değiştirmez.
+# Var olan bir oturuma soru eklemek ya da soruların sırasını değiştirmek kayıtlı yanıtları bozar; yeni sorular yalnızca yeni
+# oturumlarla ve listenin sonuna eklenmelidir.
 ILK_SORU_SAYISI = 42
+IKINCI_BLOK_SONU = 57
 _tum_sorular = [q for o in O.OTURUMLAR for q in o["sorular"]]
-assert len(_tum_sorular) >= ILK_SORU_SAYISI
+assert len(_tum_sorular) >= IKINCI_BLOK_SONU
 _h1 = [0, 1, 2, 3] * (ILK_SORU_SAYISI // 4 + 1)
 random.Random(20261113).shuffle(_h1)
-_h2 = [0, 1, 2, 3] * ((len(_tum_sorular) - ILK_SORU_SAYISI) // 4 + 1)
+_h2 = [0, 1, 2, 3] * ((IKINCI_BLOK_SONU - ILK_SORU_SAYISI) // 4 + 1)
 random.Random(20261114).shuffle(_h2)
-_hedefler = _h1[:ILK_SORU_SAYISI] + _h2
-HEDEF = {id(q): _hedefler[i] for i, q in enumerate(_tum_sorular)}
+_hedefler = _h1[:ILK_SORU_SAYISI] + _h2[:IKINCI_BLOK_SONU - ILK_SORU_SAYISI]
+HEDEF = {}
+_sira = 0
+for _o in O.OTURUMLAR:
+    assert len(_o["sorular"]) <= 3, _o["no"]
+    # Her oturum bir konumu dışarıda bırakır (no % 4); art arda dört oturumda her konum eşit sayıda kullanılır.
+    _yerler = [_y for _y in range(4) if _y != _o["no"] % 4]
+    random.Random(20261200 + _o["no"]).shuffle(_yerler)
+    for _j, _q in enumerate(_o["sorular"]):
+        HEDEF[id(_q)] = _hedefler[_sira] if _sira < IKINCI_BLOK_SONU else _yerler[_j]
+        _sira += 1
 
 
 def karistir_soru(q):
@@ -276,7 +288,7 @@ za_li = "".join(
     f'<li data-dogru="{dg}" data-oturum="{ot}" data-otad="{esc(OTAD[ot])}"><p class="za-durum">{md(d)}</p>'
     + "".join(f'<span class="za-secenek">{md(x)}</span>' for x in s)
     + f'<p class="za-aciklama">{md(ac)}</p></li>' for d, s, dg, ac, ot in A.ZOR_ANLAR)
-za_ic = ('<p class="giris-metin">Görüşme, aile, sürtüşme ve açıklama oturumlarındaki ilkeleri kurgusal durumlarda deneyin. Her durumda en uygun '
+za_ic = ('<p class="giris-metin">Görüşme, aile, sürtüşme, açıklama ve risk oturumlarındaki ilkeleri kurgusal durumlarda deneyin. Her durumda en uygun '
          f'yanıtı seçin; açıklama ve ilgili oturum hemen ardından açılır. {len(A.ZOR_ANLAR)} durum, karışık sırayla.</p>'
          '<div class="tahmin za-oyun" id="za-oyun"><h3><span aria-hidden="true">🧯</span> Zor anlar</h3>'
          '<div class="za-alan" aria-live="polite"></div>'
@@ -531,9 +543,9 @@ taşımak ya da yedeklemek için dosya olarak indirin; öbür cihazda “Dosyada
 <li data-ara><span class="kural-no">2</span> Buraya dönün: ana fikirleri kendi okumanızla karşılaştırın, ÇRS’deki karşılığını ve tartışmalı noktaları okuyun.</li>
 <li data-ara><span class="kural-no">3</span> Vaka sorularıyla kendinizi sınayın; araçlarla kendi vakalarınız üzerine düşünün.</li></ol></section>
 {kesim_bolumleri}
-<p class="kucuk kapsam-not">Rehber, kitabın değerlendirme cildindeki B (Görüşme), C (Aile), D (Sürtüşme), E (Formülasyon) ve
-F (Açıklamak) kesimlerinden {sum(1 for v in oturum_views if v["kesim"] != "R")} oturumu ve R (İşlev bozukluğu) kesiminden “Your
-Competitors” bölümünü kapsar. A ve G kesimleri ile tedavi ve sistemler ciltleri ileride eklenebilir.</p>
+<p class="kucuk kapsam-not">Rehber, kitabın değerlendirme cildindeki B (Görüşme), C (Aile), D (Sürtüşme), E (Formülasyon),
+F (Açıklamak) ve G (Bu olmamalı!) kesimlerinden {sum(1 for v in oturum_views if v["kesim"] != "R")} oturumu ve R (İşlev bozukluğu)
+kesiminden “Your Competitors” bölümünü kapsar. A kesimi ile tedavi ve sistemler ciltleri ileride eklenebilir.</p>
 <section aria-labelledby="arac-b"><h2 id="arac-b" class="bolum-baslik">Araçlar</h2><ol class="kartlar">{arac_kartlari}</ol></section>
 """
 giris = dict(id="giris", label="Giriş",
@@ -605,7 +617,7 @@ nav = ('<nav class="yan" id="yan" aria-label="Rehber içeriği"><div class="yan-
        '<p class="ilerleme" data-ilerleme></p></div></nav>')
 
 DESC = ("Williams ve Hill’in The Art of Child and Adolescent Psychiatry kitabına eşlik eden etkileşimli okuma rehberi: görüşme, aile, "
-        f"sürtüşme, formülasyon ve açıklama kesimlerinden {len(oturum_views)} oturum için ana fikirler, ÇRS ve Türkiye karşılığı, tartışmaya açık "
+        f"sürtüşme, formülasyon, açıklama ve risk kesimlerinden {len(oturum_views)} oturum için ana fikirler, ÇRS ve Türkiye karşılığı, tartışmaya açık "
         "noktalar, kurgusal vaka soruları, dallanan vaka simülasyonları, aralıklı tekrar, tarama hesaplayıcısı, zor anlar alıştırması ve "
         "formülasyon çalışma sayfası.")
 

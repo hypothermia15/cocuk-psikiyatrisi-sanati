@@ -7,6 +7,14 @@
   "ilk": "Achenbach TM",
   "tur": "makale"
  },
+ "alexander2000": {
+  "pmid": "10845964",
+  "doi": "10.1136/bmj.320.7249.1571",
+  "etiket": "Alexander ve ark. 2000",
+  "metin": "Alexander DA, Klein S, Gray NM, Dewar IG, Eagles JM. Suicide by patients: questionnaire study of its effect on consultant psychiatrists. BMJ. 2000;320(7249):1571-4.",
+  "ilk": "Alexander DA",
+  "tur": "makale"
+ },
  "andersson2025": {
   "pmid": "40658954",
   "doi": "10.7326/ANNALS-25-00997",
@@ -39,12 +47,52 @@
   "tur": "kitap",
   "metin": "Berne E. Games people play: the psychology of human relationships. New York: Grove Press; 1964."
  },
+ "bismark2013": {
+  "pmid": "23576774",
+  "doi": "10.1136/bmjqs-2012-001691",
+  "etiket": "Bismark ve ark. 2013",
+  "metin": "Bismark MM, Spittal MJ, Gurrin LC, Ward M, Studdert DM. Identification of doctors at risk of recurrent complaints: a national study of healthcare complaints in Australia. BMJ Qual Saf. 2013;22(7):532-40.",
+  "ilk": "Bismark MM",
+  "tur": "makale"
+ },
+ "bobo2013": {
+  "pmid": "23965896",
+  "doi": "10.1001/jamapsychiatry.2013.2053",
+  "etiket": "Bobo ve ark. 2013",
+  "metin": "Bobo WV, Cooper WO, Stein CM, Olfson M, Graham D, Daugherty J, et al. Antipsychotics and the risk of type 2 diabetes mellitus in children and youth. JAMA Psychiatry. 2013;70(10):1067-75.",
+  "ilk": "Bobo WV",
+  "tur": "makale"
+ },
+ "bridge2007": {
+  "pmid": "17440145",
+  "doi": "10.1001/jama.297.15.1683",
+  "etiket": "Bridge ve ark. 2007",
+  "metin": "Bridge JA, Iyengar S, Salary CB, Barbe RP, Birmaher B, Pincus HA, et al. Clinical response and risk for reported suicidal ideation and suicide attempts in pediatric antidepressant treatment: a meta-analysis of randomized controlled trials. JAMA. 2007;297(15):1683-96.",
+  "ilk": "Bridge JA",
+  "tur": "makale"
+ },
  "bugental2002": {
   "pmid": "12238408",
   "doi": "10.1037//0893-3200.16.3.243",
   "etiket": "Bugental ve ark. 2002",
   "metin": "Bugental DB, Ellerson PC, Lin EK, Rainey B, Kokotovic A, O'Hara N. A cognitive approach to child abuse prevention. J Fam Psychol. 2002;16(3):243-58.",
   "ilk": "Bugental DB",
+  "tur": "makale"
+ },
+ "caplan1991": {
+  "pmid": "2008024",
+  "doi": "",
+  "etiket": "Caplan ve ark. 1991",
+  "metin": "Caplan RA, Posner KL, Cheney FW. Effect of outcome on physician judgments of appropriateness of care. JAMA. 1991;265(15):1957-60.",
+  "ilk": "Caplan RA",
+  "tur": "makale"
+ },
+ "carter2017": {
+  "pmid": "28302700",
+  "doi": "10.1192/bjp.bp.116.182717",
+  "etiket": "Carter ve ark. 2017",
+  "metin": "Carter G, Milner A, McGill K, Pirkis J, Kapur N, Spittal MJ. Predicting suicidal behaviours using clinical instruments: systematic review and meta-analysis of positive predictive values for risk scales. Br J Psychiatry. 2017;210(6):387-95.",
+  "ilk": "Carter G",
   "tur": "makale"
  },
  "casscells1978": {
@@ -109,6 +157,14 @@
   "etiket": "Dursun ve ark. 2020",
   "metin": "Dursun OB, Öğütlü H, Esin İS. Psychometric properties of Turkish version of the Strength and Difficulties Questionnaire for age 2-4. Noro Psikiyatr Ars. 2020;57(1):44-9.",
   "ilk": "Dursun OB",
+  "tur": "makale"
+ },
+ "fontanella2020": {
+  "pmid": "32780122",
+  "doi": "10.1001/jamanetworkopen.2020.12887",
+  "etiket": "Fontanella ve ark. 2020",
+  "metin": "Fontanella CA, Warner LA, Steelesmith DL, Brock G, Bridge JA, Campo JV. Association of timely outpatient mental health services for youths after psychiatric hospitalization with risk of death by suicide. JAMA Netw Open. 2020;3(8):e2012887.",
+  "ilk": "Fontanella CA",
   "tur": "makale"
  },
  "ford1997": {
@@ -183,6 +239,14 @@
   "ilk": "Ha Dinh TT",
   "tur": "makale"
  },
+ "hammad2006": {
+  "pmid": "16520440",
+  "doi": "10.1001/archpsyc.63.3.332",
+  "etiket": "Hammad ve ark. 2006",
+  "metin": "Hammad TA, Laughren T, Racoosin J. Suicidality in pediatric patients treated with antidepressant drugs. Arch Gen Psychiatry. 2006;63(3):332-9.",
+  "ilk": "Hammad TA",
+  "tur": "makale"
+ },
  "hansen2015": {
   "pmid": "25365033",
   "doi": "10.1001/jamapediatrics.2014.1893",
@@ -207,12 +271,44 @@
   "ilk": "Hashim MJ",
   "tur": "makale"
  },
+ "havdahl2016": {
+  "pmid": "27871640",
+  "doi": "10.1016/j.jaac.2016.09.490",
+  "etiket": "Havdahl ve ark. 2016",
+  "metin": "Havdahl KA, Hus Bal V, Huerta M, Pickles A, Øyen AS, Stoltenberg C, et al. Multidimensional influences on autism symptom measures: implications for use in etiological research. J Am Acad Child Adolesc Psychiatry. 2016;55(12):1054-63.e3.",
+  "ilk": "Havdahl KA",
+  "tur": "makale"
+ },
+ "haynes2009": {
+  "pmid": "19144931",
+  "doi": "10.1056/NEJMsa0810119",
+  "etiket": "Haynes ve ark. 2009",
+  "metin": "Haynes AB, Weiser TG, Berry WR, Lipsitz SR, Breizat AH, Dellinger EP, et al. A surgical safety checklist to reduce morbidity and mortality in a global population. N Engl J Med. 2009;360(5):491-9.",
+  "ilk": "Haynes AB",
+  "tur": "makale"
+ },
  "healy2019": {
   "pmid": "31088578",
   "doi": "10.1017/S0033291719000485",
   "etiket": "Healy ve ark. 2019",
   "metin": "Healy C, Brannigan R, Dooley N, Coughlan H, Clarke M, Kelleher I, et al. Childhood and adolescent psychotic experiences and risk of mental disorder: a systematic review and meta-analysis. Psychol Med. 2019;49(10):1589-99.",
   "ilk": "Healy C",
+  "tur": "makale"
+ },
+ "hickson1992": {
+  "pmid": "1740858",
+  "doi": "",
+  "etiket": "Hickson ve ark. 1992",
+  "metin": "Hickson GB, Clayton EW, Githens PB, Sloan FA. Factors that prompted families to file medical malpractice claims following perinatal injuries. JAMA. 1992;267(10):1359-63.",
+  "ilk": "Hickson GB",
+  "tur": "makale"
+ },
+ "hickson2002": {
+  "pmid": "12052124",
+  "doi": "10.1001/jama.287.22.2951",
+  "etiket": "Hickson ve ark. 2002",
+  "metin": "Hickson GB, Federspiel CF, Pichert JW, Miller CS, Gauld-Jaeger J, Bost P. Patient complaints and malpractice risk. JAMA. 2002;287(22):2951-7.",
+  "ilk": "Hickson GB",
   "tur": "makale"
  },
  "hill2004": {
@@ -263,6 +359,14 @@
   "ilk": "Insel T",
   "tur": "makale"
  },
+ "jena2011": {
+  "pmid": "21848463",
+  "doi": "10.1056/NEJMsa1012370",
+  "etiket": "Jena ve ark. 2011",
+  "metin": "Jena AB, Seabury S, Lakdawalla D, Chandra A. Malpractice risk according to physician specialty. N Engl J Med. 2011;365(7):629-36.",
+  "ilk": "Jena AB",
+  "tur": "makale"
+ },
  "jensen2011": {
   "pmid": "21728400",
   "doi": "10.1037/a0023992",
@@ -285,6 +389,14 @@
   "etiket": "Jones ve ark. 2019",
   "ilk": "Jones DA",
   "metin": "Jones DA, Rathod KS, Koganti S, Lim P, Firoozi S, Bogle R, et al. The association between the public reporting of individual operator outcomes with patient profiles, procedural management, and mortality after percutaneous coronary intervention: an observational study from the Pan-London PCI (BCIS) Registry using an interrupted time series analysis. Eur Heart J. 2019;40(31):2620-9.",
+  "tur": "makale"
+ },
+ "kachalia2010": {
+  "pmid": "20713789",
+  "doi": "10.7326/0003-4819-153-4-201008170-00002",
+  "etiket": "Kachalia ve ark. 2010",
+  "metin": "Kachalia A, Kaufman SR, Boothman R, Anderson S, Welch K, Saint S, et al. Liability claims and costs before and after implementation of a medical error disclosure program. Ann Intern Med. 2010;153(4):213-21.",
+  "ilk": "Kachalia A",
   "tur": "makale"
  },
  "karver2018": {
@@ -439,6 +551,14 @@
   "ilk": "Prigerson HG",
   "tur": "makale"
  },
+ "quinlivan2017": {
+  "pmid": "28302702",
+  "doi": "10.1192/bjp.bp.116.189993",
+  "etiket": "Quinlivan ve ark. 2017",
+  "metin": "Quinlivan L, Cooper J, Meehan D, Longson D, Potokar J, Hulme T, et al. Predictive accuracy of risk scales following self-harm: multicentre, prospective cohort study. Br J Psychiatry. 2017;210(6):429-36.",
+  "ilk": "Quinlivan L",
+  "tur": "makale"
+ },
  "quinn2017": {
   "pmid": "28659039",
   "doi": "10.1176/appi.ajp.2017.16060686",
@@ -453,6 +573,14 @@
   "etiket": "Rapoport ve ark. 1978",
   "metin": "Rapoport JL, Buchsbaum MS, Zahn TP, Weingartner H, Ludlow C, Mikkelsen EJ. Dextroamphetamine: cognitive and behavioral effects in normal prepubertal boys. Science. 1978;199(4328):560-3.",
   "ilk": "Rapoport JL",
+  "tur": "makale"
+ },
+ "reader2014": {
+  "pmid": "24876289",
+  "doi": "10.1136/bmjqs-2013-002437",
+  "etiket": "Reader ve ark. 2014",
+  "metin": "Reader TW, Gillespie A, Roberts J. Patient complaints in healthcare systems: a systematic review and coding taxonomy. BMJ Qual Saf. 2014;23(8):678-89.",
+  "ilk": "Reader TW",
   "tur": "makale"
  },
  "regier2013": {
@@ -471,12 +599,28 @@
   "ilk": "Resnic FS",
   "tur": "makale"
  },
+ "rodway2016": {
+  "pmid": "27236279",
+  "doi": "10.1016/S2215-0366(16)30094-3",
+  "etiket": "Rodway ve ark. 2016",
+  "metin": "Rodway C, Tham SG, Ibrahim S, Turnbull P, Windfuhr K, Shaw J, et al. Suicide in children and young people in England: a consecutive case series. Lancet Psychiatry. 2016;3(8):751-9.",
+  "ilk": "Rodway C",
+  "tur": "makale"
+ },
  "ronald2006": {
   "pmid": "16721319",
   "doi": "10.1097/01.chi.0000215325.13058.9d",
   "etiket": "Ronald ve ark. 2006",
   "metin": "Ronald A, Happé F, Bolton P, Butcher LM, Price TS, Wheelwright S, et al. Genetic heterogeneity between the three components of the autism spectrum: a twin study. J Am Acad Child Adolesc Psychiatry. 2006;45(6):691-699.",
   "ilk": "Ronald A",
+  "tur": "makale"
+ },
+ "salazar2021": {
+  "pmid": "34259821",
+  "doi": "10.1001/jamapsychiatry.2021.0830",
+  "etiket": "Salazar de Pablo ve ark. 2021",
+  "metin": "Salazar de Pablo G, Radua J, Pereira J, Bonoldi I, Arienti V, Besana F, et al. Probability of transition to psychosis in individuals at clinical high risk: an updated meta-analysis. JAMA Psychiatry. 2021;78(9):970-8.",
+  "ilk": "Salazar de Pablo G",
   "tur": "makale"
  },
  "schlosser2014": {
@@ -503,6 +647,14 @@
   "ilk": "Tick B",
   "tur": "makale"
  },
+ "tversky1974": {
+  "pmid": "17835457",
+  "doi": "10.1126/science.185.4157.1124",
+  "etiket": "Tversky ve Kahneman 1974",
+  "metin": "Tversky A, Kahneman D. Judgment under uncertainty: heuristics and biases. Science. 1974;185(4157):1124-31.",
+  "ilk": "Tversky A",
+  "tur": "makale"
+ },
  "tversky1981": {
   "pmid": "7455683",
   "doi": "10.1126/science.7455683",
@@ -525,6 +677,14 @@
   "etiket": "Ünal ve ark. 2019",
   "metin": "Ünal F, Öktem F, Çetin Çuhadaroğlu F, Çengel Kültür SE, Akdemir D, Foto Özdemir D, et al. [Reliability and validity of the Schedule for Affective Disorders and Schizophrenia for School-Age Children-Present and Lifetime Version, DSM-5 November 2016-Turkish Adaptation (K-SADS-PL-DSM-5-T)]. Turk Psikiyatri Derg. 2019;30(1):42-50. (Türkçe)",
   "ilk": "Ünal F",
+  "tur": "makale"
+ },
+ "urbach2014": {
+  "pmid": "24620866",
+  "doi": "10.1056/NEJMsa1308261",
+  "etiket": "Urbach ve ark. 2014",
+  "metin": "Urbach DR, Govindarajan A, Saskin R, Wilton AS, Baxter NN. Introduction of surgical safety checklists in Ontario, Canada. N Engl J Med. 2014;370(11):1029-38.",
+  "ilk": "Urbach DR",
   "tur": "makale"
  },
  "vogel2022": {
@@ -597,6 +757,14 @@
   "etiket": "Zeanah ve ark. 2016",
   "metin": "Zeanah CH, Chesher T, Boris NW. Practice Parameter for the Assessment and Treatment of Children and Adolescents With Reactive Attachment Disorder and Disinhibited Social Engagement Disorder. J Am Acad Child Adolesc Psychiatry. 2016;55(11):990-1003.",
   "ilk": "Zeanah CH",
+  "tur": "makale"
+ },
+ "zhang2024": {
+  "pmid": "37991787",
+  "doi": "10.1001/jamapsychiatry.2023.4294",
+  "etiket": "Zhang ve ark. 2024",
+  "metin": "Zhang L, Li L, Andell P, Garcia-Argibay M, Quinn PD, D'Onofrio BM, et al. Attention-deficit/hyperactivity disorder medications and long-term risk of cardiovascular diseases. JAMA Psychiatry. 2024;81(2):178-87.",
+  "ilk": "Zhang L",
   "tur": "makale"
  },
  "zohar2015": {

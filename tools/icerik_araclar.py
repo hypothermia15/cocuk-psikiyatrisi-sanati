@@ -75,7 +75,7 @@ KAVRAMLAR = [
     ("Atılganlık",
      "Kendi görüşünü ve sınırlarını saygılı ve açık biçimde ifade etmek; aşırı uyum ile saldırganlık arasındaki yol.",
      "“Bunu yapamam, ama şunu yapabilirim” diyerek gerekçeli bir alternatif sunmak.", [8]),
-    ("Ret yelpazesi",
+    ("Ret basamakları",
      "Bir tanı ya da talebi reddederken hafiften serte giden ifade basamakları: sorunu kabul edip açıklamayı sorgulamaktan “X yok” demeye kadar.",
      "“Bir sorun olduğunu görüyorum, ama açıklamanın bu olduğundan emin değilim.”", [8]),
     ("Kaynama evresi",
@@ -177,6 +177,56 @@ KAVRAMLAR = [
      "Ebeveynin çocuğu suçlayan açıklamasının yerine kendi bulduğu, değiştirilebilir bir açıklama koymasına sorularla yardım etmek ve "
      "bundan uygulanabilir bir çözüm çıkarmak.",
      "“İnadına yapıyor” diyen bir anneye “Başka ne olabilir?” diye sorup yorgunluğu ve açlığı fark etmesini sağlamak.", [19]),
+    ("Kullanılabilirlik yanılgısı",
+     "Bir olayın sıklığını akla ne kadar kolay geldiğine göre kestirmek. Çarpıcı ve kişisel deneyimler riski olduğundan büyük "
+     "gösterir.",
+     "Yıllar önce bir hastasını intihar nedeniyle kaybeden bir hekimin düşük riskli ergenlerde de aşırı önlem alması.", [20]),
+    ("Ahlaki tehlike",
+     "Riskten korunduğunu bilen kişinin daha az özenli davranması.",
+     "Uzun vadeli izlemin kendisine kalmayacağını bilen geçici bir hekimin ilaç izlemini önemsememesi.", [20]),
+    ("Kesinlik ve olasılık etkileri",
+     "Neredeyse kesin iyi bir sonucu kesinleştirmek ya da kaçınılmaz görünen kötü bir sonuca karşı küçük bir şans yaratmak için "
+     "orantısız çaba harcamak.",
+     "Tanısı büyük ölçüde açık bir çocukta “emin olmak için” aylarca ek tetkik istemek.", [20]),
+    ("Bolam ve Bolitho ölçütleri",
+     "İngiltere’de özen standardının iki basamağı: hekimin kararını sorumlu bir meslektaş grubunun desteklemesi (Bolam) ve bu "
+     "görüşün mantıksal sınamaya dayanması (Bolitho).",
+     "Kılavuz dışı bir tedavide yayımlanmış kanıtı, danışılan meslektaşı ve gerekçeyi kayda geçirmek.", [20]),
+    ("Sonuç yanlılığı",
+     "Bir kararın kalitesini, verildiği andaki bilgiyi ve akıl yürütmeyi bir yana bırakıp sonucunun iyi ya da kötü olmasına göre "
+     "değerlendirmek. Geri görüş yanlılığıyla birlikte olay incelemelerini çarpıtır.",
+     "Aynı taburculuk kararını hasta sonradan kendine zarar verdiğinde hatalı, vermediğinde doğru saymak.", [21]),
+    ("Önlem hiyerarşisi",
+     "Risk azaltma yöntemlerinin etkiye göre sıralanması: ortadan kaldırma, yerine koyma, mühendislik, idari önlemler, davranış ve "
+     "koruyucu donanım. Sisteme yönelik olanlar en etkilidir.",
+     "Serviste askı noktalarını kaldırmak, personele kendine zarar verme eğitimi vermekten daha güçlü bir önlemdir.", [21]),
+    ("Güvenlik ağı",
+     "Ana plan aksarsa devreye girecek yedek düzenleme.",
+     "Yan etki ortaya çıkarsa ne yapılacağını yazılı vermek; kendine zarar verme sonrasında iptal edilebilir bir yedek kontrol "
+     "randevusu planlamak.", [21, 22]),
+    ("İsviçre peyniri modeli",
+     "Her güvenlik katmanının delikleri vardır; kaza, delikler nadiren aynı hizaya geldiğinde olur ve çoğu zaman tek bir suçlusu "
+     "yoktur.",
+     "Aceleyle yazılmış okunaksız bir reçetenin, okuma güçlüğü olan bir ebeveynin ve personeli eksik bir eczanenin aynı güne denk "
+     "gelmesi.", [21]),
+    ("Ramak kala",
+     "Zarara yol açmadan son anda fark edilen hata ya da olay. Seyrek bildirilir, ama en ucuz öğrenme fırsatıdır.",
+     "Eczacının fark edip hekimi aradığı bir doz hatası.", [21, 22]),
+    ("Savunmacı hekimlik",
+     "Hukuki ya da mesleki riski azaltmak için yapılan uygulamalar. Ölçülüsü (kayıt tutmak, yavaş titrasyon, danışmak) yararlıdır; "
+     "aşırısı (daha önce yapılmamış hiçbir şeyi denememek, ailenin istediği her tetkiki yapmak) bakımı bozar.",
+     "Aile istediği için gerekçesiz bir beyin görüntülemesi istemek.", [21]),
+    ("Güç yasası",
+     "Sık görülen küçük aksaklıklarla nadir görülen ağır olayların aynı nedenlerden beslenmesi. Küçükleri azaltmak büyükleri de "
+     "azaltır.",
+     "Sık reçete hatası yapan ve sık şikâyet alan bir klinisyende ağır bir olay olasılığının da yüksek olması.", [22]),
+    ("Kara kuğu ve gri kuğu",
+     "Kara kuğu nadir, hiç düşünülmemiş ve etkisi ezici olan olaydır; gri kuğu nadir ama beklenen, hazırlanılabilen olaydır. Gri "
+     "kuğulara hazırlanmak kara kuğularla baş etmeyi kolaylaştırır.",
+     "Sakinleştirme (de-eskalasyon) eğitimi ve olağandışı yan etkilere hazırlık, gri kuğulara hazırlıktır.", [22]),
+    ("Risk penceresi",
+     "Riskin geçici olarak arttığı dönem: ilaca başlama ya da ilacı kesme, okul değişikliği, sınavlar, aile içi büyük olaylar.",
+     "Antidepresan başlanan ergenin ilk haftalarda daha sık görülmesi.", [22]),
 ]
 
 # ------------------------------------------------------------------ zor anlar
@@ -313,6 +363,32 @@ ZOR_ANLAR = [
       "Kızla konuşmadan babayla karar vermek",
       "Konuyu bir sonraki yıla ertelemek"],
      1, "Korkutmak kısa süreli itaat üretir ama fikir değiştirmez. Ergenin kaygılarından başlamak, seçenekleri dürüstçe sunmak ve kararı onunla birlikte vermek hem etik hem daha kalıcıdır.", 19),
+    ("Bir ekip toplantısında yöneticiniz bekleme listesini kısaltmak için ilk görüşme sürelerini yarıya indirmenizi istiyor. "
+     "“Bu güvenli değil” dediğinizde konu kapanıyor.",
+     ["Toplantıyı terk etmek",
+      "Hiçbir şey demeden uymak",
+      "Kısalmanın hangi riskleri artıracağını somut örnekler ve sayılarla yazılı olarak bildirmek, bir ara çözüm önermek (ör. ilk "
+      "görüşmeyi uzun tutup izlemleri kısaltmak) ve kararın kayda geçmesini istemek",
+      "Ailelere yönetimi şikâyet etmelerini önermek"],
+     2, "Yöneticiler riski klinisyenlerden farklı görür ve genel bir “güvenli değil” uyarısı çoğu zaman duyulmaz. Somut veri ve "
+        "uygulanabilir bir öneri duyulma olasılığını artırır; yazılı bildirim riskin bir kısmını da karar verene taşır.", 20),
+    ("Bir hatanızdan sonra aile bir avukatla görüşeceğini söylüyor. Bir meslektaşınız “Artık hiçbir şey söyleme, özür dilersen "
+     "suçu kabul etmiş olursun” diyor.",
+     ["Aileyle bütün iletişimi kesmek",
+      "Aileyle görüşmeyi sürdürüp olanı dürüstçe anlatmak, üzgün olduğunuzu söylemek ve kurumunuzun hukuk birimine bilgi vermek",
+      "Kayıtları olaydan sonra düzenlemek",
+      "Hatayı ekipten başka birine yüklemek"],
+     1, "Özür insanlığı ifade eder, suç kabulü sayılmaz. Kaçamak davranmak ve iletişimi kesmek aileleri davaya iter. Kayıtları "
+        "sonradan değiştirmek ise hem etik hem hukuki açıdan ağır bir ihlaldir.", 21),
+    ("Bir anne, başladığınız ilacın kızında hiç duymadığınız bir yan etki yaptığını söylüyor. Asistanınız “Bu ilacın böyle bir "
+     "yan etkisi yok” diyor.",
+     ["Anneye bunun olamayacağını söylemek",
+      "Bütün ilaçları hemen kesmek",
+      "Gözlemi ayrıntısıyla kaydetmek, zamanlamayı ve başka açıklamaları sormak, literatürü taramak, gerekirse dozu azaltıp "
+      "etkisine bakmak ve TÜFAM’a bildirmeyi düşünmek",
+      "Görmezden gelip bir sonraki randevuyu beklemek"],
+     2, "Olağandışı vakalar olağandışı şeyler yapabilir; “olamaz” denen yan etki gerçek olabilir. Dikkatli kayıt, ayırıcı sorular "
+        "ve bildirim hem bu çocuğu hem başka çocukları korur.", 22),
 ]
 
 # ------------------------------------------------------------------ tarama hesaplayıcısı
@@ -410,4 +486,11 @@ TURKIYE_SOZLUK = [
     ("Beyaz Kod", "Sağlık çalışanına yönelik şiddetin bildirilmesi ve müdahale için kullanılan sistem."),
     ("ÇİM", "Çocuk İzlem Merkezi. Cinsel istismara uğrayan çocukların adli ve tıbbi işlemlerinin tek yerde yürütüldüğü hastane birimi."),
     ("LGS ve YKS", "Liselere geçiş ve yükseköğretime giriş için yapılan merkezî sınavlar; ergenlerde sınav kaygısının sık bağlamıdır."),
+    ("Olay bildirim sistemi (GRS)", "Hastanelerde hasta ve çalışan güvenliğini tehdit eden olayların ve son anda fark edilen ramak "
+                                    "kala olayların bildirildiği sistem; birçok kurumda Güvenlik Raporlama Sistemi adıyla anılır."),
+    ("TÜFAM", "Türkiye Farmakovijilans Merkezi. İlaçların istenmeyen etkilerine ilişkin bildirimlerin toplandığı merkez; sağlık "
+              "çalışanları beklenmedik ya da ciddi yan etkileri buraya bildirir."),
+    ("Endikasyon dışı ilaç kullanımı", "Ruhsatlı bir ilacın onaylı endikasyonu dışında kullanılması. İlaç, Türkiye İlaç ve Tıbbi "
+                                       "Cihaz Kurumunun ek onay gerektirmeyen listesinde değilse hasta bazında Kurum onayı ve "
+                                       "bilgilendirilmiş hasta olur formu gerekir."),
 ]

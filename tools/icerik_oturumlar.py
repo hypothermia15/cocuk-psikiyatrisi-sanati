@@ -14,12 +14,14 @@ KESIMLER = {
     "D": "D · Sürtüşme",
     "E": "E · Formülasyon",
     "F": "F · Açıklamak",
+    "G": "G · Bu olmamalı!",
     "R": "R · Ekipte işlev bozukluğu",
 }
 
 # Kitabın yapısı (Cambridge University Press içindekiler sayfasından doğrulandı): Cilt 1 Değerlendirme (A The Child,
 # B Interviewing, C The Family, D Friction, E Formulating, F Explaining, G This Shouldn’t Happen!), Cilt 2 Tedavi (H–K) ...
-# Rehber B–E kesimlerinin ilk 13 oturumunu ve R. Dysfunction kesiminden “Your Competitors” bölümünü kapsar.
+# Rehber B–G kesimlerinden 21 oturumu ve R. Dysfunction kesiminden “Your Competitors” bölümünü kapsar (oturum 15-22
+# icerik_oturumlar_ek.py dosyasındadır).
 
 
 def S(soru, secenekler, dogru, aciklama):
@@ -615,7 +617,7 @@ OTURUMLAR = [
              "beceriler ergenlik boyunca gelişmeyi sürdürebilir. “Asla değişmez” ve “tamamen geçer” iki uç yanlıştır."),
             ("Tanıların sağlamlığı eşit değildir", "Bazı tanılar güvenilirdir ve tedaviye yol gösterir; bazıları bulanık, suçlayıcı ya da "
              "tedaviye katkısızdır. Her tanıyı güvenilirlik, tedavi edilebilirlik ve yaygınlık açısından ayrı ayrı sorgulamak, aşırı kullanılan etiketlerin asıl nedenleri gizlemesini önler."),
-            ("Çıplak “hayır” yerine bir yelpaze", "Tartışmasız bir olguya inmek, seçenek sunmak, kesinlik dilini yumuşatmak, kuralın kaynağını "
+            ("Çıplak “hayır” yerine başka yollar", "Tartışmasız bir olguya inmek, seçenek sunmak, kesinlik dilini yumuşatmak, kuralın kaynağını "
              "dışarıya yüklemek, kaygıyı dile getirmek ya da taleplerin bir kısmını kabul etmek ilişkiyi koruyarak sınır koymayı sağlar. "
              "Atılganlık saldırganlık değildir; klinisyenler daha çok aşırı uyum tarafında hata yapar."),
             ("Tanıya itiraz bir bilgi olabilir", "Formülasyona itiraz eden aile sizin bilmediğiniz bir şeyi biliyor olabilir. Kanıtsız bir "

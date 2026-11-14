@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Çocuk Psikiyatrisinin Sanatı · Okuma Rehberi: Kasım 2026'da eklenen oturumlar (E kesiminin son bölümü ve F kesimi).
+"""Çocuk Psikiyatrisinin Sanatı · Okuma Rehberi: Kasım 2026'da eklenen oturumlar (E kesiminin son bölümü, F ve G kesimleri).
 
 Yapı icerik_oturumlar.py ile aynıdır. Kitaptan alıntı ya da kitabın vakaları yoktur; fikirler kendi sözcüklerimizle yazılmıştır,
 vaka soruları kurgusaldır. Bu dosyadaki oturumlar OTURUMLAR listesinin sonuna eklenir; var olan oturumlara soru eklenmez.
@@ -594,5 +594,534 @@ OTURUMLAR_EK = [
                  "etmek, hem açıklamayı hem davranışı daha kalıcı biçimde değiştirir. Doğrudan itiraz ya da eleştiri savunma yaratır."),
         ],
         akilda="İkna etmek nezaketin bir parçasıdır: menüyü dürüstçe sunun, önerinizi açıkça söyleyin ve son sözü aileye bırakın.",
+    ),
+    # ------------------------------------------------------------------ 20
+    dict(
+        no=20, kesim="G", kisa="Risk olayları",
+        baslik="Risk olayları: korkuyu ve sorumluluğu ölçüsünde tutmak",
+        kitapta_bolumler="G. This Shouldn’t Happen! · Risk Events (s. 271–278)",
+        slogan="Sorumluluğunuzun sınırı bellidir: mesleğin ve toplumun kabul ettiği önlemleri özenle uygulamak.",
+        kitapta=("Bölüm, intihar ve dava gibi kaçınmaya çalıştığımız büyük olayları ele alır. Çocuk psikiyatrisinin komşu alanlara "
+                 "göre neden daha az riskli olduğunu, meslek kuruluşlarına ve şikâyet birimlerine en sık hangi olayların ulaştığını, "
+                 "acil bir tehlikenin düşünmeyi nasıl kilitlediğini ve ahlaki tehlikeyi tartışır. Klinisyenin riski neden abarttığını "
+                 "(kullanılabilirlik yanılgısı, kesinlik ve olasılık etkileri), ara düzeydeki kaygının neden yararlı bir işaret olduğunu, "
+                 "hataların kaçınılmazlığını ve nedenlerini, nörogelişimsel değerlendirmede sık görülen hataları anlatır. Son kısım "
+                 "alışılmadık kararların hukuki dayanaklarını (Bolam ve Bolitho ölçütleri; kılavuz, kabul gören uygulama ve uzmanlık) "
+                 "ve yöneticilerin riski klinisyenlerden neden farklı gördüğünü açıklar."),
+        okurken=[
+            "Son kaygılandığınız vakada kaygınızın ne kadarı vakanın kendisinden, ne kadarı aklınızda kalmış eski bir olaydan geliyordu?",
+            "Alışılmadık bir kararınızı biri sorgulasa hangi dayanağı gösterirdiniz: kılavuzu, meslektaşlarınızın kabul gören "
+            "uygulamasını, yoksa uzmanlığınızı?",
+            "Yöneticinize bir riski anlatırken genel bir uyarı yerine hangi sayıyı ve hangi çözümü getirebilirsiniz?",
+        ],
+        fikirler=[
+            ("Çocuk psikiyatrisinde risk neden daha düşük?",
+             "Psikiyatri, malpraktis davalarının en seyrek açıldığı ve tazminatların en küçük kaldığı alanlardandır. İntihar riski de "
+             "çocuk psikiyatrisinde, özellikle küçük çocuklarla çalışırken, erişkin psikiyatrisine göre çok düşüktür. Bunun başlıca "
+             "nedeni çocuğu her gün izleyen anne-baba, öğretmen, akraba ve komşulardır: kaygı verici gelişmeleri bize taşırlar ve "
+             "bizim uygulamamızı da izlerler. Vakaların çok disiplinli ekipte konuşulması ek bir güvenlik denetimidir. Bunun bir bedeli "
+             "de vardır: risk, yöneticilerin ve politikacıların dikkatini çekmek için kullanılamaz ve fon verenler bizi riski daha "
+             "yüksek olan pediatri ve erişkin psikiyatrisiyle karşılaştırır."),
+            ("Hangi olaylar gerçekten yaşanıyor?",
+             "Meslek kuruluşlarına ulaşan olayların başında cinsel nitelikli uygunsuz davranışlar gelir; hastaya kişisel mesajlar "
+             "göndermek de bunlara dahildir. Reçeteyle ilgili sorunlar da sıktır: bağımlılık yapan ilaçları aile hekimine bildirmemek, "
+             "başkası adına reçete yazmak, ilaç firmalarından çıkar sağlamak. İstismar iddialarını bildirmemek, kayıtlara yetkisiz "
+             "erişim, sahte faturalama ve madde kullanımı da listededir. İngiltere’de bir ruh sağlığı kurumuna gelen şikâyetlerin "
+             "yaklaşık yarısı klinik dışı konulardaydı; çocuk ve ergen ayaktan hastalarının yaklaşık beş yüzde biri, yatan hastaların "
+             "ise onda biri şikâyette bulunmuştu. Araştırmacılara göre şikâyetlerin birçoğunun kökünde büyük olasılıkla kötü iletişim vardı."),
+            ("Önce tehlikeyi durdurmak",
+             "Yola fırlayan ya da başını cama vuran bir çocuk, diyabet krizlerine kendisi yol açan bir ergen, çevresindekilerde sistemli "
+             "düşünmeyi neredeyse imkânsız kılan bir kaygı uyandırır. Önce tehlike hemen denetim altına alınır; yetişkinler "
+             "sakinleştikten sonra davranış planı yapılır. Daha küçük risklerde acele gerekmez. Başını vurarak istediğini almayı "
+             "öğrenmiş bir çocuğun annesine görmezden gelmesini söylemek işe yaramaz, çünkü bunu yapamaz. Ona yapacak bir iş vermek "
+             "(ör. vurduğu yere yumuşak bir örtü koymak) kaygısını yatıştırır ve sönme planının uygulanmasını kolaylaştırır. Ahlaki "
+             "tehlike de akılda tutulmalıdır: riskten korunduğunu bilen kişi daha az özen gösterebilir. Bulunacağını bilen bir ergen, "
+             "uzun vadeli izlemi kendisine kalmayacak geçici bir hekim ya da yardım geleceğini bekleyen bir ekip buna örnektir."),
+            ("Riski neden abartırız?",
+             "Riski çoğu zaman kullanılabilirlik yanılgısıyla değerlendiririz: sık duyduğumuz ya da kendi yaşadığımız çarpıcı olaylar "
+             "akla kolay gelir ve olduğundan sık görünür. Yıllar önce bir hastanın intiharı, istatistiklerin gerektirdiğinden fazla "
+             "kaygı uyandırmayı sürdürür. Neredeyse emin olduğumuz iyi bir sonucu kesinleştirmek için orantısız çaba harcarız "
+             "(kesinlik etkisi); kaçınılmaz görünen kötü bir sonuca karşı küçük bir şans yaratmak için de çok çalışırız (olasılık "
+             "etkisi). Bazı meslektaşlar bir felaketten sonra fazla savunmacı olur, gereksiz tetkik ister ya da ilaç yazmaktan "
+             "kaçınır. Oysa kişisel sorumluluğumuz mesleğin ve toplumun seçtiği risk yönetimi yöntemlerini özenle uygulamakla "
+             "sınırlıdır. Kimse zihin okumamızı, geleceği görmemizi ya da her riski önleyen bir sistem kurmamızı beklemez."),
+            ("Kaygı bir işarettir",
+             "Kıdemsiz bir hekim sık sık kaygılanıyorsa bunun nedeni yeterince desteklenmemesi olabilir. Bir yöneticiyle her "
+             "konuşmada kaygı ya da öfke duyuyorsanız, büyük olasılıkla başkalarında da aynı etkiyi uyandırıyordur ve kendisi de "
+             "kaygılı ya da öfkeli olabilir. Kaygınızın yakın nedenini görmek hem kendinizi hem onu daha az suçlamanızı sağlar. "
+             "Uygulanamaz biçimde kurulmuş bir görevde klinisyen, kaybettiğini kabul edemeyen bir kumarbaz gibi giderek daha çok emek "
+             "harcar. Ara düzeyde bir kaygı ise yararlıdır: parçaların birbirine uymadığını, yeterli ek bilgi kaynağına "
+             "başvurulmadığını ya da vakanın öncekilerden farklı olduğunu haber verebilir. Bu durumda bir meslektaşla konuşmak "
+             "gerekir. Belli bir noktadan sonra kaygı verimi ve keyfi azaltır; o zaman işi sadeleştirmek, uyku ve izin düşünülmelidir."),
+            ("Hatalar ve nedenleri",
+             "Hata kaçınılmazdır ve gelişmenin bir parçasıdır, ama sayısı az olmalıdır. Hatalar ağırlık, önlenebilirlik, "
+             "öngörülebilirlik ve fark edilebilirlik bakımından ayrışır. Küçük şeylerdeki hatalar büyük şeylerde daha dikkatli "
+             "olmamızı sağlamalıdır. Kıdemli görüşü sık sık istediğiniz hâlde yanıt hep zaten bildiğinizi yineliyorsa kendi "
+             "yargınıza biraz daha güvenebilirsiniz. Ana akımdan uzaklaşmamak için ara sıra ikinci görüş almak gerekir. Nedenler üç "
+             "düzeyde aranabilir: kişinin içinde (mantık yerine sezgiye güvenmek, aşırı güven), kendi çalışma düzenimizde (acele "
+             "etmek, başkalarının hatalarından habersiz kalmak, az okumak, dar düşünmek) ve en sık olarak kurumun düzeninde. Kitap, "
+             "otizm ve zihinsel yetersizlik değerlendirmesinde bu düzenin ürettiği sistemli hatalardan uzun bir liste verir."),
+            ("Alışılmadık kararların hukuku",
+             "İngiltere’de Bolam ölçütüne göre sorumlu bir meslektaş grubunun destekleyeceği biçimde davranan hekim ihmalkâr sayılmaz; "
+             "aynı kararı vermeyecek meslektaşların bulunması kararı ihmal yapmaz. Bolitho ölçütü, dayanılan görüşün mantıksal "
+             "sınamaya da dayanması koşulunu ekler. Kılavuzlara ve yayımlanmış kanıta katı biçimde bağlı kalmak, olağandışı vakada "
+             "protokolün akılcı biçimde genişletilmesini ve yeniliği engeller. Bir kararı savunmanın üç yolu vardır: saygın bir "
+             "kılavuza uymak, meslektaşların kabul gören uygulamasına uymak ve okuma ya da deneyimle edinilmiş uzmanlığa dayanmak. "
+             "Aynı şeyi yapan iki üç meslektaş bulmak tek başına yetmez, çünkü onlar da sıra dışı olabilir."),
+            ("Yöneticinin riski",
+             "Yöneticiler çoğu zaman yetersiz eğitimli ve aşırı yüklüdür, işlerini kaybetme riskiyle yaşarlar. Tek bir ölüm ilgili "
+             "klinisyenleri derinden sarsar, en alt düzeydeki yöneticiyi kaygılandırır ve hiyerarşide yukarı çıktıkça daha az kaygı "
+             "yaratır. Yinelenen ölümler ise kurumun tepesini etkiler, çünkü önlenmesi gereken ortak bir neden düşündürür. Pek çok "
+             "riskli kararı birlikte değerlendiren geniş çerçeve daha iyi kararlar doğurur, ama çalışanlar geri görüşle "
+             "yargılanacaklarını bilir. Risk kayıtları riskin büyüklüğünü olasılığıyla çarpar ve alınan önlemleri sıralar. "
+             "Yöneticiye yalnızca “Bu güvenli değil” demek çoğu zaman duyulmaz. Kurumun tepesinde üç tür risk yoğunlaşır: medyaya "
+             "yansıyan bir felaket, mali çöküş ve birbirinden bağımsız sanılan ama birlikte gerçekleşen riskler (ör. antipsikotik "
+             "kullanan çok sayıda gencin yıllar içinde diyabet geliştirmesi ve bunun toplu davaya dönüşmesi)."),
+        ],
+        crs=[
+            "Acil bir tehlikede (yola fırlayan çocuk, kendine ağır zarar veren ergen) önce ortamı güvenli kılın; davranış planını "
+            "herkes sakinleştikten sonra birlikte yapın.",
+            "Başını vuran bir çocuğun annesine, sönme planı sürerken yapabileceği zararsız bir iş verin (ör. vurduğu yere yumuşak bir "
+            "örtü koymak); yalnızca “görmezden gelin” demek uygulanamaz bir öneridir.",
+            "Bir vaka hakkında ara düzeyde bir kaygı duyduğunuzda üç soru sorun: Parçalar birbirine uyuyor mu? Yeterli ek bilgi "
+            "kaynağına başvurdum mu? Bu vaka öncekilerden farklı mı? Yanıtlardan biri sizi rahatsız ediyorsa bir meslektaşla konuşun.",
+            "Nörogelişimsel değerlendirmede gözlem ölçeğini çocuk öfkeli ya da çökkünken uygulamayın, bakım ortamı yeni değişmiş bir "
+            "çocuğa hemen zekâ testi yapmayın, otizm ya da dil bozukluğu düşünürken zihinsel yetersizliği ayrıca değerlendirin ve "
+            "tanıyı yalnızca ebeveyn anketine dayandırmayın ([@havdahl2016]).",
+            "Alışılmadık bir kararın gerekçesini kayda geçirin: dayandığınız kılavuz ya da yayımlanmış kanıt, danıştığınız meslektaş, "
+            "aileyle konuşulan riskler ve izlem planı.",
+            "Yöneticiye bir riski somut sayılar ve önerilen bir önlemle yazılı olarak bildirin (ör. bekleme süresi, izlemsiz kalan "
+            "hasta sayısı, gereken ek seans). Yazılı bildirim riskin bir kısmını da karar verene taşır.",
+            "Kendi yaşadığınız çarpıcı bir olayın bugünkü kararlarınızı orantısız biçimde etkileyip etkilemediğini sorun; gerekiyorsa "
+            "vakayı ekipte konuşarak riski yeniden tartın ([@alexander2000]).",
+            "TR Ruhsatlı bir ilacı onaylı endikasyonu dışında kullanacaksanız, ilaç Türkiye İlaç ve Tıbbi Cihaz Kurumunun ek onay "
+            "gerektirmeyen endikasyon dışı kullanım listesinde değilse hasta bazında Kurum onayı ve bilgilendirilmiş hasta olur formu "
+            "gerekir. Gerekçe, literatür ve aileyle yapılan konuşmanın kaydı hem başvuruda hem olası bir hukuki incelemede işe yarar.",
+            "TR Hasta ve yakınlarının şikâyetleri kurumun hasta hakları birimine ya da CİMER’e de ulaşabilir. Yanıt hazırlarken önce "
+            "iletişimde neyin aksadığını sorun; şikâyet konularının yaklaşık üçte ikisi klinik kararlardan çok yönetim ve ilişki "
+            "sorunlarıyla ilgilidir ([@reader2014]).",
+        ],
+        tartisma=[
+            ("Psikiyatride dava riski gerçekten düşük mü?",
+             "ABD’de büyük bir sigorta şirketinin 40.916 hekimine ait 1991-2005 verilerinde, her yıl dava açılan hekim oranı beyin "
+             "cerrahisinde %19,1, pediatride %3,1 ve psikiyatride %2,6 bulunmuştur. Ortalama tazminatın en yüksek olduğu alan "
+             "pediatridir. Düşük riskli alanlarda çalışan hekimlerin de %75’inin 65 yaşına kadar en az bir davayla karşılaştığı "
+             "kestirilmiştir ([@jena2011]). Yıllık risk düşük olsa da meslek ömrü boyunca birikir."),
+            ("Şikâyetlerin konusu",
+             "59 çalışmada 88.069 şikâyeti birleştiren sistematik derlemede şikâyet konularının %33,7’si klinik bakımın güvenliği ve "
+             "kalitesiyle, %35,1’i kurumun yönetimiyle, %29,1’i sağlık çalışanı ile hasta arasındaki ilişkiyle ilgiliydi "
+             "([@reader2014]). Kitabın vurguladığı iletişim sorunları şikâyetlerin önemli bir kaynağıdır; ama şikâyetlerin üçte biri "
+             "doğrudan klinik bakımla ilgilidir ve görmezden gelinmemelidir."),
+            ("Bir hastanın intiharı hekimi nasıl etkiler?",
+             "İskoçya’da yanıt veren 247 konsültan psikiyatristin %68’i bakımı altındaki bir hastayı intihar nedeniyle kaybetmişti. "
+             "Bunların üçte biri çökkün duygudurum, uyku sorunu ya da çabuk öfkelenme gibi kişisel etkiler, %42’si uygulamasında "
+             "değişiklik (ör. riskli hastalarda daha yapılandırılmış yaklaşım, yasal yetkilerin daha sık kullanımı) bildirmiş, %15’i "
+             "bu nedenle erken emekliliği düşünmüştü ([@alexander2000]). En yararlı destek meslektaşlardan, aileden ve ekip ya da olay "
+             "incelemelerinden gelmişti. Kitabın kullanılabilirlik ve aşırı savunmacılık uyarısı bu verilerle uyumludur."),
+            ("Otizm ölçekleri yalnızca otizmi mi ölçer?",
+             "2-13 yaşlarında 388 çocukta SRS, ADI-R ve ADOS’un ayırt ediciliği zekâ düzeyinden ve duygusal-davranışsal sorunlardan "
+             "etkilenmiştir. Otizmi olmayan zihinsel yetersizlikli çocuklarda SRS ve ADI-R kesme puanlarının özgüllüğü %27-42’ye, "
+             "duygusal ve davranışsal sorunları belirgin çocuklarda üç ölçeğin özgüllüğü %36-59’a düşmüştür ([@havdahl2016]). "
+             "Kitaptaki hata listesiyle örtüşen bu bulguya göre ölçek puanı, çocuğun bilişsel düzeyi ve o günkü duygusal durumuyla "
+             "birlikte yorumlanmalıdır."),
+            ("Riskin algısı",
+             "Kullanılabilirlik, temsil edicilik ve çıpalama sezgileri belirsizlik altında hızlı ve çoğu zaman işe yarayan yargılar "
+             "sağlar, ama sistemli ve öngörülebilir hatalara da yol açar ([@tversky1974]). Klinik risk kararlarında bu yanlılığı "
+             "azaltmanın pratik bir yolu, tek bir çarpıcı anıyla verilen kararı taban oranlarla ve ekip görüşüyle sınamaktır."),
+        ],
+        sorular=[
+            S("Otizmi olan 7 yaşındaki bir çocuk son iki haftadır öfkelendiğinde başını pencere camına vuruyor. Anne ve baba çok kaygılı "
+              "ve görüşmede bir davranış planını konuşabilecek durumda değiller. İlk adım olarak en uygunu hangisidir?",
+              ["İşlevsel analiz için iki hafta boyunca ayrıntılı kayıt tutmalarını istemek",
+               "Camı korumaya almak ve çocuğun bu dönemde güvende kalmasını sağlayacak düzenlemeleri hemen yapmak; aile sakinleştikten "
+               "sonra davranış planını birlikte hazırlamak",
+               "Davranışı tamamen görmezden gelmelerini söylemek",
+               "Ailenin kaygısının abartılı olduğunu söyleyip güvence vermek"],
+              1, "Acil bir tehlike yetişkinlerde sistemli düşünmeyi engelleyen bir kaygı yaratır. Önce tehlike denetim altına alınır; "
+                 "ardından aile daha sakin bir zihinle plana katılabilir. Bu aşamada görmezden gelme önerisi uygulanamaz, güvence vermek "
+                 "de tehlikeyi ortadan kaldırmaz."),
+            S("İki yıl önce bir hastasını intihar nedeniyle kaybeden bir meslektaşınız, o günden beri hafif depresyonu olan bütün "
+              "ergenleri acil yatışa yönlendiriyor ve kanıta dayalı tedavileri başlatmaktan kaçınıyor. Bu tutumu en iyi açıklayan "
+              "hangisidir?",
+              ["Riskin doğru ve güncel bir değerlendirmesi",
+               "Çarpıcı bir kişisel deneyimin riski olduğundan büyük göstermesi (kullanılabilirlik yanılgısı) ve buna bağlı aşırı "
+               "savunmacı bir tutum",
+               "Ahlaki tehlike",
+               "Ergenlerde intihar riskinin erişkinlere göre daha yüksek olması"],
+              1, "Kişisel ve çarpıcı olaylar akla kolay gelir ve riski olduğundan sık gösterir; sonuç gereksiz yatışlar ve geciken "
+                 "tedavilerdir. Klinisyenin sorumluluğu kabul görmüş yöntemleri özenle uygulamaktır. Meslektaşın desteklenmesi ve "
+                 "vakaların ekipte konuşulması bu dengeyi yeniden kurmaya yardım eder."),
+            S("Kendine ağır zarar veren, zihinsel yetersizliği olan 15 yaşındaki bir ergende iki ilaç yetersiz kalmış. Kılavuzlarda "
+              "açıkça yer almayan bir ilaç birleşimini düşünüyorsunuz. Kararınızı savunulabilir kılmak için en uygun yol hangisidir?",
+              ["“Bunu yapan birkaç meslektaşım var” diyerek başlamak",
+               "Kılavuz dışı olduğu için hiçbir koşulda denememek",
+               "Yayımlanmış kanıtı ve saygın merkezlerdeki uygulamayı araştırmak, deneyimli bir meslektaşa danışmak, gerekçeyi, aileyle "
+               "konuşulan riskleri ve izlem planını kayda geçirmek",
+               "Aileyi kaygılandırmamak için ayrıntı vermeden başlamak"],
+              2, "Bir kararı savunmanın yolları kılavuz, meslektaşların kabul gören uygulaması ve uzmanlıktır; dayanılan görüş mantıksal "
+                 "sınamaya da dayanmalıdır. Birkaç meslektaşın aynı şeyi yapması tek başına yetmez. Kılavuz dışı her seçeneği "
+                 "yasaklamak olağandışı vakada yeniliği engeller; aileyi bilgilendirmeden başlamak ise hem etik hem hukuki açıdan "
+                 "kabul edilemez."),
+        ],
+        akilda="Önce tehlikeyi durdurun, sonra düşünün; ara düzeydeki kaygıyı bir meslektaşa danışma işareti sayın.",
+    ),
+    # ------------------------------------------------------------------ 21
+    dict(
+        no=21, kesim="G", kisa="Risk politikaları",
+        baslik="Risk politikaları: özür, güvenlik ağları ve kontrol listelerinin bedeli",
+        kitapta_bolumler="G. This Shouldn’t Happen! · Risk Policies (s. 279–287)",
+        slogan="Hata olduğunda sıra değişmez: özür dileyin, düzeltin, sonra sistemi değiştirin.",
+        kitapta=("Bölüm önce bir şey ters gittiğinde ne yapılacağını anlatır: özür dilemek, sorunu hemen düzeltmek, yinelenmesini "
+                 "önleyecek bir düzenek kurmak ve ciddi olayları geri görüş ve sonuç yanlılığına düşmeden incelemek. Ardından bireysel "
+                 "klinisyen için risk azaltma yollarını ele alır: önlem hiyerarşisi, güvenlik ağları, akıllı yedeklilik ve İsviçre "
+                 "peyniri modeli, küçük olaylar ve kırmızı bayraklar, kişisel olay günlüğü, kısa ve uzun vadeli etkilerin tartılması, "
+                 "savunmacı hekimliğin ölçüsü ve hataları önleme sezgileri. Son kısım kurum ve toplum düzeyine geçer: toplumun koyduğu "
+                 "risk kuralları, klinik yönetişim, riskin aşağıya devredilmesi, riskin ekipte paylaşılması, risk değerlendirme "
+                 "sistemlerine ve kontrol listelerine yöneltilen eleştiriler ve iyileştirmelerin ters tepebilmesi."),
+        okurken=[
+            "Son hatanızda ilk tepkiniz ne oldu: açıklamak mı, savunmak mı, susmak mı?",
+            "Ekibinizin güvenlik ağları birbirinden bağımsız mı, yoksa hepsi aynı zayıflığı mı paylaşıyor?",
+            "Son doldurduğunuz risk formu çocuk hakkındaki düşüncenizi derinleştirdi mi, yoksa dikkatinizi forma mı çekti?",
+        ],
+        fikirler=[
+            ("Özür ve düzeltme",
+             "Bir şey ters gittiğinde özür dileyin. Özür insanlığı ve üzüntüyü ifade eder; suçun kabulü sayılmaz. Kaçamak yanıtlar, "
+             "olanı açıklamamak ve hatayı kabul etmemek aileleri davaya iter. Ne olduğunu açıkça anlatmak ise sorunun büyümesini "
+             "çoğu zaman önler. Davaya giden yol genellikle kötü bir ilişki, yanıtsız kalan telefonlar ve bir hatayla başlar; eksik "
+             "kayıtlar ve savunulamayan bir uygulamayla kaybedilir. Önce eldeki sorun düzeltilir: yanlış doz yazıldıysa, önemli bir "
+             "tanı ya da ilaç etkileşimi atlandıysa aile hemen aranır, denetim adımları eklenir ve özür dilenir. Ardından yinelenmesini "
+             "önleyecek, mümkünse başka klinisyenleri de koruyacak bir düzenek aranır."),
+            ("Olayı incelemek",
+             "Klinik hataların çoğunda tek bir sorumlu yoktur; hatayı çoğu zaman kurumun yapısı kaçınılmaz kılar. Geri görüş ve sonuç "
+             "yanlılığı, bir kararı verildiği andaki makul inançları bir yana bırakıp sonucunun iyi ya da kötü olmasına göre "
+             "değerlendirmemize yol açar. Ciddi olaylara kendiliğinden verdiğimiz tepki genellikle aşırıdır: aynı olayın yinelenme "
+             "olasılığını abartır, birilerini suçlar ve küçük sorunlara pahalı çözümler öneririz. Kararlarının geri görüşle "
+             "inceleneceğini bilen klinisyenler bürokratik çözümlere ve aşırı riskten kaçınmaya yönelir. Bu düzenekler bazen hastadan "
+             "çok hekimi ve kurumu korur."),
+            ("Önlem hiyerarşisi",
+             "Risk azaltma yöntemleri etkiye göre sıralanır ve sisteme yönelik olanlar en etkilidir. Ortadan kaldırma: bıçakları ve "
+             "ilaçları kilit altında tutmak, askı noktalarını gidermek, çocuğu istismarcı ebeveynden ayırmak. Yerine koyma: daha "
+             "güvenli ilaçlar, standart reçeteler. Mühendislik: haftalık ilaç kutuları, basılı reçeteler, sekreterlik denetimleri. "
+             "İdari önlemler: kontrol listeleri, her noktanın düşünüldüğünü denetleyen formlar, hatırlatıcılar. Davranış: eğitim ve "
+             "riskleri akılda tutan canlı öyküler. Koruyucu donanım: alarm düğmesi, cam bölme, priz kapakları. Eğitim ve uyarılar "
+             "sıralamanın alt basamaklarındadır."),
+            ("Güvenlik ağları, akıllı yedeklilik ve İsviçre peyniri",
+             "Çoğu plana bir güvenlik ağı eklenebilir: ana plan aksarsa devreye giren bir yedek. Aileye bir yan etki ortaya çıkarsa ne "
+             "yapacağını söylemek, kendine zarar verme sonrasında izlem randevusu vermek, acil bir randevu verilse bile iptal "
+             "edilebilecek ileri tarihli bir kontrol randevusu planlamak buna örnektir. Bir işi iki kez yapmak çoğu zaman israftır, "
+             "ama iki farklı yolla yapmak riski azaltır. Geçen yılın beş öğretmenine ulaşmak verimsizdir; çocuktan, iki ebeveynden ve "
+             "bir kardeşten ya da yakın bir akrabadan bilgi almak daha iyidir. İsviçre peyniri modelinde her güvenlik katmanının "
+             "delikleri vardır; kaza, delikler nadiren aynı hizaya geldiğinde olur ve çoğu zaman tek bir suçlusu yoktur. Personel "
+             "eksikliği yüzünden vakalar uzmanlık alanı dışındaki kişilere verildiğinde ise yanlış tedavi riski, kişilerin özeninden "
+             "bağımsız olarak sistemli biçimde yükselir."),
+            ("Küçük olaylar, kırmızı bayraklar ve olay günlüğü",
+             "Küçük kötü olaylar düşük maliyetli birer öğrenme penceresidir ve aşırı özgüveni önler: çocuğun okuldan eve gönderilmesi, "
+             "ailenin başka bir uzmana başvurması, sözlü yakınmalar, ramak kala olaylar, geri bildirim formlarındaki yorumlar, tedavi "
+             "başarısızlığı, yatışlar, yan etkiler, mektuptaki yazım hataları. Kişisel kırmızı bayraklar arasında aileye, "
+             "sekreterlere ya da hastalara karşı sabırsızlaşmak, meslektaşlardan uzun çalışmak, biriken yazışmalar, işe gitmekte "
+             "zorlanmak ve yalnızca hafta sonlarını beklemek vardır. Ekipte büyüyen bekleme listesi, neşesini yitiren bir meslektaş, "
+             "artan izinler ve istifalar uyarıdır. Ramak kala olayların çoğu korku, zaman darlığı ya da önceki bildirimlerin sonuçsuz "
+             "kalması yüzünden hiç bildirilmez. Yıllar boyunca tutulan kişisel bir olay günlüğü (tarih, katkıda bulunan etkenler, "
+             "alınan önlem, sonuç) örüntüleri görünür kılar; hata sayısı artıyorsa nedeni reçete düzeninde, yorgunlukta ya da "
+             "ana akımdan uzaklaşmış bir çalışma tarzında aranır."),
+            ("Kısa ve uzun vade, savunmacı hekimlik",
+             "Bir ilacın kısa ve uzun vadeli yararları ve riskleri ayrı ayrı tartılır. Kitaba göre stimülanların kısa vadeli yararı "
+             "büyük, uzun vadeli riskleri şimdilik çok küçük görünür. Antipsikotiklerin kısa vadeli yararı büyük olabilir, ama obezite "
+             "ve diyabet gibi uzun vadeli riskleri vardır; ailede güçlü diyabet öyküsü varsa süreyi baştan sınırlamak akılcıdır. "
+             "Savunmacı hekimlik riski özenle yönetmektir, ama ölçüsü kaçabilir. Aşırısı: daha önce yapmadığı hiçbir şeyi yapmamak, "
+             "ailenin istediği her şeyi ya da gösterdiği her protokolü uygulamak. Tartışmalı olanı: aile istediği için çok sayıda "
+             "tetkik istemek, uzak gelecekteki riskler yüzünden yararlı bir tedaviden kaçınmak. Akılcı olanı: yapılanları kaydetmek, "
+             "yeni ilaçlarda “düşük başla, yavaş artır”, öfkeli ailelerle ilişkiyi onarmak için çaba göstermek ve rahat olunmayan "
+             "alanlarda danışmak."),
+            ("Kurumda risk",
+             "Bazı riskler için toplum, profesyonellerden ne beklediğine önceden karar vermiştir. Bu kurallar ilk ilkelerden "
+             "çıkarılamaz; öğrenilip uygulanır: morluk bırakan bir vurmayı sosyal hizmetlere bildirmek, kişisel veri taşıyan "
+             "bellekleri şifrelemek, kontrole tabi ilaçlarda özel kurallara uymak, çocuk birimlerini kilitli ve izlenir tutmak, kalp "
+             "öyküsü varsa kalbi etkileyen bir ilaçta QTc’ye bakmak. Hükümetler riski düzenleyicilere ve yöneticilere, onlar da "
+             "klinisyenlere devreder; klinisyen de yetersiz koşulları yöneticilere yazılı bildirerek riskin bir kısmını geri "
+             "taşıyabilir. Kılavuzlar riski yazarları ve önceki kullanıcılarıyla paylaştırır; büyük ve nadir riskler onlarla her gün "
+             "karşılaşan uzmanlara bırakılır. Kitaba göre gruplar, üyelerinin tek başına alacağından daha riskli kararlar alabilir. "
+             "İkili çalışma karar sorumluluğunu paylaşmaya yarar; değerlendirmede ve tedavide yararı daha az açıktır. Tek başına "
+             "değerlendirip planı bir kıdemliyle tartışmak hem uyum kurmayı kolaylaştırır hem daha çok öğretir."),
+            ("Risk değerlendirme sistemlerine kuşku",
+             "Bazı yöneticiler ve kurumlar risk yönetimini psikiyatrinin özü sayar. Pek çok klinisyen ise risk değerlendirmesine "
+             "fazla ağırlık verildiğini ve bunun hastanın bütününe bakmayı engellediğini düşünür. Kendine zarar verme sonrasında risk "
+             "ölçekleri, klinisyenin genel yargısından daha iyi öngörü sağlamamıştır; NICE de risk araçlarının ileride intiharı ya da "
+             "kendine zarar vermeyi öngörmek için kullanılmamasını önerir. Riski sayıya dökmek yerine standart klinik görüşmeyle "
+             "ihtiyaçları değerlendirmek daha yararlıdır. Kontrol listeleri en güvenilmez klinisyenleri daha güvenli kılar, ama "
+             "zaten güvenilir olanı daha az düşünen ve daha az iş birliği yapan birine dönüştürebilir. Toplanması kolay veri "
+             "toplanır; bilinmeyen riskleri yönetme yükü, raporlanabilir bir işle yer değiştirir. İnsanlar başka alanlarda daha çok "
+             "risk alarak toplam riski eski düzeyine getirebilir. Formu doldurduktan sonra düşünce çocuktan forma kayar. Dışarıdan "
+             "dayatılan risk standartlarının bir terapötik toplulukta hastalar ile personel arasındaki güveni aşındırdığı da "
+             "bildirilmiştir."),
+        ],
+        crs=[
+            "Bir hata fark ettiğinizde aileyi hemen arayın: ne olduğunu açıkça anlatın, özür dileyin, şimdi ne yapılacağını ve "
+            "yinelenmemesi için neyi değiştirdiğinizi söyleyin; konuşmayı kayda geçirin ([@kachalia2010]).",
+            "Güvenlik ağını yazılı kurun. Yan etki anlatırken “Şu olursa ilacı kesin ve şu numarayı arayın” deyin; kendine zarar "
+            "verme sonrasında erken bir randevu verseniz bile iptal edilebilecek ileri tarihli bir yedek kontrol randevusu planlayın.",
+            "Reçetelerinizin ne kadarının eczaneden sorgulandığını izleyin; %1-5’ten fazlası sorgulanıyorsa kayıtlarınızın genelinde "
+            "de bir güvenilirlik sorunu arayın. Dozları hem mektupta hem reçetede, sonraki randevuyu hem takvimde hem son mektupta "
+            "yazın; bir kayıt kaybolursa öbüründen yeniden kurulabilir.",
+            "Kendinize özel bir istenmeyen olay günlüğü tutun (tarih, olay, katkıda bulunan etkenler, alınan önlem, sonuç) ve yılda "
+            "bir örüntülere bakın.",
+            "Ayda bir ekipçe sorun: “İyi bakım vermemizin önündeki en sık engel ne? Bu çocuk yakınımız olsaydı neyi farklı "
+            "yapardık?”",
+            "Kendine zarar veren bir ergeni ölçek puanıyla “düşük” ya da “yüksek risk” diye sınıflamayın. İhtiyaçları ve "
+            "değiştirilebilir etkenleri görüşmeyle değerlendirin, aileyle bir güvenlik planı yapın ve izlem randevusu verin "
+            "([@quinlivan2017]; [@carter2017]).",
+            "Uzun vadeli ilaç risklerini izlemde tutun: antipsikotik kullanan çocukta kilo, bel çevresi, kan basıncı, açlık kan şekeri "
+            "ve lipitler ([@bobo2013]); stimülan kullanan çocukta her kontrolde kan basıncı ve nabız ([@zhang2024]).",
+            "TR Görevi sırasında bir suç belirtisiyle karşılaşan sağlık çalışanının bunu yetkili makamlara bildirme yükümlülüğü vardır "
+            "(TCK 280). İstismar kuşkusunda hastanenin sosyal hizmet birimiyle ve gerektiğinde Çocuk İzlem Merkeziyle çalışın; "
+            "bildirimin zamanlamasını ve aileye ne söyleneceğini ekipçe planlayın.",
+            "TR Sağlık verisi özel nitelikli kişisel veridir (KVKK m. 6). Kişisel Verileri Koruma Kurulunun 2018/10 sayılı kararı, bu "
+            "verilerin taşınabilir bellek, CD ya da DVD ile aktarılması gerekiyorsa kriptografik yöntemlerle şifrelenmesini ve "
+            "anahtarın ayrı bir ortamda tutulmasını ister.",
+            "TR Hastanelerde istenmeyen olaylar ve ramak kala olaylar kurumun olay bildirim sistemine (birçok hastanede Güvenlik "
+            "Raporlama Sistemi, GRS) bildirilir. Bildirimlerin öğrenmeye dönüşmesi için ramak kala olayları ekip toplantılarında "
+            "isim vermeden konuşun.",
+        ],
+        tartisma=[
+            ("Açıklama ve özür davayı artırır mı?",
+             "Michigan Üniversitesi sağlık sisteminde hataları açıkça bildirme ve tazminat önerme programından sonra 100.000 hasta "
+             "başvurusu başına aylık yeni talep sayısı 7,03’ten 4,52’ye, dava sayısı 2,13’ten 0,75’e inmiş ve toplam sorumluluk "
+             "maliyeti azalmıştır ([@kachalia2010]). Önce-sonra tasarımı nedensellik kanıtlamaz ve aynı dönemde eyalette davalar genel "
+             "olarak azalmıştır. Perinatal yaralanma sonrası dava açan ailelerin yaklaşık yarısı hekimlerin kendilerini yanıltmaya "
+             "çalıştığını, üçte biri açık konuşmadığını düşünmüştü ([@hickson1992]). İki çalışma kitabın uyarısıyla uyumludur: "
+             "iletişimin kopması dava kararında önemli bir etkendir."),
+            ("Sonuç yanlılığı",
+             "112 anestezi uzmanına aynı vakalar yalnızca sonucun ağırlığı değiştirilerek verildiğinde, sonuç geçiciden kalıcıya "
+             "çevrilince bakımı uygun bulanların oranı 31 yüzde puan azalmış, tersine çevrilince 28 yüzde puan artmıştır "
+             "([@caplan1991]). Olay incelemelerinde kararı, verildiği andaki bilgiyle yeniden kurmak bu yüzden gereklidir."),
+            ("Risk ölçekleri öngörüyor mu?",
+             "Kitaptaki şekilde yer alan ölçekleri sınayan çok merkezli bir kohortta, kendine zarar veren erişkinlerde altı ay "
+             "içinde yinelemeyi öngörmede ölçeklerin çoğu klinisyenin ya da hastanın kendi risk tahmininden daha iyi değildi ve "
+             "bazıları belirgin biçimde daha kötüydü. Eğri altındaki alan en yüksek klinisyenin genel değerlendirmesinde (0,74) "
+             "bulundu ([@quinlivan2017]). Pozitif öngörü değerlerini birleştiren meta-analizde bütün ölçekler birlikte "
+             "değerlendirildiğinde yüksek risk sınıfının intihar için pozitif öngörü değeri %5,5’ti ve hiçbir yüksek risk "
+             "sınıflaması klinik olarak yararlı bulunmadı ([@carter2017]). Kohort erişkinlerden oluşur; ergenlere genellemek bir "
+             "çıkarımdır."),
+            ("Kontrol listeleri her yerde işe yarar mı?",
+             "Dünya Sağlık Örgütü’nün cerrahi güvenlik kontrol listesi sekiz hastanede uygulamaya konduktan sonra ölüm oranı %1,5’ten "
+             "%0,8’e, komplikasyonlar %11’den %7’ye inmiştir ([@haynes2009]). Ontario’da bir politikayla bütün hastanelerde kontrol "
+             "listesine geçildikten sonra ise 101 hastanede ölüm ve komplikasyonlarda anlamlı bir azalma görülmemiştir "
+             "([@urbach2014]). İki sonuç arasındaki fark, kontrol listesinin etkisinin uygulanma biçimine bağlı olabileceğini "
+             "düşündürür. Kitabın uyarısıyla uyumlu olarak, dışarıdan dayatılan bir form kendiliğinden güvenlik üretmeyebilir."),
+            ("Uzun vadeli ilaç riskleri ne kadar uzak?",
+             "Kitap antipsikotiklerin diyabet riskini yıllar sonra ortaya çıkabilecek uzak bir risk örneği olarak verir. Tennessee "
+             "Medicaid kohortunda 6-24 yaşlarında antipsikotiğe yeni başlayanlarda tip 2 diyabet riski yaklaşık üç kat artmış, artış "
+             "ilk yıl içinde görülmüş ve birikimli dozla yükselmiştir; risperidonla sınırlı kullanımda da risk artmıştır "
+             "([@bobo2013]). Stimülanların uzun vadeli riskinin çok küçük olduğu yargısı da yeniden düşünülmelidir: İsveç’te bir "
+             "vaka-kontrol çalışmasında DEHB ilacının her ek kullanım yılı kardiyovasküler hastalık riskinde %4’lük bir artışla "
+             "ilişkili bulunmuş, artış en çok hipertansiyon ve arter hastalığında görülmüş ve ilk üç yılda belirginleşmiştir "
+             "([@zhang2024]). İki çalışma da gözlemseldir ve karıştırıcı etkenler tümüyle dışlanamaz; yine de izlemin uzun vadede "
+             "sürmesi gerektiğini gösterir."),
+        ],
+        sorular=[
+            S("Bir ergenin reçetesine yanlışlıkla on kat yüksek doz yazdığınızı ertesi sabah fark ediyorsunuz. En uygun ilk adım "
+              "hangisidir?",
+              ["Bir sonraki randevuda konuyu açmak",
+               "Eczacının zaten fark edeceğini düşünüp beklemek",
+               "Aileyi hemen arayıp ilacın alınıp alınmadığını öğrenmek, gerekiyorsa tıbbi değerlendirmeye yönlendirmek, olanı açıkça "
+               "anlatıp özür dilemek, olayı kaydetmek ve yinelenmemesi için bir denetim adımı eklemek",
+               "Özür suç kabulü sayılacağı için yalnızca düzeltilmiş reçeteyi göndermek"],
+              2, "Önce eldeki sorun düzeltilir: aile hemen aranır. Özür dilemek suç kabulü sayılmaz; kaçamak davranmak ise aileleri "
+                 "davaya iter. Ardından aynı hatanın yinelenmemesi için bir düzenek kurulur."),
+            S("Ergen servisinde bir hastanın kapı menteşesini askı noktası olarak kullanmaya çalışmasından sonra yönetim önlem arıyor. "
+              "Önlem hiyerarşisine göre en etkili seçenek hangisidir?",
+              ["Personele kendine zarar verme konusunda yeni bir eğitim vermek",
+               "Askı noktası olabilecek menteşe ve bağlantıları değiştirmek ya da kaldırmak",
+               "Her vardiyada doldurulacak yeni bir risk formu eklemek",
+               "Koridorlara kuralları hatırlatan afişler asmak"],
+              1, "Tehlikeyi ortadan kaldırmak hiyerarşinin en etkili basamağıdır. Eğitim ve afişler davranışa, formlar idari önlemlere "
+                 "dayanır; bunlar alt basamaklardır ve tek başlarına aynı korumayı sağlamaz."),
+            S("Acil serviste kendine zarar verme sonrası görülen 15 yaşındaki bir ergen bir risk ölçeğinden düşük puan alıyor. Ekip bu "
+              "puana dayanarak izlem randevusu vermeden taburcu etmeyi öneriyor. En uygun yaklaşım hangisidir?",
+              ["Ölçek puanına göre izlemsiz taburcu etmek",
+               "Ölçeği bir kez daha uygulayıp puan yükselirse izlem vermek",
+               "Puandan bağımsız olarak ihtiyaçları, bağlamı ve değiştirilebilir etkenleri görüşmeyle değerlendirmek, aileyle bir "
+               "güvenlik planı yapmak ve izlem randevusu vermek",
+               "Ölçek puanına bakmadan her ergeni yatırmak"],
+              2, "Risk ölçeklerinin öngörü gücü düşüktür ve yüksek ya da düşük risk sınıflamaları klinik kararı taşıyacak kadar "
+                 "güvenilir değildir. Görüşmeye dayalı ihtiyaç değerlendirmesi, güvenlik planı ve bir güvenlik ağı olarak izlem "
+                 "randevusu daha akılcıdır."),
+        ],
+        akilda="Formu doldurduktan sonra yeniden çocuğu düşünün; güvenliği en çok tehlikeyi kaldıran düzenlemeler ve dikkatli bir "
+               "görüşme sağlar.",
+    ),
+    # ------------------------------------------------------------------ 22
+    dict(
+        no=22, kesim="G", kisa="Öngörülemeyeni öngörmek",
+        baslik="Öngörülemeyeni öngörmek: küçük hatalar, kara kuğular ve risk pencereleri",
+        kitapta_bolumler="G. This Shouldn’t Happen! · Predicting the Unpredictable (s. 288–292)",
+        slogan="Büyük felaketler çoğu zaman küçük hatalarla aynı kökten beslenir; küçükleri azaltan büyükleri de azaltır.",
+        kitapta=("Bölüm, bir klinisyenin karşılaştığı olayların sıklığı ile ağırlığı arasındaki ilişkiyi güç yasasıyla açıklar: sık "
+                 "görülen küçük aksaklıklar nadir ve ağır olayların habercisidir ve çoğu zaman aynı nedenlerden doğar. Asla olmaması "
+                 "gereken olayları, çocuk ve ergen ruh sağlığı hizmetlerinde küçük sorunlardan değer çıkarmanın yollarını, hata "
+                 "sayısını bilerek artırmayı (yedeklilik) ve hata oranının fazla düşük olmasının ne anlama gelebileceğini tartışır. "
+                 "Ardından risk ile belirsizlik arasındaki farkı, kara, gri ve beyaz kuğuları, kötü kara kuğulara karşı konum almayı ve "
+                 "iyi kara kuğulara yer açmayı ele alır. Son olarak birikimli riskleri (psikoz için ultra yüksek risk ölçütleriyle "
+                 "bilişsel bozulmaların birlikteliği) ve risk pencerelerini (ilaca başlama ya da ilacı kesme, büyük yaşam olayları, "
+                 "gebeliğin ilk üç ayı, sınav dönemleri) anlatır."),
+        okurken=[
+            "Son bir yılda yaşadığınız küçük aksaklıkları sayabilir misiniz? Hangisi daha büyük bir olayın habercisi olabilir?",
+            "Ekibinizde hiç şikâyet almayan biri varsa bu her zaman iyi bir işaret midir?",
+            "Kliniğinizi bir anda alt üst edebilecek, ama bugüne kadar hiç düşünmediğiniz bir olay ne olabilir?",
+        ],
+        fikirler=[
+            ("Güç yasası",
+             "Bir klinisyenin karşılaştığı olaylarda sıklık ile ağırlık ters orantılıdır: hoşnutsuz bir aile hemen her gün görülebilir, "
+             "ağır bir olay meslek ömründe belki bir kez. Neredeyse her gün hastaları kızdıran, sık reçete hatası yapan ve yılda "
+             "birkaç şikâyet alan bir klinisyenin dava ve hasta ölümü gibi ağır olaylarla karşılaşma olasılığı da yüksektir. "
+             "Karmaşık sistemler çoğu zaman küçük sorunların birleşmesiyle çöker ve en büyük sorunlar genellikle küçüklerle aynı "
+             "nedenlerden doğar. Bu yüzden küçük hatalar görmezden gelinmez. Annenin yarım tablet mi yarım miligram mı verdiğini "
+             "bilmediğini fark ettiğinizde yazılı bir hatırlatıcı verip daha sık kontrol etmek, büyük bir hatanın olasılığını da "
+             "azaltır. Bunun duygusal bir yararı da vardır: felaketleri gerçekten azaltan önlemleri aldığınızı bilmek, kendinizi "
+             "gereksiz yere hırpalamanızı önler."),
+            ("Ailede ve klinikte küçük işaretler",
+             "Güç yasası aileler için de geçerlidir. Ağır cezaları yalnızca uç davranışlara saklayan anne-babalar, ara basamaklardaki "
+             "küçük ihlalleri fark etmez: genç sorunlu bir arkadaş grubuna kayarken hiçbir şey olmaz, polisle eve geldiğinde ağır bir "
+             "ceza gelir. Küçük olaylar için de kullanılabilen sonuçlar büyük krizleri önler. Klinikte de aynı mantık işler: iki "
+             "yıldır kimseye ciddi zarar vermediği için antipsikotiği kesilen otizmli bir ergende birkaç ayda bir eşya kırması, "
+             "birkaç yıl içinde daha ağır bir olayın habercisi olabilir. Geçmiş olayların gelecekteki riski öngördüğü kuralı "
+             "ortalamalar ve eğilimler için geçerlidir; ama asıl önemli olan nadir büyük olayları kaçırır."),
+            ("Asla olmaması gerekenler ve küçük sorunlardan öğrenmek",
+             "Önceden kestirilebilen, ağır ve önlenebilir olaylara asla olmaması gereken olaylar denir: bilinen alerjisi olan çocuğa "
+             "aynı ilacı yazmak ya da yatan bir hastanın kaçırılması gibi. Ciddi intihar niyetinin gözden kaçması ve serviste cinsel "
+             "saldırı, önlenmesi biraz daha zor olaylardır. Çocuk ve ergen ruh sağlığı hizmetlerinde büyük felaketler nadir olduğundan, risk denetiminin "
+             "çalışır kalması için küçük sorunlardan bütün değeri çıkarmak gerekir. Önce kendi küçük hatalarınızla başlayın ve "
+             "danışmayı örnek olarak gösterin; reçete hataları iyi bir uyarı işaretidir. Ardından ön değerlendirmede yapılıp sonradan "
+             "yanlış çıkan yorumlara, ekip toplantılarındaki ani yargılara ve yeniden başvurulara bakın."),
+            ("Hata oranını bilerek artırmak ya da fazla düşürmek",
+             "Bazen küçük hataları artırmak büyükleri azaltır. Uzay mekiğindeki beş özdeş bilgisayar bir bilgisayarın arızalanma "
+             "olasılığını artırıyor, ama arızayı atlatılabilir kılıyordu; hastanelerde iki kimlik bileziği takılması da böyledir. "
+             "Mektupların, reçetelerin ve notların kopyalarını tutmak birinin kaybını telafi etmeyi sağlar. Bu tür küçük ve "
+             "düzeltilebilir hataların sayısını izlemek, aşırı yüklenmenin ya da güvenilirliğin azalmasının erken bir uyarısıdır. "
+             "Tersini de sormak gerekir: hata oranınız fazla mı düşük? Hiç şikâyet almayan bir klinisyen hastalara fazla esnek "
+             "davranıyor, hiç geç kalmayan biri çok az sorumluluk alıyor, mektuplarında hiç yazım hatası olmayan biri de zamanını "
+             "takıntılı denetimlere harcıyor olabilir."),
+            ("Risk, belirsizlik ve kara kuğular",
+             "Olasılıkları hesaplanabilen risk ile hayatın daha derin bilinemezliği olan belirsizlik farklı şeylerdir: riski "
+             "yönetebiliriz, belirsizliği aynı kesinlikle yönetemeyiz. Kara kuğu çok nadir, hiç düşünülmemiş ve etkisi ezici olan "
+             "olaydır. İyi kara kuğu beklenmedik büyük bir fırsattır, beyaz kuğu hiçbir şeyin olmamasıdır, gri kuğu ise nadir ama "
+             "beklenen, modellenebilen uç olaydır. Taleb’e göre bilmediklerimiz bildiklerimizden daha önemlidir; bu çekici ama "
+             "herkesin kabul etmediği bir görüştür. Kara kuğu beklentiye görelidir: kasap için olağan olan, hindi için felakettir. "
+             "Çocuk ve ergen ruh sağlığında örnekler: bir skandal yüzünden birimin kapanması, olumlu bir haber yüzünden başvuruların "
+             "on katına çıkması, kişisel yaşamda birkaç büyük olayın aynı haftaya denk gelmesi, birkaç hastanın intihar etmesi. Tek "
+             "bir hastanın intiharı ise sık düşündüğümüz gerçek bir olasılıktır, kara kuğu sayılmaz."),
+            ("Kötü kara kuğulara karşı konum almak",
+             "Önce donanın: güncel ve geniş bilgi edinin, hastalarınızla ilgili sorulara hakemli yayınlarda yanıt arama alışkanlığını "
+             "sürdürün, dünyada ve yakınınızdaki önemli gelişmeleri (gençlerde intihar, kesintiler, yeniden yapılanma, skandal, yeni "
+             "alt kültürler) haber taramasıyla izleyin, kurumsal akıl dışılığın ve sürdürülemezliğin işaretlerine karşı uyanık olun, "
+             "ilişki ağınızı geliştirin. İkinci olarak kara kuğulardan kaçının: klinik işte kötü sürprizler iyilerinden çok daha "
+             "sıktır, bu yüzden klinikte riskten kaçınmak akılcıdır. Üçüncü olarak gri kuğulara hazırlanın: sakinleştirme "
+             "(de-eskalasyon) eğitimleri, ilaçların olağandışı yan etkilerine hazırlık, kendine zarar veren hastalara kendini koruma "
+             "stratejileri öğretmek, her risk türünü izleyecek bir ekip üyesi belirlemek ve ayda bir “Burada bir sonraki hata ne "
+             "olabilir?” diye sormak. Son olarak öngörülemeyeni öngörmeye çalışın: olağandışı vakalara fazladan dikkat gösterin. "
+             "Öyküdeki sürprizler çoğu zaman formülasyonun anahtarıdır; annenin bildirdiği ve sizin olamaz dediğiniz bir yan etki "
+             "gerçek olabilir."),
+            ("İyi kara kuğulara yer açmak",
+             "Maaşlı çalışmak olağanüstü başarı olasılığını büyük ölçüde sınırlar; daha çok hasta görme baskısı da klinik bir felaket "
+             "riskini artırırken iyi sürprizlere yer bırakmaz. Yine de iyi sürprizler gelir. Şaşırtıcı klinik gözlemler kaydedilmeli, "
+             "tartışılmalı ve araştırılmalıdır, çünkü sürprizler klinik düşünceyi en çok kışkırtan şeydir. Meta-analizlerdeki uç "
+             "değerler yayımlanan sonuçlardan daha ilginç olabilir. Tedavileri rastgele denemek kabul edilemez; ama sürprizlerin "
+             "olumlu olabileceği alanlarda (ders vermek, araştırma, yazı, medya) belirsizliğe yer açılabilir. Kısmi çalışma ya da "
+             "serbestçe kullanılabilecek zaman, fırsatları yakalamayı kolaylaştırır. Neredeyse her zaman kazanılan bir işte riskten "
+             "fazla kaçınmaya kayarız; bu tutum hayatın her alanına yayılmamalıdır."),
+            ("Birikimli riskler ve risk pencereleri",
+             "Ailelere aktarmak üzere risk ve gidişe ilişkin güvenilir bilgileri bilmek gerekir. Kitabın örneğinde genç erişkinlerde "
+             "psikoza geçiş riski, ultra yüksek risk ölçütleriyle bilişsel bozulmalar birlikte bulunduğunda belirgin biçimde yükselir; "
+             "ikisi birlikte olanların yaklaşık üçte ikisi dört yıl içinde psikoz geliştirmiştir. Risk sabit de değildir. Yeni bir "
+             "ilaca başlarken ya da ilacı keserken, okula başlama ya da bir ebeveynin cezaevinden çıkması gibi büyük yaşam olaylarının "
+             "öncesinde, sırasında ve sonrasında, gebeliğin ilk üç ayında (malformasyon riski) ve sınav dönemlerinde (kaygı ve kendine "
+             "zarar verme) risk penceresi açılır. Bunların bir kısmı önceden planlanabilir."),
+        ],
+        crs=[
+            "Ebeveynin dozdan emin olmadığını fark ettiğinizde (yarım tablet mi, yarım miligram mı?) dozu tablet sayısıyla ve yazılı "
+            "olarak verin; bir sonraki görüşmede yeniden sorun.",
+            "Ekip toplantısındaki ilk izlenimleri (ör. “Bu bir aile sorunu”, “Bu DEHB”) kısa bir notla kaydedin; değerlendirme ve "
+            "tedaviden sonra hangilerinin doğru çıktığına dönemsel olarak bakın.",
+            "Yeniden başvuran her çocukta sorun: Tedaviye katılım mı yetersizdi, tedavi mi işe yaramadı, yoksa taburculuk mu erkendi?",
+            "Antipsikotiği kesilen bir ergende küçük saldırgan davranışları (eşya kırma, itme) aile ve okulla birlikte izleyin; "
+            "sıklıktaki bir artışı tedaviyi yeniden değerlendirme işareti sayın.",
+            "Ebeveynlere küçük ihlaller için de orantılı ve tutarlı sonuçlar önerin; ağır cezaları yalnızca büyük olaylara saklamak "
+            "gidişi fark etmeyi geciktirir.",
+            "Ekipte her risk türü için (ilaç güvenliği, kendine zarar verme, çocuk koruma, veri güvenliği) bir izleyici belirleyin ve "
+            "ayda bir “Burada bir sonraki hata ne olabilir?” diye sorun.",
+            "Ailenin bildirdiği beklenmedik bir yan etkiyi hemen reddetmeyin: ayrıntısıyla kaydedin, zamanlamasını ve başka "
+            "açıklamaları sorun, literatürü tarayın ve gerekirse dozu azaltıp etkisine bakın.",
+            "Risk pencerelerini takvime yazın: yeni ilaca başlama ve ilacı kesme, okul değişikliği, sınav dönemi, aile içi büyük "
+            "değişiklikler. Antidepresan başlanan ergeni ilk haftalarda daha sık görün ve aileyle uyarı işaretlerini yazılı olarak "
+            "konuşun ([@hammad2006]; [@bridge2007]).",
+            "Psikiyatrik yatıştan taburcu olan bir gencin ilk ayaktan randevusunu taburculuktan önce ve ilk yedi gün içine verin "
+            "([@fontanella2020]).",
+            "TR LGS ve YKS dönemleri, kitabın sözünü ettiği sınav pencerelerinin Türkiye’deki karşılığıdır. Kendine zarar verme öyküsü "
+            "olan gençlerde sınav öncesinde ve sonuç döneminde izlemi sıklaştırın, güvenlik planını güncelleyin ([@rodway2016]).",
+            "TR Beklenmedik ya da ciddi bir yan etkiyi Türkiye Farmakovijilans Merkezine (TÜFAM) bildirin; nadir yan etkiler ancak "
+            "bildirimler biriktikçe görünür hâle gelir.",
+        ],
+        tartisma=[
+            ("Şikâyetler büyük olayları öngörüyor mu?",
+             "645 hekimin altı yılı aşkın verilerinde, kendiliğinden gelen hasta şikâyetlerinin sayısı klinik iş yükü hesaba "
+             "katıldığında da risk yönetimi dosyaları ve davalarla ilişkili bulunmuştur ([@hickson2002]). Avustralya’da 11 yılda "
+             "hekimlere yönelik 18.907 resmî şikâyetin %49’u hekimlerin %3’üne aitti ve yeni şikâyet riski önceki şikâyet sayısıyla "
+             "doz-yanıt ilişkisi gösteriyordu ([@bismark2013]). Bu bulgular güç yasasının klinisyen düzeyindeki öngörüsüyle "
+             "uyumludur. Yine de her şikâyet kötü bakımı göstermez; şikâyetlerin önemli bir kısmı iletişim ve yönetimle ilgilidir "
+             "([@reader2014])."),
+            ("Psikoz riskinde gerçekçi oranlar",
+             "Kitaptaki şekil, iki ölçüt kümesi birlikte bulunduğunda psikoza geçiş oranının çok yükseldiğini gösterir. 130 çalışmayı "
+             "ve 9222 kişiyi kapsayan güncel bir meta-analizde klinik yüksek risk altındaki bireylerin %15’i bir yılda, %25’i üç "
+             "yılda psikoz geliştirmiş ve risk dördüncü yıla kadar artmayı sürdürmüştür; çalışmalar arasındaki farklılık çok "
+             "büyüktür ([@salazar2021]). Meta-analizdeki bireylerin yaş ortalaması 20’dir; daha küçük yaşlara genellerken dikkatli "
+             "olmak gerekir. Aileye risk anlatılırken ortalama ile belirsizlik birlikte verilmelidir."),
+            ("İlaca başlama penceresi",
+             "ABD Gıda ve İlaç Dairesi’nin 24 randomize çalışmayı (4582 hasta) kapsayan analizinde antidepresan kullanan çocuk ve "
+             "ergenlerde intihar düşüncesi ve davranışı riski plaseboya göre yaklaşık iki kat (risk oranı 1,95), mutlak fark yaklaşık "
+             "%2 bulunmuş; hiçbir çalışmada tamamlanmış intihar görülmemiştir ([@hammad2006]). 27 çalışmanın meta-analizinde ise "
+             "tedaviye yanıt için tedavi edilmesi gereken hasta sayısı majör depresyonda 10, OKB dışı kaygı bozukluklarında 3 iken, "
+             "bir hastada intihar düşüncesi ya da girişimi görülmesi için gereken sayı 143’tür ([@bridge2007]). Pencere gerçektir; "
+             "yanıtı başlangıçta daha sık izlem ve aileyle konuşulmuş uyarı işaretleridir."),
+            ("Taburculuk sonrası pencere",
+             "ABD’de 33 eyalette psikiyatrik yatıştan taburcu olan 10-18 yaşlarındaki 139.694 gencin %56,5’i ilk yedi gün içinde "
+             "ayaktan ruh sağlığı izlemine gelmiş; bu gençlerde taburculuktan sonraki 8-180 gün içinde intihar riski yarıdan fazla "
+             "düşük bulunmuştur ([@fontanella2020]). Çalışma gözlemseldir, ama erken izlem randevusunu en somut güvenlik ağlarından "
+             "biri olarak destekler."),
+            ("Sınav dönemi ve gençlerde intihar",
+             "İngiltere’de 20 yaşından küçük 145 gencin intiharını inceleyen ulusal vaka serisinde, bilgisine ulaşılan 130 gencin "
+             "%27’sinde akademik baskı, özellikle sınavlar, öncül etkenler arasındaydı. Gençlerin %43’ünün sağlık, sosyal hizmet ya "
+             "da adalet kurumlarıyla bilinen bir teması yoktu ([@rodway2016]). Sınav dönemi bir risk penceresidir; okul ve birinci "
+             "basamak da bu pencerenin planlamasına katılmalıdır."),
+        ],
+        sorular=[
+            S("Bir meslektaşınızın son altı ayda üç reçetesi doz hatası nedeniyle eczaneden geri dönmüş, iki aile randevu "
+              "karışıklığından yakınmış ve mektupları sık sık gecikiyor. Ciddi bir olay yaşanmamış. En uygun yorum hangisidir?",
+              ["Ciddi bir olay olmadığına göre önlem gerekmez",
+               "Bu küçük aksaklıklar büyük olaylarla aynı nedenlerden beslenebilir; iş yükü, reçete düzeni ve yorgunluk birlikte "
+               "gözden geçirilmelidir",
+               "Eczacılar gereğinden titiz davranıyor",
+               "Ailelere daha nazik davranması yeterlidir"],
+              1, "Güç yasasına göre sık görülen küçük hatalar nadir ve ağır olayların habercisidir ve çoğu zaman aynı nedenlerden doğar. "
+                 "Küçükleri azaltan önlemler büyük bir olayın olasılığını da azaltır."),
+            S("Ekibinizdeki bir uzman yıllardır hiç şikâyet almamış; bütün mektuplarını üç kez okuyor ve ailelerin her isteğini kabul "
+              "ediyor. Bekleme listesi ise ekipteki en uzun liste. En uygun yorum hangisidir?",
+              ["En güvenli uzman odur; herkes onu örnek almalıdır",
+               "Hata oranının bu kadar düşük olması aşırı esnekliğin ve aşırı denetimin bedelini gizliyor olabilir; zaman kullanımı ve "
+               "sınırlar konuşulmalıdır",
+               "Şikâyet almadığına göre iş yükü artırılmalıdır",
+               "Mektuplarını başka birinin denetlemesi gerekir"],
+              1, "Hata oranının fazla düşük olması da bir işarettir: hiç şikâyet almamak aşırı esneklikten, hiç yazım hatası yapmamak "
+                 "takıntılı denetimden kaynaklanabilir. Bunun bedelini çoğu zaman bekleyen başka çocuklar öder."),
+            S("Kendine zarar verme öyküsü olan 16 yaşındaki bir ergende, YKS’ye üç ay kala orta düzeyde depresyon için antidepresan "
+              "başlıyorsunuz. Aşağıdakilerden hangisi en uygundur?",
+              ["Rutin olarak üç ay sonra kontrole çağırmak",
+               "İlk haftalarda ve sınav döneminde izlemi sıklaştırmak, aileyle uyarı işaretlerini ve ne yapacaklarını yazılı olarak "
+               "konuşmak, güvenlik planını güncellemek",
+               "Risk penceresi olduğu için ilacı başlamaktan vazgeçmek",
+               "Sınava girmemesini önermek"],
+              1, "İlaca başlama ve sınav dönemi üst üste binen iki risk penceresidir. Bunun yanıtı izlemi sıklaştırmak ve aileyle bir "
+                 "güvenlik ağı kurmaktır; meta-analizlerde antidepresanların yararı riskinden belirgin biçimde büyük bulunmuştur."),
+        ],
+        akilda="Küçük hataları sayın, büyükleri azaltın; olağandışı vakaya olağandışı dikkat gösterin.",
     ),
 ]

@@ -23,6 +23,14 @@
   "ilk": "Bai D",
   "tur": "makale"
  },
+ "baile2000": {
+  "pmid": "10964998",
+  "doi": "10.1634/theoncologist.5-4-302",
+  "etiket": "Baile ve ark. 2000",
+  "metin": "Baile WF, Buckman R, Lenzi R, Glober G, Beale EA, Kudelka AP. SPIKES-A six-step protocol for delivering bad news: application to the patient with cancer. Oncologist. 2000;5(4):302-11.",
+  "ilk": "Baile WF",
+  "tur": "makale"
+ },
  "berne1964": {
   "pmid": "",
   "doi": "",
@@ -30,6 +38,14 @@
   "ilk": "Berne E",
   "tur": "kitap",
   "metin": "Berne E. Games people play: the psychology of human relationships. New York: Grove Press; 1964."
+ },
+ "bugental2002": {
+  "pmid": "12238408",
+  "doi": "10.1037//0893-3200.16.3.243",
+  "etiket": "Bugental ve ark. 2002",
+  "metin": "Bugental DB, Ellerson PC, Lin EK, Rainey B, Kokotovic A, O'Hara N. A cognitive approach to child abuse prevention. J Fam Psychol. 2002;16(3):243-58.",
+  "ilk": "Bugental DB",
+  "tur": "makale"
  },
  "casscells1978": {
   "pmid": "692627",
@@ -63,6 +79,14 @@
   "ilk": "Dazzi T",
   "tur": "makale"
  },
+ "delbanco2012": {
+  "pmid": "23027317",
+  "doi": "10.7326/0003-4819-157-7-201210020-00002",
+  "etiket": "Delbanco ve ark. 2012",
+  "metin": "Delbanco T, Walker J, Bell SK, Darer JD, Elmore JG, Farag N, et al. Inviting patients to read their doctors' notes: a quasi-experimental study and a look ahead. Ann Intern Med. 2012;157(7):461-70.",
+  "ilk": "Delbanco T",
+  "tur": "makale"
+ },
  "delosreyes2005": {
   "pmid": "16060799",
   "doi": "10.1037/0033-2909.131.4.483",
@@ -87,6 +111,22 @@
   "ilk": "Dursun OB",
   "tur": "makale"
  },
+ "ford1997": {
+  "pmid": "9307357",
+  "doi": "",
+  "etiket": "Ford ve ark. 1997",
+  "metin": "Ford CA, Millstein SG, Halpern-Felsher BL, Irwin CE. Influence of physician confidentiality assurances on adolescents' willingness to disclose information and seek future health care. A randomized controlled trial. JAMA. 1997;278(12):1029-34.",
+  "ilk": "Ford CA",
+  "tur": "makale"
+ },
+ "foxcroft2015": {
+  "pmid": "26711838",
+  "doi": "10.1002/14651858.CD006748.pub4",
+  "etiket": "Foxcroft ve ark. 2015",
+  "metin": "Foxcroft DR, Moreira MT, Almeida Santimano NM, Smith LA. Social norms information for alcohol misuse in university and college students. Cochrane Database Syst Rev. 2015;(12):CD006748.",
+  "ilk": "Foxcroft DR",
+  "tur": "makale"
+ },
  "goodman2001": {
   "pmid": "11699809",
   "doi": "10.1097/00004583-200111000-00015",
@@ -103,12 +143,28 @@
   "ilk": "Goodman SH",
   "tur": "makale"
  },
+ "gotlieb2022": {
+  "pmid": "36449293",
+  "doi": "10.1001/jamanetworkopen.2022.42972",
+  "etiket": "Gotlieb ve ark. 2022",
+  "metin": "Gotlieb R, Praska C, Hendrickson MA, Marmet J, Charpentier V, Hause E, et al. Accuracy in patient understanding of common medical phrases. JAMA Netw Open. 2022;5(11):e2242972.",
+  "ilk": "Gotlieb R",
+  "tur": "makale"
+ },
  "gould2005": {
   "pmid": "15811983",
   "doi": "10.1001/jama.293.13.1635",
   "etiket": "Gould ve ark. 2005",
   "metin": "Gould MS, Marrocco FA, Kleinman M, Thomas JG, Mostkoff K, Cote J, et al. Evaluating iatrogenic risk of youth suicide screening programs: a randomized controlled trial. JAMA. 2005;293(13):1635-43.",
   "ilk": "Gould MS",
+  "tur": "makale"
+ },
+ "grant1997": {
+  "pmid": "9494942",
+  "doi": "10.1016/s0899-3289(97)90009-2",
+  "etiket": "Grant ve Dawson 1997",
+  "metin": "Grant BF, Dawson DA. Age at onset of alcohol use and its association with DSM-IV alcohol abuse and dependence: results from the National Longitudinal Alcohol Epidemiologic Survey. J Subst Abuse. 1997;9:103-10.",
+  "ilk": "Grant BF",
   "tur": "makale"
  },
  "grove2000": {
@@ -119,12 +175,36 @@
   "ilk": "Grove WM",
   "tur": "makale"
  },
+ "hadinh2016": {
+  "pmid": "26878928",
+  "doi": "10.11124/jbisrir-2016-2296",
+  "etiket": "Ha Dinh ve ark. 2016",
+  "metin": "Ha Dinh TT, Bonner A, Clark R, Ramsbotham J, Hines S. The effectiveness of the teach-back method on adherence and self-management in health education for people with chronic disease: a systematic review. JBI Database System Rev Implement Rep. 2016;14(1):210-47.",
+  "ilk": "Ha Dinh TT",
+  "tur": "makale"
+ },
+ "hansen2015": {
+  "pmid": "25365033",
+  "doi": "10.1001/jamapediatrics.2014.1893",
+  "etiket": "Hansen ve ark. 2015",
+  "metin": "Hansen SN, Schendel DE, Parner ET. Explaining the increase in the prevalence of autism spectrum disorders: the proportion attributable to changes in reporting practices. JAMA Pediatr. 2015;169(1):56-62.",
+  "ilk": "Hansen SN",
+  "tur": "makale"
+ },
  "harold2018": {
   "pmid": "29574737",
   "doi": "10.1111/jcpp.12893",
   "etiket": "Harold ve Sellers 2018",
   "metin": "Harold GT, Sellers R. Annual Research Review: Interparental conflict and youth psychopathology: an evidence review and practice focused update. J Child Psychol Psychiatry. 2018;59(4):374-402.",
   "ilk": "Harold GT",
+  "tur": "makale"
+ },
+ "hashim2024": {
+  "pmid": "38707974",
+  "doi": "",
+  "etiket": "Hashim 2024",
+  "metin": "Hashim MJ. Verbal probability terms for communicating clinical risk - a systematic review. Ulster Med J. 2024;93(1):18-23.",
+  "ilk": "Hashim MJ",
   "tur": "makale"
  },
  "healy2019": {
@@ -183,6 +263,22 @@
   "ilk": "Insel T",
   "tur": "makale"
  },
+ "jensen2011": {
+  "pmid": "21728400",
+  "doi": "10.1037/a0023992",
+  "etiket": "Jensen ve ark. 2011",
+  "metin": "Jensen CD, Cushing CC, Aylward BS, Craig JT, Sorell DM, Steele RG. Effectiveness of motivational interviewing interventions for adolescent substance use behavior change: a meta-analytic review. J Consult Clin Psychol. 2011;79(4):433-40.",
+  "ilk": "Jensen CD",
+  "tur": "makale"
+ },
+ "johnson2003": {
+  "pmid": "14631022",
+  "doi": "10.1126/science.1091721",
+  "etiket": "Johnson ve Goldstein 2003",
+  "metin": "Johnson EJ, Goldstein D. Medicine. Do defaults save lives? Science. 2003;302(5649):1338-9.",
+  "ilk": "Johnson EJ",
+  "tur": "makale"
+ },
  "jones2019": {
   "pmid": "31220238",
   "doi": "10.1093/eurheartj/ehz152",
@@ -231,6 +327,14 @@
   "metin": "Kern L, Doherty ME. 'Pseudodiagnosticity' in an idealized medical problem-solving environment. J Med Educ. 1982;57(2):100-4.",
   "tur": "makale"
  },
+ "kessels2003": {
+  "pmid": "12724430",
+  "doi": "10.1177/014107680309600504",
+  "etiket": "Kessels 2003",
+  "metin": "Kessels RP. Patients' memory for medical information. J R Soc Med. 2003;96(5):219-22.",
+  "ilk": "Kessels RP",
+  "tur": "makale"
+ },
  "koc2008": {
   "pmid": "18028574",
   "doi": "10.1017/S002193200700226X",
@@ -263,6 +367,14 @@
   "ilk": "Kurtz SM",
   "tur": "makale"
  },
+ "kvaale2013": {
+  "pmid": "23831861",
+  "doi": "10.1016/j.cpr.2013.06.002",
+  "etiket": "Kvaale ve ark. 2013",
+  "metin": "Kvaale EP, Haslam N, Gottdiener WH. The 'side effects' of medicalization: a meta-analytic review of how biogenetic explanations affect stigma. Clin Psychol Rev. 2013;33(6):782-94.",
+  "ilk": "Kvaale EP",
+  "tur": "makale"
+ },
  "mcleod2011": {
   "pmid": "21482319",
   "doi": "10.1016/j.cpr.2011.02.001",
@@ -293,6 +405,14 @@
   "etiket": "Noone ve ark. 2025",
   "ilk": "Noone C",
   "metin": "Noone C, Southgate A, Ashman A, Quinn É, Comer D, Shrewsbury D, et al. Critically appraising the Cass report: methodological flaws and unsupported claims. BMC Med Res Methodol. 2025;25(1):128.",
+  "tur": "makale"
+ },
+ "ohan2011": {
+  "pmid": "21215837",
+  "doi": "10.1016/j.jsp.2010.10.001",
+  "etiket": "Ohan ve ark. 2011",
+  "metin": "Ohan JL, Visser TA, Strain MC, Allen L. Teachers' and education students' perceptions of and reactions to children with and without the diagnostic label \"ADHD\". J Sch Psychol. 2011;49(1):81-105.",
+  "ilk": "Ohan JL",
   "tur": "makale"
  },
  "pinar2017": {
@@ -407,6 +527,14 @@
   "ilk": "Ünal F",
   "tur": "makale"
  },
+ "vogel2022": {
+  "pmid": "36073483",
+  "doi": "10.3233/SHTI220798",
+  "etiket": "Vogel ve ark. 2022",
+  "metin": "Vogel H, Appelbaum S, Haller H, Ostermann T. The interpretation of verbal probabilities: a systematic literature review and meta-analysis. Stud Health Technol Inform. 2022;296:9-16.",
+  "ilk": "Vogel H",
+  "tur": "makale"
+ },
  "walker2019": {
   "pmid": "29333937",
   "doi": "10.1177/1524838017692364",
@@ -469,6 +597,14 @@
   "etiket": "Zeanah ve ark. 2016",
   "metin": "Zeanah CH, Chesher T, Boris NW. Practice Parameter for the Assessment and Treatment of Children and Adolescents With Reactive Attachment Disorder and Disinhibited Social Engagement Disorder. J Am Acad Child Adolesc Psychiatry. 2016;55(11):990-1003.",
   "ilk": "Zeanah CH",
+  "tur": "makale"
+ },
+ "zohar2015": {
+  "pmid": "26527055",
+  "doi": "10.1016/j.euroneuro.2015.08.019",
+  "etiket": "Zohar ve ark. 2015",
+  "metin": "Zohar J, Stahl S, Moller HJ, Blier P, Kupfer D, Yamawaki S, et al. A review of the current nomenclature for psychotropic agents and an introduction to the Neuroscience-based Nomenclature. Eur Neuropsychopharmacol. 2015;25(12):2318-25.",
+  "ilk": "Zohar J",
   "tur": "makale"
  }
 }

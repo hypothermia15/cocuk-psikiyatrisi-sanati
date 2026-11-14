@@ -140,6 +140,43 @@ KAVRAMLAR = [
     ("Ölçümün davranışı değiştirmesi",
      "Bireysel performans göstergelerinin, ölçülen şeyi iyileştirmek yerine göstergeyi iyileştiren davranışlara yol açabilmesi.",
      "Risk ayarlaması yetersiz bireysel karnelerin zor vakalardan kaçınmayı ödüllendirmesi.", [14]),
+    # Kasım 2026: E kesiminin son bölümü ve F kesimi (kimlikler değişmesin diye listenin sonuna eklenir)
+    ("Tanının giriş bileti işlevi",
+     "Tanının bilgi vermenin ötesinde eğitim, sosyal destek ya da geri ödeme gibi kaynaklara erişim sağlaması. Çocuğun bu kapılardan "
+     "kaçına ihtiyaç duyduğu, resmî tanının gerekip gerekmediğini belirler.",
+     "Yalnızca sınıf içi destek gerekiyorsa okulla doğrudan bir plan yapılabilir; ÇÖZGER ve RAM süreçleri gerekiyorsa tanı kaçınılmazdır.", [15]),
+    ("Çalışma tanısı",
+     "Kesinleşmemiş ama tedavi kararlarını yönlendirmek, verileri düzenli toplamak ve aileye zaman tanımak için kullanılan geçici tanı. "
+     "Yeniden değerlendirme tarihiyle birlikte kaydedilir.",
+     "Eşikteki bir kaygı tablosu için “olası yaygın kaygı bozukluğu; üç ay sonra yeniden değerlendirilecek” yazmak.", [15, 11]),
+    ("Fikirler, kaygılar, beklentiler",
+     "Ailenin sorunun nedeni hakkındaki düşüncelerini, en çok korktuğu şeyi ve görüşmeden ne beklediğini sormak. Açıklama da ikna da "
+     "bu üçünün üzerine kurulur.",
+     "Uyku sorunuyla gelen bir babanın asıl kaygısı, oğlunun kendi gençliğindeki gibi depresyona girip girmediği olabilir.", [16, 19]),
+    ("Geri anlatma",
+     "Hekimin anlattıklarını hastanın ya da ebeveynin kendi sözcükleriyle yeniden anlatmasını istemek. Anlaşılmayan noktaları "
+     "görüşme bitmeden ortaya çıkarır.",
+     "“Eve gidince eşinize bugün ne konuştuğumuzu nasıl anlatacaksınız?”", [16]),
+    ("Dolaylı aktarım",
+     "Ebeveynin sözlerini tırnak içinde alıntılamak yerine anlamını aktarmak. Mektupta ebeveynin kendini mercek altında ya da alay "
+     "konusu hissetmesini önler.",
+     "“Anne ‘Beni deli ediyor’ dedi” yerine “Anne evde çok zorlandığını anlattı.”", [17]),
+    ("Yararlı belirsizlik",
+     "Kesin bir ad koymanın erken olacağı ya da zarar vereceği durumlarda bilerek belirsiz kalmak. Bilgi saklamak için değil, "
+     "kesinliği abartmamak için kullanılır.",
+     "Ailedeki genel bir huzursuzluğu tek bir kişiye yönelik, adı konmuş bir düşmanlığa çevirmemek.", [18]),
+    ("Varsayılan seçenek",
+     "Kişi bir şey yapmazsa geçerli olacak seçenek. Kararları güçlü biçimde etkiler; bu yüzden onam gerektiren konularda dikkatle "
+     "kullanılmalıdır.",
+     "“Gelemeyecekseniz bildirin” düzeni randevuya katılımı artırabilir; bilginin okulla paylaşılması içinse açık onay gerekir.", [19]),
+    ("Karar dengesi",
+     "Değişmenin ve değişmemenin artılarını ve eksilerini dört kutulu bir tabloda yazmak. Motivasyonel görüşmede kararsızlığı "
+     "görünür kılar.",
+     "Ödev konusunda kararsız bir ergenle “Değişmezsem ne kazanırım, ne kaybederim?” sorularını birlikte doldurmak.", [19]),
+    ("Öyküyü yeniden yazdırmak",
+     "Ebeveynin çocuğu suçlayan açıklamasının yerine kendi bulduğu, değiştirilebilir bir açıklama koymasına sorularla yardım etmek ve "
+     "bundan uygulanabilir bir çözüm çıkarmak.",
+     "“İnadına yapıyor” diyen bir anneye “Başka ne olabilir?” diye sorup yorgunluğu ve açlığı fark etmesini sağlamak.", [19]),
 ]
 
 # ------------------------------------------------------------------ zor anlar
@@ -258,6 +295,24 @@ ZOR_ANLAR = [
       "“Şımarık” olduğunu kabul etmek",
       "Hemen bir tanı adı vermek"],
      1, "“Onda var mı?” sorusunun ardında çoğu zaman suçluluk ya da bir hak arayışı vardır. Güçlükleri betimlemek etiket tartışmasından daha yararlıdır.", 8),
+    ("Aile, okula gidecek raporda annenin psikiyatrik tedavisinin yer almamasını istiyor; rapor çocuğun okulda desteklenmesi için gerekli.",
+     ["Olguları ailenin isteğine göre değiştirerek yazmak",
+      "Aile öyküsünü ayrı bir sayfaya alıp okula o sayfanın çıkarıldığı sürümü göndermek ve bunu aileyle önceden konuşmak",
+      "Rapor yazmayı reddetmek",
+      "Raporu ailenin haberi olmadan okula eksiksiz göndermek"],
+     1, "Ayıklanmış bir sürüm hem gizliliği hem okulun ihtiyacını korur. Olguları değiştirmek de aileye haber vermeden göndermek de güveni yıkar.", 17),
+    ("Bir ekip toplantısında bir meslektaş, ailenin isteğini destekleyen başka bir meslektaşı “aileyle iş birliği yapıp çocuğu gözden çıkarmakla” suçluyor.",
+     ["Suçlamaya katılmak",
+      "Toplantıyı hemen bitirmek",
+      "Kişiden kanıta dönmek: “Hangi gözlemler bu kaygıyı doğuruyor? Çocuğun çıkarı açısından seçenekleri yan yana koyalım.”",
+      "Karşı bir suçlamayla meslektaşı savunmak"],
+     2, "Ahlaki yargı taşıyan sözcükler tartışmayı kilitler. Gözlemlere ve çocuğun çıkarına dönmek, kişisel çatışmayı yeniden klinik bir soruya çevirir.", 18),
+    ("Bir baba, 16 yaşındaki kızının ilaca başlaması için sizden “onu korkutup ikna etmenizi” istiyor.",
+     ["Kızı korkutacak öyküler anlatmak",
+      "Kızın kendi kaygılarını ve beklentilerini sorup seçenekleri artıları ve eksileriyle sunmak, kararın onunla birlikte verileceğini söylemek",
+      "Kızla konuşmadan babayla karar vermek",
+      "Konuyu bir sonraki yıla ertelemek"],
+     1, "Korkutmak kısa süreli itaat üretir ama fikir değiştirmez. Ergenin kaygılarından başlamak, seçenekleri dürüstçe sunmak ve kararı onunla birlikte vermek hem etik hem daha kalıcıdır.", 19),
 ]
 
 # ------------------------------------------------------------------ tarama hesaplayıcısı

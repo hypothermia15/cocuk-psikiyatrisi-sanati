@@ -13,13 +13,13 @@ KESIMLER = {
     "C": "C · Aile",
     "D": "D · Sürtüşme",
     "E": "E · Formülasyon",
+    "F": "F · Açıklamak",
     "R": "R · Ekipte işlev bozukluğu",
 }
 
 # Kitabın yapısı (Cambridge University Press içindekiler sayfasından doğrulandı): Cilt 1 Değerlendirme (A The Child,
 # B Interviewing, C The Family, D Friction, E Formulating, F Explaining, G This Shouldn’t Happen!), Cilt 2 Tedavi (H–K) ...
 # Rehber B–E kesimlerinin ilk 13 oturumunu ve R. Dysfunction kesiminden “Your Competitors” bölümünü kapsar.
-KAPSANMAYAN_E = "Psychiatry without Diagnoses (s. 218)"
 
 
 def S(soru, secenekler, dogru, aciklama):
@@ -1206,3 +1206,9 @@ OTURUMLAR = [
         akilda="Meslektaş aynı zamanda rakiptir; en iyi rekabet aracı müttefik edinmektir ve odadaki en ağır ses aileyi gerçekten görmüş olanınki olmalıdır.",
     ),
 ]
+
+# Kasım 2026 eklemeleri (E kesiminin son bölümü ve F kesimi) ayrı dosyada; listenin sonuna eklenir ki kayıtlı yanıtların şık
+# konumları değişmesin (tools/olustur.py, ILK_SORU_SAYISI).
+from icerik_oturumlar_ek import OTURUMLAR_EK  # noqa: E402
+
+OTURUMLAR = OTURUMLAR + OTURUMLAR_EK

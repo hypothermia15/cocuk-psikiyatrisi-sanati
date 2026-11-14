@@ -183,6 +183,10 @@ for o in O.OTURUMLAR:
     oturum_views.append(dict(id=vid, no=o["no"], kesim=o["kesim"], kisa=o["kisa"], baslik=o["baslik"], slogan=o["slogan"],
                              kitapta=o["kitapta_bolumler"], html=html_, n_tart=len(o["tartisma"]), n_soru=len(o["sorular"]),
                              tr=tr_say))
+# Görünüm sırası kesim sırasını izler (B, C, D, E, F, R); oturum numaraları ve kayıtlı yanıtlar değişmez.
+KESIM_SIRA = list(O.KESIMLER)
+oturum_views.sort(key=lambda v: (KESIM_SIRA.index(v["kesim"]), v["no"]))
+OTURUM_SIRALI = sorted(O.OTURUMLAR, key=lambda o: (KESIM_SIRA.index(o["kesim"]), o["no"]))
 OTAD = {v["no"]: f'Oturum {v["no"]} · {v["kisa"]}' for v in oturum_views}
 
 # ---------------------------------------------------------------- tarama hesaplayıcısı
@@ -272,7 +276,7 @@ za_li = "".join(
     f'<li data-dogru="{dg}" data-oturum="{ot}" data-otad="{esc(OTAD[ot])}"><p class="za-durum">{md(d)}</p>'
     + "".join(f'<span class="za-secenek">{md(x)}</span>' for x in s)
     + f'<p class="za-aciklama">{md(ac)}</p></li>' for d, s, dg, ac, ot in A.ZOR_ANLAR)
-za_ic = ('<p class="giris-metin">Görüşme, aile ve sürtüşme oturumlarındaki ilkeleri kurgusal durumlarda deneyin. Her durumda en uygun '
+za_ic = ('<p class="giris-metin">Görüşme, aile, sürtüşme ve açıklama oturumlarındaki ilkeleri kurgusal durumlarda deneyin. Her durumda en uygun '
          f'yanıtı seçin; açıklama ve ilgili oturum hemen ardından açılır. {len(A.ZOR_ANLAR)} durum, karışık sırayla.</p>'
          '<div class="tahmin za-oyun" id="za-oyun"><h3><span aria-hidden="true">🧯</span> Zor anlar</h3>'
          '<div class="za-alan" aria-live="polite"></div>'
@@ -429,7 +433,7 @@ kavramlar = dict(id="kavramlar", label="Kavram kartları", html=view("kavramlar"
 # ---------------------------------------------------------------- Türkiye notları
 baglam("turkiye", "", "Türkiye notları")
 tr_bloklar = []
-for o in O.OTURUMLAR:
+for o in OTURUM_SIRALI:
     maddeler = [x[3:] for x in o["crs"] if x.startswith("TR ")]
     if not maddeler:
         continue
@@ -448,7 +452,7 @@ turkiye = dict(id="turkiye", label="Türkiye notları",
 # ---------------------------------------------------------------- tekrar
 baglam("tekrar", "", "Karışık test")
 n_soru = sum(len(o["sorular"]) for o in O.OTURUMLAR)
-akil = "".join(f'<li><a href="#/oturum-{o["no"]}">Oturum {o["no"]}</a> {md(o["akilda"])}</li>' for o in O.OTURUMLAR)
+akil = "".join(f'<li><a href="#/oturum-{o["no"]}">Oturum {o["no"]}</a> {md(o["akilda"])}</li>' for o in OTURUM_SIRALI)
 LT_KUTU = [("0", "Yeniden", "aynı gün"), ("1", "Kutu 1", "1 gün sonra"), ("2", "Kutu 2", "3 gün sonra"),
            ("3", "Kutu 3", "7 gün sonra"), ("4", "Kutu 4", "21 gün sonra")]
 lt_kutular = "".join(f'<li class="lt-kutu lt-k{k}"><span class="lt-ad">{ad}</span><span class="lt-sayi" data-lt-kutu="{k}">0</span>'
@@ -527,9 +531,9 @@ taşımak ya da yedeklemek için dosya olarak indirin; öbür cihazda “Dosyada
 <li data-ara><span class="kural-no">2</span> Buraya dönün: ana fikirleri kendi okumanızla karşılaştırın, ÇRS’deki karşılığını ve tartışmalı noktaları okuyun.</li>
 <li data-ara><span class="kural-no">3</span> Vaka sorularıyla kendinizi sınayın; araçlarla kendi vakalarınız üzerine düşünün.</li></ol></section>
 {kesim_bolumleri}
-<p class="kucuk kapsam-not">Rehber, kitabın değerlendirme kısmındaki B (Görüşme), C (Aile), D (Sürtüşme) ve E (Formülasyon)
-kesimlerinden 13 oturumu ve R (İşlev bozukluğu) kesiminden “Your Competitors” bölümünü kapsar. E kesiminin son bölümü
-({esc(O.KAPSANMAYAN_E)}) ve diğer kesimler ileride eklenebilir.</p>
+<p class="kucuk kapsam-not">Rehber, kitabın değerlendirme cildindeki B (Görüşme), C (Aile), D (Sürtüşme), E (Formülasyon) ve
+F (Açıklamak) kesimlerinden {sum(1 for v in oturum_views if v["kesim"] != "R")} oturumu ve R (İşlev bozukluğu) kesiminden “Your
+Competitors” bölümünü kapsar. A ve G kesimleri ile tedavi ve sistemler ciltleri ileride eklenebilir.</p>
 <section aria-labelledby="arac-b"><h2 id="arac-b" class="bolum-baslik">Araçlar</h2><ol class="kartlar">{arac_kartlari}</ol></section>
 """
 giris = dict(id="giris", label="Giriş",
@@ -601,7 +605,7 @@ nav = ('<nav class="yan" id="yan" aria-label="Rehber içeriği"><div class="yan-
        '<p class="ilerleme" data-ilerleme></p></div></nav>')
 
 DESC = ("Williams ve Hill’in The Art of Child and Adolescent Psychiatry kitabına eşlik eden etkileşimli okuma rehberi: görüşme, aile, "
-        f"sürtüşme ve formülasyon kesimlerinden {len(oturum_views)} oturum için ana fikirler, ÇRS ve Türkiye karşılığı, tartışmaya açık "
+        f"sürtüşme, formülasyon ve açıklama kesimlerinden {len(oturum_views)} oturum için ana fikirler, ÇRS ve Türkiye karşılığı, tartışmaya açık "
         "noktalar, kurgusal vaka soruları, dallanan vaka simülasyonları, aralıklı tekrar, tarama hesaplayıcısı, zor anlar alıştırması ve "
         "formülasyon çalışma sayfası.")
 

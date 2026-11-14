@@ -1,15 +1,31 @@
-/* Çocuk Psikiyatrisinin Sanatı · Okuma Rehberi — görünümler, vaka soruları, karışık test, kavram kartları,
-   zor anlar, tarama hesaplayıcısı, formülasyon çalışma sayfası, atıf penceresi, arama */
+/* Çocuk Psikiyatrisinin Sanatı · Okuma Rehberi — görünümler, vaka soruları, karışık test ve aralıklı tekrar, kavram kartları,
+   zor anlar, vaka simülasyonu, tarama hesaplayıcısı, formülasyon çalışma sayfası, verileri dışa/içe aktarma, atıf penceresi, arama */
 (function () {
   "use strict";
   var kok = document.documentElement;
   kok.classList.add("js");
 
-  var ANAHTAR = "cocuk-psikiyatrisi-sanati:v1";
+  var ANAHTAR = "cocuk-psikiyatrisi-sanati:v1", UYGULAMA = "cocuk-psikiyatrisi-sanati";
+  var NESNELER = ["okundu", "test", "kart", "not", "form", "lt", "sim"];
   var durum = oku();
-  ["okundu", "test", "kart", "not", "form"].forEach(function (k) { durum[k] = durum[k] || {}; });
-  function oku() { try { return JSON.parse(localStorage.getItem(ANAHTAR) || "{}") || {}; } catch (e) { return {}; } }
-  function yaz() { try { localStorage.setItem(ANAHTAR, JSON.stringify(durum)); } catch (e) { /* özel pencere */ } }
+  NESNELER.forEach(function (k) { if (!durum[k] || typeof durum[k] !== "object") durum[k] = {}; });
+  function oku() {
+    try { var d = JSON.parse(localStorage.getItem(ANAHTAR) || "{}"); return d && typeof d === "object" ? d : {}; } catch (e) { return {}; }
+  }
+  function yaz() { try { localStorage.setItem(ANAHTAR, JSON.stringify(durum)); return true; } catch (e) { return false; /* özel pencere */ } }
+
+  /* Aralıklı tekrar (Leitner): kutu 0 aynı gün yeniden, kutu 1-4 sırasıyla 1, 3, 7 ve 21 gün sonra */
+  var LT_ARALIK = [0, 1, 3, 7, 21];
+  function bugun() { var d = new Date(); return Math.floor((d.getTime() - d.getTimezoneOffset() * 60000) / 864e5); }
+  function ltGecerli(e) { return !!e && LT_ARALIK[e.k] !== undefined && typeof e.g === "number" && isFinite(e.g); }
+  function ltGuncelle(anahtar, bildi) {
+    var e = ltGecerli(durum.lt[anahtar]) ? durum.lt[anahtar] : { k: 0, g: 0 };
+    e.k = bildi ? Math.min(4, e.k + 1) : 0;
+    e.g = bugun() + LT_ARALIK[e.k];
+    durum.lt[anahtar] = e;
+  }
+  function ltVade(anahtar) { var e = durum.lt[anahtar]; return ltGecerli(e) && e.g <= bugun(); }
+  function soruAnahtar(m) { return "s:" + m.closest(".view").dataset.view + ":" + m.dataset.no; }
 
   function $(s, r) { return (r || document).querySelector(s); }
   function $$(s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); }
@@ -53,6 +69,8 @@
       if (ad === "giris") ilerlemeCiz();
       if (ad === "kavramlar") kartBaslat(false);
       if (ad === "tarama") taramaCiz();
+      if (ad === "tekrar") ltCiz();
+      if (ad === "simulasyon") simListeCiz();
     }
     menuKapat();
     var hedef = alt ? document.getElementById(ad + "-" + alt) : null;
@@ -161,8 +179,41 @@
     if (il) il.textContent = ok ? ok + " / " + bolumler.length + " oturum okundu" : "";
   }
 
-  /* Karışık test */
-  var kAlan = $(".karisik-alan"), kListe = [], kSira = 0, kDogru = 0;
+  /* Karışık test ve aralıklı tekrar */
+  var kAlan = $(".karisik-alan"), kListe = [], kSira = 0, kDogru = 0, kTur = "test";
+  var tumSorular = $$(".view .adim-test .test-madde");
+  function ltSorular(tur) {
+    var b0 = bugun();
+    return tumSorular.filter(function (m) {
+      var e = durum.lt[soruAnahtar(m)];
+      if (!ltGecerli(e)) return false;
+      return tur === "yanlis" ? e.k === 0 : e.g <= b0;
+    });
+  }
+  function ltKartlar() { return kartlar.filter(function (k) { return ltVade("k:" + k.id); }); }
+  function ltCiz() {
+    var kutu = [0, 0, 0, 0, 0], toplam = 0;
+    Object.keys(durum.lt).forEach(function (a) { var e = durum.lt[a]; if (ltGecerli(e)) { kutu[e.k]++; toplam++; } });
+    kutu.forEach(function (n, i) { var el = $('[data-lt-kutu="' + i + '"]'); if (el) el.textContent = n; });
+    var vS = ltSorular("vade").length, yS = ltSorular("yanlis").length, vK = ltKartlar().length;
+    var bv = $('.karisik-basla[data-tur="vade"]'), by = $('.karisik-basla[data-tur="yanlis"]'), bk = $(".lt-kart-bag");
+    if (bv) { bv.textContent = "Bugünün tekrarı (" + vS + ")"; bv.disabled = !vS; }
+    if (by) { by.textContent = "Yanlışlarım (" + yS + ")"; by.disabled = !yS; }
+    if (bk) bk.textContent = "Kavram kartları" + (vK ? " (" + vK + " bugün)" : "");
+    var bi = $(".lt-bilgi");
+    if (bi) bi.textContent = !toplam ? "Kutular henüz boş. Oturumlardaki vaka sorularını yanıtladıkça ve kavram kartlarını işaretledikçe dolar."
+      : vS + vK ? "Bugün tekrar zamanı gelen: " + vS + " soru, " + vK + " kart."
+        : "Bugünlük tekrar tamam. Kutulardaki maddeler zamanı gelince burada yeniden görünecek.";
+  }
+  function kBaslat(tur) {
+    var liste = tur === "vade" || tur === "yanlis" ? ltSorular(tur) : tumSorular.slice();
+    if (!liste.length) { ltCiz(); return; }
+    kListe = karistir(liste);
+    kSira = 0; kDogru = 0; kTur = tur;
+    var butonlar = $(".karisik-dugmeler");
+    if (butonlar) butonlar.hidden = true;
+    kGoster();
+  }
   function kGoster() {
     var butonlar = $(".karisik-dugmeler");
     if (kSira >= kListe.length) {
@@ -170,10 +221,12 @@
       kAlan.innerHTML = '<p class="karisik-son">' + kDogru + " / " + kListe.length + " doğru</p><p>" +
         (oran >= 0.85 ? "Çok iyi. Kitabın ilkelerini kliniğe taşımaya hazırsınız."
           : oran >= 0.6 ? "İyi. Kaçırdığınız soruların oturumlarına, özellikle “Tartışmaya açık” kısımlarına dönmek iyi olur."
-            : "Oturumların “Ana fikirler” ve “ÇRS’de karşılığı” kısımlarıyla başlamak iyi bir tekrar olur.") + "</p>";
+            : "Oturumların “Ana fikirler” ve “ÇRS’de karşılığı” kısımlarıyla başlamak iyi bir tekrar olur.") +
+        " Yanıtlarınız aralıklı tekrar kutularına işlendi.</p>";
       if (butonlar) butonlar.hidden = false;
-      var b = $(".karisik-basla", butonlar);
-      if (b) { b.textContent = "Yeniden başlat"; b.focus(); }
+      ltCiz();
+      var b = $(".karisik-basla:not([disabled])", butonlar);
+      if (b) b.focus();
       return;
     }
     var asil = kListe[kSira], m = asil.cloneNode(true);
@@ -189,17 +242,10 @@
     var ilkB = $("button[data-secenek]", m);
     if (ilkB) ilkB.focus();
   }
-  $$(".karisik-basla").forEach(function (b) {
-    b.addEventListener("click", function () {
-      kListe = karistir($$(".view .adim-test .test-madde"));
-      kSira = 0; kDogru = 0;
-      var butonlar = $(".karisik-dugmeler");
-      if (butonlar) butonlar.hidden = true;
-      kGoster();
-    });
-  });
   function kSonraki(bildi) {
     if (bildi) kDogru++;
+    ltGuncelle(soruAnahtar(kListe[kSira]), bildi);
+    yaz();
     var sn = document.createElement("button");
     sn.type = "button";
     sn.className = "dugme karisik-sonraki";
@@ -217,27 +263,37 @@
   var deste = [], dSira = 0, kSahne = $(".kart-sahne");
   function kartBaslat(karisik) {
     if (!kSahne) return;
-    var bilinmeyen = kartlar.filter(function (k) { return !durum.kart[k.id]; });
-    var bilinen = kartlar.filter(function (k) { return durum.kart[k.id]; });
-    deste = (karisik ? karistir(bilinmeyen) : bilinmeyen).concat(karistir(bilinen));
+    var b0 = bugun(), vade = [], yeni = [], diger = [];
+    kartlar.forEach(function (k) {
+      var e = durum.lt["k:" + k.id];
+      if (!ltGecerli(e)) yeni.push(k); else if (e.g <= b0) vade.push(k); else diger.push(k);
+    });
+    if (karisik) { karistir(vade); karistir(yeni); }
+    vade.sort(function (a, b) { return durum.lt["k:" + a.id].k - durum.lt["k:" + b.id].k; });
+    deste = vade.concat(yeni, karistir(diger));
     dSira = 0;
     kartCiz();
   }
   function kartIlerleme() {
-    var bil = kartlar.filter(function (k) { return durum.kart[k.id]; }).length;
+    var bil = kartlar.filter(function (k) { return durum.kart[k.id]; }).length, vK = ltKartlar().length;
     var el = $(".kart-ilerleme");
-    if (el) el.textContent = "Bilinen: " + bil + " / " + kartlar.length + (dSira < deste.length ? " · Kart " + (dSira + 1) + " / " + deste.length : "");
+    if (el) el.textContent = "Bilinen: " + bil + " / " + kartlar.length + (vK ? " · Bugün tekrar: " + vK : "") +
+      (dSira < deste.length ? " · Kart " + (dSira + 1) + " / " + deste.length : "");
+  }
+  function kartEtiket(k) {
+    var e = durum.lt["k:" + k.id];
+    return !ltGecerli(e) ? (durum.kart[k.id] ? "biliniyor" : "yeni") : e.g <= bugun() ? "tekrar zamanı" : "biliniyor · kutu " + e.k;
   }
   function kartCiz() {
     if (dSira >= deste.length) {
       kSahne.innerHTML = '<div class="bilgi-kart bitti"><p class="kart-on-metin">Deste bitti.</p>' +
-        '<p>Bilmediğiniz kartlar bir sonraki turda önce gelir.</p><button type="button" class="dugme kart-yeniden">Yeniden başla</button></div>';
+        '<p>Bilmediğiniz ve tekrar zamanı gelen kartlar bir sonraki turda önce gelir.</p><button type="button" class="dugme kart-yeniden">Yeniden başla</button></div>';
       kartIlerleme();
       return;
     }
     var k = deste[dSira];
     kSahne.innerHTML = '<div class="bilgi-kart" tabindex="0" role="button" aria-pressed="false" aria-label="Kartı çevir: ' + kacis(k.on) + '">' +
-      '<div class="kart-yuz kart-on"><span class="kart-oturum">Kavram' + (durum.kart[k.id] ? " · biliniyor" : "") + "</span>" +
+      '<div class="kart-yuz kart-on"><span class="kart-oturum">Kavram · ' + kartEtiket(k) + "</span>" +
       '<p class="kart-on-metin">' + kacis(k.on) + '</p><span class="kart-ipucu">Çevirmek için tıklayın ya da boşluk tuşuna basın</span></div>' +
       '<div class="kart-yuz kart-arka"><span class="kart-oturum">' + kacis(k.on) + "</span>" + k.arka +
       '<p class="ders-ref">' + k.ref + "</p></div></div>" +
@@ -437,6 +493,7 @@
 
   /* Tarama hesaplayıcısı */
   var tr = $("#tarama-hesap"), trIzgara = tr ? $(".tarama-izgara", tr) : null;
+  var trSira = durum.taramaSira === "sonuc" ? "sonuc" : "durum", TR_ALAN = ["p", "d", "o", "d2", "o2"];
   function trSayi(x, b) { return x.toLocaleString("tr-TR", { maximumFractionDigits: b === undefined ? 1 : b }); }
   function trAdet(x) { return x > 0 && x < 10 ? trSayi(x, 1) : trSayi(Math.round(x), 0); }
   function trYuzde(x) { return isFinite(x) ? "%" + trSayi(x * 100, x < 0.1 ? 1 : 0) : "–"; }
@@ -455,32 +512,163 @@
     $('[data-c="ppv"]', tr).textContent = trYuzde(ppv);
     $('[data-c="npv"]', tr).textContent = trYuzde(npv);
     $('[data-c="lr"]', tr).textContent = isFinite(lr) ? trSayi(lr, 1) + "×" : "–";
+    var lrn = (1 - se) / sp;
+    $('[data-c="lrn"]', tr).textContent = isFinite(lrn) ? trSayi(lrn, 2) + "×" : "–";
     $(".tarama-cumle", tr).innerHTML = "1000 çocuktan <b>" + trAdet(gp + yp) + "</b> çocuğun sonucu pozitif çıkar; bunlardan " + (ppv < 0.5 ? "yalnızca " : "") + "<b>" +
       trAdet(gp) + "</b> çocukta durum gerçekten vardır (" + trYuzde(ppv) + "). Durumu olan <b>" + trAdet(hasta) + "</b> çocuktan <b>" +
       trAdet(yn) + "</b> çocuk test tarafından kaçırılır.";
+    /* olasılık çubukları: testten önce, pozitif ve negatif sonuçtan sonra */
+    var ol = { once: p, poz: ppv, neg: 1 - npv };
+    Object.keys(ol).forEach(function (k) {
+      var c = $('[data-ol="' + k + '"]', tr), d = $('[data-old="' + k + '"]', tr);
+      if (c) c.style.width = Math.max(0.5, Math.min(100, ol[k] * 100)) + "%";
+      if (d) d.textContent = trYuzde(ol[k]);
+    });
+    var olk = $(".olasilik", tr);
+    if (olk) olk.setAttribute("aria-label", "Durumun olasılığı testten önce " + trYuzde(ol.once) + ", test pozitifse " + trYuzde(ol.poz) +
+      ", test negatifse " + trYuzde(ol.neg));
     if (trIzgara) {
-      var a = [Math.round(gp), Math.round(yn), Math.round(yp)], s = "", i, sinif;
-      for (i = 0; i < N; i++) {
-        sinif = i < a[0] ? "gp" : i < a[0] + a[1] ? "yn" : i < a[0] + a[1] + a[2] ? "yp" : "gn";
-        s += '<span class="nk nk-' + sinif + '"></span>';
-      }
+      var gpN = Math.round(gp), ynN = Math.round(yn), ypN = Math.round(yp), s = "", i = 0;
+      var sira = trSira === "sonuc" ? [["gp", gpN], ["yp", ypN], ["yn", ynN]] : [["gp", gpN], ["yn", ynN], ["yp", ypN]];
+      sira.forEach(function (x) { for (var j = 0; j < x[1] && i < N; j++, i++) s += '<span class="nk nk-' + x[0] + '"></span>'; });
+      for (; i < N; i++) s += '<span class="nk nk-gn"></span>';
       trIzgara.innerHTML = s;
     }
-    durum.tarama = { p: trDeger("p"), d: trDeger("d"), o: trDeger("o") };
+    /* seri test: yalnızca pozitiflere ikinci, bağımsız bir test */
+    var se2 = sinirla(trDeger("d2"), 50, 99.9) / 100, sp2 = sinirla(trDeger("o2"), 50, 99.9) / 100;
+    var gp2 = gp * se2, yp2 = yp * (1 - sp2), ppv2 = gp2 / (gp2 + yp2), kac2 = yn + gp * (1 - se2);
+    var ic = $(".ikinci-cumle", tr);
+    if (ic) ic.innerHTML = "İlk testte pozitif çıkan <b>" + trAdet(gp + yp) + "</b> çocuktan ikinci testte de pozitif çıkan <b>" + trAdet(gp2 + yp2) +
+      "</b> çocuk kalır; bunların <b>" + trAdet(gp2) + "</b> tanesinde durum gerçekten vardır. Pozitif öngörü değeri tek testte " + trYuzde(ppv) +
+      " iken iki testte <b>" + trYuzde(ppv2) + "</b> olur. Bedeli: durumu olup kaçırılan çocuk sayısı tek testte " + trAdet(yn) +
+      " iken iki testte <b>" + trAdet(kac2) + "</b> olur.";
+    durum.tarama = {};
+    TR_ALAN.forEach(function (k) { durum.tarama[k] = trDeger(k); });
     yaz();
   }
   function trAyarla(ad, v, kaynak) {
     $$('[data-tr="' + ad + '"], [data-tr-r="' + ad + '"]', tr).forEach(function (el) { if (el !== kaynak) el.value = v; });
   }
   if (tr) {
-    if (durum.tarama) ["p", "d", "o"].forEach(function (k) { if (durum.tarama[k] !== undefined && !isNaN(durum.tarama[k])) trAyarla(k, durum.tarama[k]); });
+    if (durum.tarama) TR_ALAN.forEach(function (k) { if (typeof durum.tarama[k] === "number" && !isNaN(durum.tarama[k])) trAyarla(k, durum.tarama[k]); });
+    $$("button[data-sira]", tr).forEach(function (b) { b.setAttribute("aria-pressed", b.dataset.sira === trSira ? "true" : "false"); });
     tr.addEventListener("input", function (e) {
       var el = e.target, ad = el.dataset.tr || el.dataset.trR;
       if (!ad) return;
       trAyarla(ad, el.value, el);
-      $$("button[data-tr-ayar]", tr).forEach(function (b) { b.setAttribute("aria-pressed", "false"); });
+      if (ad.length === 1) $$("button[data-tr-ayar]", tr).forEach(function (b) { b.setAttribute("aria-pressed", "false"); });
       taramaCiz();
     });
+  }
+
+  /* Vaka simülasyonu: sahneler grafiği, yol geçmişi, puan ve bulunan sonlar */
+  var simKok = $("#sim"), simOyun = simKok ? $(".sim-oyun", simKok) : null, simVeri = null;
+  var simAktif = null, simYol = [], simSahne = null, simSecildi = null;
+  try { var simEl = document.getElementById("sim-veri"); simVeri = simEl ? JSON.parse(simEl.textContent) : null; } catch (e) { simVeri = null; }
+  var SON_ETIKET = { iyi: "İyi bir son", orta: "Yarım kalan bir son", kotu: "Kötü bir son" };
+  function simBul(id) { return simVeri ? simVeri.vakalar.filter(function (v) { return v.id === id; })[0] : null; }
+  function spSinif(p) { return p === 2 ? "sp-2" : p === 1 ? "sp-1" : p === 0 ? "sp-0" : "sp-n"; }
+  function spEtiket(p) { return '<span class="sp ' + spSinif(p) + '">' + simVeri.puan[p] + "</span>"; }
+  function simListeCiz() {
+    if (!simVeri || !simKok) return;
+    simVeri.vakalar.forEach(function (v) {
+      var d = durum.sim[v.id], el = $('[data-sim-durum="' + v.id + '"]', simKok), b = $('[data-sim="' + v.id + '"]', simKok);
+      var sonlar = d && d.sonlar ? Object.keys(d.sonlar).filter(function (s) { return v.sahneler[s] && v.sahneler[s].son; }) : [];
+      if (el) el.textContent = d ? "En iyi karar puanı: %" + (d.en || 0) + " · Bulunan sonlar: " + sonlar.length + " / " + v.sonSayi : "";
+      if (b) b.textContent = d ? "Yeniden oyna" : "Vakayı başlat";
+    });
+  }
+  function simUst(alt) {
+    return '<div class="sim-ust"><p class="sim-baslik">' + simAktif.baslik + "</p>" + (alt ? '<p class="sim-adim">' + alt + "</p>" : "") +
+      '<p class="sim-ust-dugmeler">' + (simYol.length ? '<button type="button" class="sina-sifirla sim-geri">↶ Önceki karara dön</button>' : "") +
+      '<button type="button" class="sina-sifirla sim-cik">Vakalara dön</button></p></div>';
+  }
+  function simBasla(id) {
+    simAktif = simBul(id);
+    if (!simAktif) return;
+    simYol = [];
+    $(".sim-liste", simKok).hidden = true;
+    simOyun.hidden = false;
+    simGoster(simAktif.baslangic);
+  }
+  function simGoster(sid) {
+    simSahne = sid; simSecildi = null;
+    var x = simAktif.sahneler[sid];
+    if (x.son) { simSon(sid); return; }
+    var sira = karistir(x.secenekler.map(function (_, i) { return i; }));
+    simOyun.innerHTML = simUst("Karar " + (simYol.length + 1)) + '<div class="sim-sahne"><p class="sim-metin" tabindex="-1">' + x.metin + "</p>" +
+      '<p class="sv-soru">Ne yaparsınız?</p><div class="secenekler sim-secenekler" role="group" aria-label="Seçenekler">' +
+      sira.map(function (i, k) {
+        return '<button type="button" data-sim-sec="' + i + '"><span class="harf" aria-hidden="true">' + "ABCD".charAt(k) + "</span><span>" +
+          x.secenekler[i][0] + "</span></button>";
+      }).join("") + '</div><div class="sim-geri-bildirim" hidden></div></div>';
+    simOdak($(".sim-metin", simOyun));
+  }
+  function simOdak(el) {
+    if (!el) return;
+    el.focus({ preventScroll: true });
+    var r = simOyun.getBoundingClientRect();
+    if (r.top < 0 || r.top > window.innerHeight * 0.6) simOyun.scrollIntoView({ block: "start" });
+  }
+  function simSec(i) {
+    var x = simAktif.sahneler[simSahne], s = x.secenekler[i];
+    var enIyi = Math.max.apply(null, x.secenekler.map(function (y) { return y[2]; }));
+    simSecildi = i;
+    $$("button[data-sim-sec]", simOyun).forEach(function (b) {
+      var j = +b.dataset.simSec;
+      b.disabled = true;
+      if (j === i) { b.classList.add("sim-secilen", "sim-" + spSinif(s[2])); b.setAttribute("aria-pressed", "true"); }
+      else if (x.secenekler[j][2] === enIyi) b.classList.add("sim-en-iyi");
+    });
+    var diger = x.secenekler.map(function (y, j) {
+      return j === i ? "" : "<li>" + spEtiket(y[2]) + " " + y[0] + '<span class="sim-diger-gb">' + y[3] + "</span></li>";
+    }).join("");
+    var gb = $(".sim-geri-bildirim", simOyun);
+    gb.innerHTML = '<p class="sim-gb-ana">' + spEtiket(s[2]) + " " + s[3] + "</p>" +
+      (s[2] < enIyi ? '<p class="kucuk">Yeşil çerçeveli seçenek bu sahnede daha uygundu.</p>' : "") +
+      '<details class="sim-diger"><summary>Öbür seçenekler neden öyle?</summary><ul>' + diger + "</ul></details>" +
+      '<button type="button" class="dugme sim-devam">' + (simAktif.sahneler[s[1]].son ? "Sonu gör" : "Devam et") + ' <span aria-hidden="true">→</span></button>';
+    gb.hidden = false;
+    $(".sim-devam", gb).focus();
+  }
+  function simSon(sid) {
+    var x = simAktif.sahneler[sid], n = simYol.length, top = 0;
+    simYol.forEach(function (y) { top += y.puan; });
+    var yuzde = n ? Math.max(0, Math.round(top / (2 * n) * 100)) : 0;
+    var d = durum.sim[simAktif.id];
+    if (!d || typeof d !== "object") d = {};
+    d.n = (+d.n || 0) + 1;
+    d.en = Math.max(+d.en || 0, yuzde);
+    d.sonlar = d.sonlar && typeof d.sonlar === "object" ? d.sonlar : {};
+    d.sonlar[sid] = 1;
+    durum.sim[simAktif.id] = d;
+    yaz();
+    var bulunan = Object.keys(d.sonlar).filter(function (s) { return simAktif.sahneler[s] && simAktif.sahneler[s].son; }).length;
+    var yol = simYol.map(function (y) {
+      var sc = simAktif.sahneler[y.sahne].secenekler[y.sec];
+      return "<li>" + spEtiket(y.puan) + " " + sc[0] + "</li>";
+    }).join("");
+    simOyun.innerHTML = simUst("") + '<div class="sim-son sim-son-' + x.son + '"><p class="sim-son-etiket">' + SON_ETIKET[x.son] + "</p>" +
+      '<h3 tabindex="-1">' + x.baslik + "</h3><p>" + x.metin + "</p></div>" +
+      '<p class="karisik-son">Karar puanı: %' + yuzde + "</p>" +
+      '<p class="kucuk">' + n + " karar · Bu vakada bulunan sonlar: " + bulunan + " / " + simAktif.sonSayi + " · En iyi puanınız: %" + d.en +
+      (bulunan < simAktif.sonSayi ? " · Bir karara dönüp başka bir yolu deneyebilirsiniz." : "") + "</p>" +
+      '<h4 class="sim-yol-baslik">İzlediğiniz yol</h4><ol class="sim-yol">' + yol + "</ol>" +
+      '<p class="kucuk">İlgili oturumlar: ' + simAktif.oturumlar.map(function (o) { return '<a href="#/oturum-' + o[0] + '">' + o[1] + "</a>"; }).join(", ") + "</p>" +
+      '<p class="karisik-dugmeler"><button type="button" class="dugme sim-yeniden">Baştan oyna</button>' +
+      '<button type="button" class="dugme dugme-ikincil sim-geri">↶ Son karara dön</button>' +
+      '<button type="button" class="dugme dugme-ikincil sim-cik">Vakalara dön</button></p>';
+    simOdak($(".sim-son h3", simOyun));
+  }
+  function simCik() {
+    var id = simAktif && simAktif.id;
+    simOyun.hidden = true;
+    simOyun.innerHTML = "";
+    $(".sim-liste", simKok).hidden = false;
+    simAktif = null;
+    simListeCiz();
+    var b = id && $('[data-sim="' + id + '"]', simKok);
+    if (b) b.focus();
   }
 
   /* Mini notlar */
@@ -505,8 +693,10 @@
     var q = { n: 0, d: 0, t: 0 };
     bolumler.forEach(function (v) { var b = say(v.dataset.view); q.n += b.n; q.d += b.d; q.t += b.toplam; });
     var bil = kartlar.filter(function (k) { return durum.kart[k.id]; }).length;
-    var za = durum.za, fv = !formBos(durum.form || {});
-    var var_ = ok || q.n || bil || za || fv;
+    var za = durum.za && typeof durum.za === "object" ? durum.za : null, fv = !formBos(durum.form || {});
+    var ltN = Object.keys(durum.lt).length, vS = ltSorular("vade").length, vK = ltKartlar().length;
+    var simN = simVeri ? simVeri.vakalar.length : 0, simT = simVeri ? simVeri.vakalar.filter(function (v) { return durum.sim[v.id]; }).length : 0;
+    var var_ = ok || q.n || bil || za || fv || ltN || simT;
     panel.hidden = !var_;
     if (!var_) return;
     function kutu(ad, deger, alt, adr) {
@@ -515,10 +705,78 @@
     }
     $(".ilerleme-kutular", panel).innerHTML =
       kutu("Okunan oturum", ok + " / " + bolumler.length, ok ? "devam edin" : "henüz yok", "#/oturum-1") +
-      kutu("Vaka soruları", q.d + " / " + q.t, q.n + " soru yanıtlandı", "#/tekrar") +
+      kutu("Vaka soruları", q.d + " / " + q.t, q.n + " soru yanıtlandı", "#/oturum-1/test") +
+      kutu("Bugünün tekrarı", ltN ? String(vS + vK) : "–", ltN ? vS + " soru · " + vK + " kart" : "kutular henüz boş", "#/tekrar") +
       kutu("Kavram kartları", bil + " / " + kartlar.length, "biliniyor", "#/kavramlar") +
+      kutu("Vaka simülasyonu", simT + " / " + simN, simT ? "vaka oynandı" : "henüz oynanmadı", "#/simulasyon") +
       kutu("Zor anlar", za ? za.en + " / " + za.n : "–", za ? "en iyi skor" : "henüz oynanmadı", "#/zor-anlar") +
       kutu("Formülasyon", fv ? "Taslak var" : "–", fv ? "bu tarayıcıda kayıtlı" : "henüz başlanmadı", "#/formulasyon");
+  }
+
+  /* Verilerim: ilerlemeyi dosyaya indirme, dosyadan yükleme, notları Markdown olarak indirme */
+  var veriDurum = $(".veri-durum"), veriOnay = $(".veri-onay"), veriDosya = $(".veri-dosya"), bekleyen = null;
+  function veriMesaj(m) { if (veriDurum) veriDurum.textContent = m; }
+  function tarihEk() { var d = new Date(); return d.getFullYear() + "-" + ("0" + (d.getMonth() + 1)).slice(-2) + "-" + ("0" + d.getDate()).slice(-2); }
+  function indir(ad, metin, tur) {
+    try {
+      var u = URL.createObjectURL(new Blob([metin], { type: tur })), a = document.createElement("a");
+      a.href = u; a.download = ad; a.hidden = true;
+      document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(function () { URL.revokeObjectURL(u); }, 4000);
+      return true;
+    } catch (e) { return false; }
+  }
+  function veriIndir() {
+    var paket = { uygulama: UYGULAMA, surum: 1, tarih: new Date().toISOString(), durum: durum };
+    veriMesaj(indir("cocuk-psikiyatrisi-sanati-ilerleme-" + tarihEk() + ".json", JSON.stringify(paket, null, 1), "application/json")
+      ? "İlerleme dosyası indirildi. Öbür cihazda bu sayfadaki “Dosyadan yükle” düğmesiyle açın." : "İndirme başlatılamadı.");
+  }
+  function nesne(v) { return !!v && typeof v === "object" && !Array.isArray(v); }
+  function veriTemizle(d) {
+    var y = {};
+    NESNELER.concat(["za", "tarama"]).forEach(function (k) { if (nesne(d[k])) y[k] = d[k]; });
+    NESNELER.forEach(function (k) { if (!y[k]) y[k] = {}; });
+    Object.keys(y.not).forEach(function (k) { if (typeof y.not[k] !== "string") delete y.not[k]; });
+    Object.keys(y.lt).forEach(function (k) { if (!ltGecerli(y.lt[k])) delete y.lt[k]; });
+    Object.keys(y.test).forEach(function (k) { if (!nesne(y.test[k])) delete y.test[k]; });
+    Object.keys(y.sim).forEach(function (k) { if (!nesne(y.sim[k])) delete y.sim[k]; });
+    if (d.taramaSira === "sonuc" || d.taramaSira === "durum") y.taramaSira = d.taramaSira;
+    y.ltGoc = 1;
+    return y;
+  }
+  function veriOku(dosya) {
+    if (!dosya) return;
+    if (dosya.size > 3e6) { veriMesaj("Dosya çok büyük; bu rehberin ilerleme dosyası olmayabilir."); return; }
+    var r = new FileReader();
+    r.onload = function () {
+      var p = null;
+      try { p = JSON.parse(r.result); } catch (e) { p = null; }
+      if (!nesne(p) || p.uygulama !== UYGULAMA || !nesne(p.durum)) { veriMesaj("Bu dosya bu rehberin ilerleme dosyası değil."); return; }
+      bekleyen = veriTemizle(p.durum);
+      var s = 0, t = new Date(p.tarih);
+      Object.keys(bekleyen.test).forEach(function (v) { s += Object.keys(bekleyen.test[v]).length; });
+      veriOnay.innerHTML = "<p><strong>" + kacis(dosya.name) + "</strong> · " + (isNaN(t) ? "tarihsiz" : t.toLocaleDateString("tr-TR")) + ": " +
+        Object.keys(bekleyen.okundu).length + " okunmuş oturum, " + s + " yanıtlanmış soru, " + Object.keys(bekleyen.not).length + " not, " +
+        Object.keys(bekleyen.lt).length + " tekrar maddesi.</p><p>Bu tarayıcıdaki bütün ilerlemenin yerine geçecek.</p>" +
+        '<p class="veri-dugmeler"><button type="button" class="dugme veri-onayla">Yükle ve sayfayı yenile</button>' +
+        '<button type="button" class="dugme dugme-ikincil veri-vazgec">Vazgeç</button></p>';
+      veriOnay.hidden = false;
+      veriMesaj("");
+      $(".veri-onayla", veriOnay).focus();
+    };
+    r.onerror = function () { veriMesaj("Dosya okunamadı."); };
+    r.readAsText(dosya);
+  }
+  if (veriDosya) veriDosya.addEventListener("change", function () { veriOku(veriDosya.files[0]); veriDosya.value = ""; });
+  function notlarMetin() {
+    var s = ["# Çocuk Psikiyatrisinin Sanatı · Okuma notlarım", "", "İndirme tarihi: " + new Date().toLocaleDateString("tr-TR"), ""], n = 0;
+    bolumler.forEach(function (v) {
+      var t = durum.not[v.dataset.view];
+      if (typeof t === "string" && t.trim()) { s.push("## " + baslik(v), "", t.trim(), ""); n++; }
+    });
+    if (form && !formBos(durum.form || {})) { s.push("## Formülasyon çalışma sayfası", "", formMetin(), ""); n++; }
+    s.push("---", "", "Çocuk Psikiyatrisinin Sanatı · Okuma Rehberi · miracbarisusta.com/cocuk-psikiyatrisi-sanati/", "");
+    return n ? s.join("\n") : "";
   }
 
   /* Atıf penceresi */
@@ -566,11 +824,14 @@
       if (tm.closest(".karisik-alan")) { kSonraki(tb); return; }
       var tv = tm.closest(".view").dataset.view;
       (durum.test[tv] = durum.test[tv] || {})[tm.dataset.no] = k;
+      ltGuncelle(soruAnahtar(tm), tb);
       yaz();
       skorYaz(tv);
       return;
     }
     if (t.closest(".karisik-sonraki")) { kSira++; kGoster(); return; }
+    var kb = t.closest(".karisik-basla");
+    if (kb && !kb.disabled) { kBaslat(kb.dataset.tur); return; }
     var sf = t.closest("[data-test-sifirla]");
     if (sf) {
       var id = sf.getAttribute("data-test-sifirla");
@@ -592,9 +853,10 @@
     /* kavram kartları */
     if (t.closest(".bilgi-kart:not(.bitti)") && !t.closest("a")) { kartCevir(); return; }
     if (t.closest(".kart-biliyorum") || t.closest(".kart-tekrar")) {
-      var kk = deste[dSira];
-      if (t.closest(".kart-biliyorum")) durum.kart[kk.id] = 1;
+      var kk = deste[dSira], biliyor = !!t.closest(".kart-biliyorum");
+      if (biliyor) durum.kart[kk.id] = 1;
       else { delete durum.kart[kk.id]; deste.splice(Math.min(deste.length, dSira + 4), 0, kk); }
+      ltGuncelle("k:" + kk.id, biliyor);
       yaz();
       dSira++;
       kartCiz();
@@ -603,7 +865,40 @@
       return;
     }
     if (t.closest(".kart-yeniden") || t.closest(".kart-karistir")) { kartBaslat(true); return; }
-    if (t.closest(".kart-sifirla")) { durum.kart = {}; yaz(); kartBaslat(true); return; }
+    if (t.closest(".kart-sifirla")) {
+      durum.kart = {};
+      Object.keys(durum.lt).forEach(function (a) { if (a.indexOf("k:") === 0) delete durum.lt[a]; });
+      yaz(); kartBaslat(true); return;
+    }
+    /* vaka simülasyonu */
+    var sb = t.closest("button[data-sim]");
+    if (sb) { simBasla(sb.dataset.sim); return; }
+    var ss = t.closest("button[data-sim-sec]");
+    if (ss && !ss.disabled && simAktif) { simSec(+ss.dataset.simSec); return; }
+    if (t.closest(".sim-devam") && simAktif && simSecildi !== null) {
+      var ssx = simAktif.sahneler[simSahne].secenekler[simSecildi];
+      simYol.push({ sahne: simSahne, sec: simSecildi, puan: ssx[2] });
+      simGoster(ssx[1]);
+      return;
+    }
+    if (t.closest(".sim-geri") && simAktif) { var sg = simYol.pop(); if (sg) simGoster(sg.sahne); return; }
+    if (t.closest(".sim-yeniden") && simAktif) { simBasla(simAktif.id); return; }
+    if (t.closest(".sim-cik") && simAktif) { simCik(); return; }
+    /* verilerim */
+    if (t.closest(".veri-indir")) { veriIndir(); return; }
+    if (t.closest(".veri-yukle")) { if (veriDosya) veriDosya.click(); return; }
+    if (t.closest(".veri-vazgec")) { bekleyen = null; veriOnay.hidden = true; veriMesaj("Yükleme iptal edildi."); return; }
+    if (t.closest(".veri-onayla") && bekleyen) {
+      durum = bekleyen; bekleyen = null;
+      if (yaz()) { location.reload(); } else { veriOnay.hidden = true; veriMesaj("Bu tarayıcı yerel depolamaya izin vermiyor; ilerleme yüklenemedi."); }
+      return;
+    }
+    if (t.closest(".notlar-indir")) {
+      var nm = notlarMetin();
+      veriMesaj(!nm ? "Henüz kaydedilmiş not ya da formülasyon taslağı yok."
+        : indir("cocuk-psikiyatrisi-sanati-notlarim-" + tarihEk() + ".md", nm, "text/markdown;charset=utf-8") ? "Notlarınız indirildi." : "İndirme başlatılamadı.");
+      return;
+    }
     /* zor anlar */
     var zb = t.closest("button[data-za]");
     if (zb && !zb.disabled) {
@@ -640,10 +935,18 @@
       taramaCiz();
       return;
     }
+    var srb = t.closest("button[data-sira]");
+    if (srb) {
+      trSira = srb.dataset.sira === "sonuc" ? "sonuc" : "durum";
+      durum.taramaSira = trSira;
+      $$("button[data-sira]").forEach(function (b) { b.setAttribute("aria-pressed", b === srb ? "true" : "false"); });
+      taramaCiz();
+      return;
+    }
     var hs = t.closest(".hepsini-sil");
     if (hs) {
       if (Date.now() - silOnay > 4000) { silOnay = Date.now(); hs.textContent = "Emin misiniz? Silmek için yeniden tıklayın"; return; }
-      durum = { okundu: {}, test: {}, kart: {}, not: {}, form: {} };  /* za ve tarama da silinir */
+      durum = { okundu: {}, test: {}, kart: {}, not: {}, form: {}, lt: {}, sim: {}, ltGoc: 1 };  /* za ve tarama da silinir */
       yaz();
       location.reload();
       return;
@@ -735,6 +1038,18 @@
     if (b) b.setAttribute("aria-pressed", durum.okundu[vid] ? "true" : "false");
     skorYaz(vid);
   });
+  /* Aralıklı tekrar: önceki sürümden kalan yanıtları ve bilinen kartları bir kez kutulara taşı */
+  if (!durum.ltGoc) {
+    var b0 = bugun();
+    tumSorular.forEach(function (m) {
+      var vid = m.closest(".view").dataset.view, y = (durum.test[vid] || {})[m.dataset.no], a = soruAnahtar(m);
+      if (y === undefined || y === null || durum.lt[a]) return;
+      durum.lt[a] = { k: String(y) === m.dataset.dogru ? 1 : 0, g: b0 };
+    });
+    kartlar.forEach(function (k) { var a = "k:" + k.id; if (durum.kart[k.id] && !durum.lt[a]) durum.lt[a] = { k: 1, g: b0 }; });
+    durum.ltGoc = 1;
+    if (Object.keys(durum.lt).length) yaz();
+  }
 
   rota();
 })();

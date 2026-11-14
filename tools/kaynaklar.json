@@ -7,6 +7,22 @@
   "ilk": "Achenbach TM",
   "tur": "makale"
  },
+ "andersson2025": {
+  "pmid": "40658954",
+  "doi": "10.7326/ANNALS-25-00997",
+  "etiket": "Andersson ve ark. 2025",
+  "metin": "Andersson NW, Bech Svalgaard I, Hoffmann SS, Hviid A. Aluminum-adsorbed vaccines and chronic diseases in childhood: a nationwide cohort study. Ann Intern Med. 2025;178(10):1369-77.",
+  "ilk": "Andersson NW",
+  "tur": "makale"
+ },
+ "bai2019": {
+  "pmid": "31314057",
+  "doi": "10.1001/jamapsychiatry.2019.1411",
+  "etiket": "Bai ve ark. 2019",
+  "metin": "Bai D, Yip BHK, Windham GC, Sourander A, Francis R, Yoffe R, et al. Association of genetic and environmental factors with autism in a 5-country cohort. JAMA Psychiatry. 2019;76(10):1035-43.",
+  "ilk": "Bai D",
+  "tur": "makale"
+ },
  "berne1964": {
   "pmid": "",
   "doi": "",
@@ -39,12 +55,36 @@
   "metin": "Cheung CR, Abbruzzese E, Lockhart E, Maconochie IK, Kingdon CC. Gender medicine and the Cass Review: why medicine and the law make poor bedfellows. Arch Dis Child. 2025;110(4):251-5.",
   "tur": "makale"
  },
+ "dazzi2014": {
+  "pmid": "24998511",
+  "doi": "10.1017/S0033291714001299",
+  "etiket": "Dazzi ve ark. 2014",
+  "metin": "Dazzi T, Gribble R, Wessely S, Fear NT. Does asking about suicide and related behaviours induce suicidal ideation? What is the evidence? Psychol Med. 2014;44(16):3361-3.",
+  "ilk": "Dazzi T",
+  "tur": "makale"
+ },
  "delosreyes2005": {
   "pmid": "16060799",
   "doi": "10.1037/0033-2909.131.4.483",
   "etiket": "De Los Reyes ve Kazdin 2005",
   "metin": "De Los Reyes A, Kazdin AE. Informant discrepancies in the assessment of childhood psychopathology: a critical review, theoretical framework, and recommendations for further study. Psychol Bull. 2005;131(4):483-509.",
   "ilk": "De Los Reyes A",
+  "tur": "makale"
+ },
+ "delosreyes2015": {
+  "pmid": "25915035",
+  "doi": "10.1037/a0038498",
+  "etiket": "De Los Reyes ve ark. 2015",
+  "metin": "De Los Reyes A, Augenstein TM, Wang M, Thomas SA, Drabick DAG, Burgers DE, et al. The validity of the multi-informant approach to assessing child and adolescent mental health. Psychol Bull. 2015;141(4):858-900.",
+  "ilk": "De Los Reyes A",
+  "tur": "makale"
+ },
+ "dursun2020": {
+  "pmid": "32110150",
+  "doi": "10.29399/npa.23674",
+  "etiket": "Dursun ve ark. 2020",
+  "metin": "Dursun OB, Öğütlü H, Esin İS. Psychometric properties of Turkish version of the Strength and Difficulties Questionnaire for age 2-4. Noro Psikiyatr Ars. 2020;57(1):44-9.",
+  "ilk": "Dursun OB",
   "tur": "makale"
  },
  "goodman2001": {
@@ -63,6 +103,14 @@
   "ilk": "Goodman SH",
   "tur": "makale"
  },
+ "gould2005": {
+  "pmid": "15811983",
+  "doi": "10.1001/jama.293.13.1635",
+  "etiket": "Gould ve ark. 2005",
+  "metin": "Gould MS, Marrocco FA, Kleinman M, Thomas JG, Mostkoff K, Cote J, et al. Evaluating iatrogenic risk of youth suicide screening programs: a randomized controlled trial. JAMA. 2005;293(13):1635-43.",
+  "ilk": "Gould MS",
+  "tur": "makale"
+ },
  "grove2000": {
   "pmid": "10752360",
   "doi": "",
@@ -77,6 +125,14 @@
   "etiket": "Harold ve Sellers 2018",
   "metin": "Harold GT, Sellers R. Annual Research Review: Interparental conflict and youth psychopathology: an evidence review and practice focused update. J Child Psychol Psychiatry. 2018;59(4):374-402.",
   "ilk": "Harold GT",
+  "tur": "makale"
+ },
+ "healy2019": {
+  "pmid": "31088578",
+  "doi": "10.1017/S0033291719000485",
+  "etiket": "Healy ve ark. 2019",
+  "metin": "Healy C, Brannigan R, Dooley N, Coughlan H, Clarke M, Kelleher I, et al. Childhood and adolescent psychotic experiences and risk of mental disorder: a systematic review and meta-analysis. Psychol Med. 2019;49(10):1589-99.",
+  "ilk": "Healy C",
   "tur": "makale"
  },
  "hill2004": {
@@ -191,6 +247,14 @@
   "ilk": "Kotov R",
   "tur": "makale"
  },
+ "kotov2021": {
+  "pmid": "33577350",
+  "doi": "10.1146/annurev-clinpsy-081219-093304",
+  "etiket": "Kotov ve ark. 2021",
+  "metin": "Kotov R, Krueger RF, Watson D, Cicero DC, Conway CC, DeYoung CG, et al. The Hierarchical Taxonomy of Psychopathology (HiTOP): a quantitative nosology based on consensus of evidence. Annu Rev Clin Psychol. 2021;17:83-108.",
+  "ilk": "Kotov R",
+  "tur": "makale"
+ },
  "kurtz1996": {
   "pmid": "8736242",
   "doi": "10.1111/j.1365-2923.1996.tb00724.x",
@@ -247,12 +311,28 @@
   "ilk": "Polderman TJ",
   "tur": "makale"
  },
+ "prigerson2021": {
+  "pmid": "33432758",
+  "doi": "10.1002/wps.20823",
+  "etiket": "Prigerson ve ark. 2021",
+  "metin": "Prigerson HG, Boelen PA, Xu J, Smith KV, Maciejewski PK. Validation of the new DSM-5-TR criteria for prolonged grief disorder and the PG-13-Revised (PG-13-R) scale. World Psychiatry. 2021;20(1):96-106.",
+  "ilk": "Prigerson HG",
+  "tur": "makale"
+ },
  "quinn2017": {
   "pmid": "28659039",
   "doi": "10.1176/appi.ajp.2017.16060686",
   "etiket": "Quinn ve ark. 2017",
   "metin": "Quinn PD, Chang Z, Hur K, Gibbons RD, Lahey BB, Rickert ME, et al. ADHD Medication and Substance-Related Problems. Am J Psychiatry. 2017;174(9):877-885.",
   "ilk": "Quinn PD",
+  "tur": "makale"
+ },
+ "rapoport1978": {
+  "pmid": "341313",
+  "doi": "10.1126/science.341313",
+  "etiket": "Rapoport ve ark. 1978",
+  "metin": "Rapoport JL, Buchsbaum MS, Zahn TP, Weingartner H, Ludlow C, Mikkelsen EJ. Dextroamphetamine: cognitive and behavioral effects in normal prepubertal boys. Science. 1978;199(4328):560-3.",
+  "ilk": "Rapoport JL",
   "tur": "makale"
  },
  "regier2013": {
@@ -319,6 +399,14 @@
   "tur": "makale",
   "metin": "Tversky A, Kahneman D. Extensional versus intuitive reasoning: the conjunction fallacy in probability judgment. Psychol Rev. 1983;90(4):293-315."
  },
+ "unal2019": {
+  "pmid": "31170306",
+  "doi": "",
+  "etiket": "Ünal ve ark. 2019",
+  "metin": "Ünal F, Öktem F, Çetin Çuhadaroğlu F, Çengel Kültür SE, Akdemir D, Foto Özdemir D, et al. [Reliability and validity of the Schedule for Affective Disorders and Schizophrenia for School-Age Children-Present and Lifetime Version, DSM-5 November 2016-Turkish Adaptation (K-SADS-PL-DSM-5-T)]. Turk Psikiyatri Derg. 2019;30(1):42-50. (Türkçe)",
+  "ilk": "Ünal F",
+  "tur": "makale"
+ },
  "walker2019": {
   "pmid": "29333937",
   "doi": "10.1177/1524838017692364",
@@ -334,6 +422,14 @@
   "ilk": "Wason PC",
   "tur": "makale",
   "metin": "Wason PC. On the failure to eliminate hypotheses in a conceptual task. Q J Exp Psychol. 1960;12(3):129-40."
+ },
+ "weissman2006": {
+  "pmid": "16551710",
+  "doi": "10.1001/jama.295.12.1389",
+  "etiket": "Weissman ve ark. 2006",
+  "metin": "Weissman MM, Pilowsky DJ, Wickramaratne PJ, Talati A, Wisniewski SR, Fava M, et al. Remissions in maternal depression and child psychopathology: a STAR*D-child report. JAMA. 2006;295(12):1389-98.",
+  "ilk": "Weissman MM",
+  "tur": "makale"
  },
  "wikler1981": {
   "pmid": "7212030",

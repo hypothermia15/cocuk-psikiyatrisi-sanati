@@ -72,7 +72,8 @@ OTURUMLAR = [
              "nerede yardımcı, nerede sınırlı olduğunu tartışmak için iyi bir başlangıçtır."),
             ("Ölçeklerin klinik örneklemdeki değeri",
              "Güçler ve Güçlükler Anketi (SDQ) İngiltere’deki ulusal bir toplum örnekleminde yeterli güvenilirlik göstermiş ve yüksek "
-             "puanlar bağımsız konmuş tanıların olasılığını belirgin biçimde artırmıştır ([@goodman2001]). Ancak bir pozitif sonucun "
+             "puanlar bağımsız konmuş tanıların olasılığını belirgin biçimde artırmıştır ([@goodman2001]). Türkçe 2-4 yaş formunda toplam "
+             "güçlük puanı için 10 kesme puanının duyarlılığı %80, özgüllüğü %88 bulunmuştur ([@dursun2020]). Ancak bir pozitif sonucun "
              "anlamı uygulandığı örneklemdeki ön olasılığa bağlıdır: aynı puan okulda ve uzman kliniğinde farklı şeyler söyler."),
             ("Hizmet gerçekliği",
              "Doksan dakikalık ilk görüşme ve bilgisayarsız oda önerisi, kısa poliklinik randevularının ve zorunlu elektronik kaydın "
@@ -150,7 +151,9 @@ OTURUMLAR = [
             ("Çocukta psikotik benzeri deneyimler",
              "Toplum çalışmalarının meta-analizinde psikotik belirtilerin ortanca yaygınlığı 9–12 yaş çocuklarda %17, 13–18 yaş "
              "ergenlerde %7,5 bulunmuştur ([@kelleher2012]). Bu nedenle tek bir “ses duyma” bildirimi tanı değil, bağlamıyla birlikte "
-             "değerlendirilecek bir bulgudur."),
+             "değerlendirilecek bir bulgudur. Yine de önemsiz değildir: daha sonraki bir meta-analizde psikotik deneyim bildiren çocuk ve "
+             "ergenlerde herhangi bir ruhsal bozukluk riski yaklaşık üç kat, psikotik bozukluk riski yaklaşık dört kat yüksek "
+             "bulunmuştur ([@healy2019])."),
             ("Tutum ölçülebilir mi?",
              "Tutumun teknikten sezildiği uyarısı, yalnızca gözlenebilir davranışları sayan (yansıtma, empati cümlesi) her "
              "değerlendirme sisteminin, insan ya da yapay zekâ tabanlı olsun, ölçemediği bir boyuta işaret eder."),
@@ -223,13 +226,21 @@ OTURUMLAR = [
              "yan etki konuşmalarında klinisyenin seçtiği dilin etik bir boyutu olduğunu gösterir."),
             ("Yarı yapılandırılmış görüşmenin yeri",
              "Yarı yapılandırılmış tanı görüşmeleri tanı güvenilirliğini artırmak için geliştirilmiştir ([@kaufman1997]); kitabın "
-             "önerdiği orta yol, bu araçların klinik merakla birlikte kullanılmasıdır."),
+             "önerdiği orta yol, bu araçların klinik merakla birlikte kullanılmasıdır. K-SADS-PL’nin DSM-5’e göre güncellenmiş Türkçe "
+             "uyarlamasında çoğu tanı için değerlendiriciler arası ve test-tekrar test uyumu iyi düzeyde (κ yaklaşık 0,6-0,8) "
+             "bulunmuştur ([@unal2019])."),
             ("Dolaylı tekniklerin etiği",
              "Mesajı asıl hedefin duyacağı biçimde başka birine söylemek gibi dolaylı teknikler pragmatik olabilir; ancak çocuğun "
              "güveni ve özerkliği açısından tartışmalıdır ve şeffaflık ilkesiyle birlikte düşünülmelidir."),
             ("Popüler psikoloji ile kanıt",
              "Beden dili ve ikna üzerine bazı öneriler ampirik olarak zayıftır. Okurken klinik bilgelik ile kanıta dayalı öneriyi ayırt "
              "etmek gerekir."),
+            ("Zor soruyu doğrudan sormak zarar verir mi?",
+             "Utandırıcı ya da korkutucu soruları sormaktan kaçınmanın bir nedeni, sorunun kendisinin zarar vereceği kaygısıdır. Bu "
+             "kaygı intihar için sınanmıştır: lise öğrencileriyle yapılan randomize bir çalışmada intihar sorularını içeren tarama ne "
+             "sıkıntıyı ne de intihar düşüncesini artırmış, riskli öğrencilerde sıkıntı ve intihar düşüncesi daha düşük bulunmuştur "
+             "([@gould2005]). Literatür taraması da aynı sonuca varır ([@dazzi2014]). Kitabın doğrudan sorma önerisi bu kanıtla "
+             "uyumludur."),
         ],
         sorular=[
             S("Uyumsuzluk şikâyetiyle gelen 13 yaşındaki bir kızın annesine ilacı sorarken hangi soru en güvenilir yanıtı getirir?",
@@ -458,6 +469,8 @@ OTURUMLAR = [
              "([@harold2018]). Bu, boşanmayı değil çatışmayı hedef alan müdahalelerin gerekçesidir."),
             ("Ebeveyn depresyonu çocuğun tedavisinin parçasıdır",
              "Anne depresyonu çocukta içe ve dışa yönelim sorunlarıyla küçük ama tutarlı ilişkiler gösterir ([@goodman2011]). "
+             "Annelerinin depresyonu ilaç tedavisiyle düzelen çocuklarda tanı ve belirtiler azalırken, annelerinin depresyonu "
+             "sürenlerde artmıştır ([@weissman2006]). "
              "Ebeveynin ruh sağlığını sormak ve yönlendirmek, çocuğun tedavisinin bir bileşenidir."),
             ("Tanı bir sosyal araç olabilir mi?",
              "Kitap bir yerde yanlış pozitif DEHB tanısının başka tanıları gölgelediğini vurgular; başka bir yerde tanının dezavantajlı "
@@ -628,7 +641,9 @@ OTURUMLAR = [
              "çalışma tasarımına ve karıştırıcılara bağlı olarak belirsizdir."),
             ("Aşı ve otizm",
              "Ulusal kohort verileri MMR aşısı ile otizm arasında ilişki göstermemiştir ([@hviid2019]). Japonya’da MMR kullanımının "
-             "bırakılmasından sonra otizm sıklığı azalmamıştır ([@honda2005])."),
+             "bırakılmasından sonra otizm sıklığı azalmamıştır ([@honda2005]). Aşılardaki alüminyum katkısıyla ilgili kaygı da 1,2 "
+             "milyonu aşkın çocuğu izleyen bir Danimarka kohortunda sınanmış; otizm ve DEHB dahil 50 kronik hastalığın hiçbiriyle "
+             "risk artışı bulunmamıştır ([@andersson2025])."),
             ("“Bağlanma sorunu” jargonu ve resmî tanı",
              "Reaktif bağlanma bozukluğu ve disinhibe sosyal angajman bozukluğu, belirgin bakım yoksunluğu öyküsü ve ayırıcı tanı "
              "gerektiren dar tanılardır ([@zeanah2016]). Yazarların bu etiketin klinikte gevşek kullanımına yönelik eleştirisi bu "
@@ -710,7 +725,9 @@ OTURUMLAR = [
              "araştırmalarında eleştirilmektedir: insanlar aşamaları sırayla yaşamayabilir ve modelin sağlık çalışanlarını yanıltabileceği "
              "vurgulanmıştır ([@stroebe2017]). Zihinsel yetersizliği olan çocukların ebeveynleri, zamanla sınırlı bir uyum yerine "
              "gelişim dönemeçlerinde yineleyen krizler yaşadıklarını bildirmiştir; profesyoneller ise sonraki dönemlerin etkisini "
-             "küçümseme eğilimindedir ([@wikler1981]). Bu bulgu Olshansky’nin “kronik keder” kavramıyla uyumludur."),
+             "küçümseme eğilimindedir ([@wikler1981]). Bu bulgu Olshansky’nin “kronik keder” kavramıyla uyumludur. DSM-5-TR’ye "
+             "eklenen uzamış yas bozukluğunun ölçütleri ise bir yakının ölümünü gerektirir ([@prigerson2021]); çocuğun yetersizliğine "
+             "verilen süreğen keder bu tanının kapsamında değildir."),
             ("Karşı aktarımda nefret",
              "Kitapta aktarılan bir örnekte klinisyen bir çocuğa yönelik yoğun olumsuz duygular nedeniyle vakayı bırakır. Winnicott, "
              "bu tür duyguların incelendiğinde terapötik süreç için bilgi taşıyabileceğini öne sürmüştür ([@winnicott1994]). "
@@ -806,7 +823,8 @@ OTURUMLAR = [
             ("DSM eleştirisi ve boyutsal modeller",
              "Yazarların eleştirisi (keyfi eşikler, yapay komorbidite, boyutsal gerçeklik) RDoC ([@insel2010]) ve HiTOP ([@kotov2017]) "
              "gibi boyutsal yaklaşımların çıkış noktasıyla örtüşür; ancak kitap bu alternatiflere değinmez. Kitap neden arayışını, "
-             "boyutsal modeller ise taksonomiyi yeniden kurmayı önerir."),
+             "boyutsal modeller ise taksonomiyi yeniden kurmayı önerir. HiTOP o zamandan beri genişletildi; ölçüm araçları geliştiriliyor "
+             "ve klinik uygulamaya taşınması deneniyor, ancak model henüz bütün bozuklukları kapsamıyor ([@kotov2021])."),
             ("Cinselleşmiş davranış tek başına tanısal mı?",
              "45 çalışmanın derlemesinde cinselleşmiş davranış istismara uğramış çocuklarda en sık görülen belirtiler arasında yer "
              "almış; ancak hiçbir belirti bu çocukların çoğunluğunu tanımlamamış ve yaklaşık üçte birinde belirti saptanmamıştır "
@@ -895,7 +913,9 @@ OTURUMLAR = [
              "bir popülasyon istatistiğidir; tek bir çocuğun sorununun ne kadarının genetik ya da değiştirilebilir olduğunu söylemez."),
             ("Otizm tek bir varlık mı?",
              "İkiz verileri otizmin belirti alanlarının kısmen ayrı kalıtıldığını düşündürür ([@ronald2006]); öte yandan otizm spektrum "
-             "bozukluğunun bütün olarak yüksek kalıtılabilirliği de iyi belgelenmiştir ([@tick2016]). Yazarların tutumu bu tartışmanın bir ucunu temsil eder."),
+             "bozukluğunun bütün olarak yüksek kalıtılabilirliği de iyi belgelenmiştir ([@tick2016]). Beş ülkeden iki milyon çocuğu "
+             "kapsayan bir kohortta kalıtılabilirlik yaklaşık %80 bulunmuştur ([@bai2019]). Yazarların tutumu bu tartışmanın bir ucunu "
+             "temsil eder."),
             ("Bir metaforun sınırı",
              "Donanım–yazılım metaforu aileler tarafından iyi karşılanır; ancak psikolojik sorunları iradeye bağlayan ailelerde "
              "“yazılım” sorununun kolayca değiştirilebileceği düşüncesini güçlendirerek ters tepebilir."),
@@ -980,7 +1000,9 @@ OTURUMLAR = [
             ("Gözlenen mi, söylenen mi?",
              "Gözlenen davranışı söylenenden daha güvenilir sayan ilke dışa yönelim sorunlarında güçlüdür; ancak anksiyete ve depresyon "
              "gibi içe yönelim sorunlarında öz bildirim tanının merkezindedir. Ebeveyn, öğretmen ve çocuk bildirimleri arasındaki "
-             "uyumsuzluk kuraldır ve kendisi bir bilgidir ([@achenbach1987]; [@delosreyes2005])."),
+             "uyumsuzluk kuraldır ve kendisi bir bilgidir ([@achenbach1987]; [@delosreyes2005]). 341 çalışmanın meta-analizinde bilgi "
+             "verenler arasındaki uyum düşük-orta düzeyde kalmıştır (ortalama r≈0,28); uyumsuzluğun bir kısmı, sorunların ortama göre "
+             "farklı görünmesinden kaynaklanabilir ([@delosreyes2015])."),
             ("Meehl ve yapay zekâ",
              "Mekanik tahmin çoğu görevde klinik yargıya eşit ya da üstündür ([@grove2000]). Kitap çocuk psikiyatrisinde otomatik "
              "tanının veri girişi, yayımlanmış olasılıkların yokluğu ve yeni durumlar nedeniyle zor olduğunu savunur. Serbest metni "

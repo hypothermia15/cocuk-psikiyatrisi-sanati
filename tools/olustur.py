@@ -19,6 +19,7 @@ sys.path.insert(0, str(ARACLAR))
 
 import icerik_araclar as A  # noqa: E402
 import icerik_oturumlar as O  # noqa: E402
+import icerik_simulasyon as SIM  # noqa: E402
 
 KAYNAK = json.loads((ARACLAR / "kaynaklar.json").read_text(encoding="utf-8"))
 KITAP = "williams2025"
@@ -84,10 +85,18 @@ def adim(vid, anahtar, ikon, baslik, govde):
             f'<span class="adim-ikon" aria-hidden="true">{ikon}</span> {esc(baslik)}</h3>{govde}</section>')
 
 
-# Doğru şıkların yeri: bütün sorularda dengeli ve her derlemede aynı (yazım sırasındaki 2. şık eğilimini giderir)
+# Doğru şıkların yeri: bütün sorularda dengeli ve her derlemede aynı (yazım sırasındaki 2. şık eğilimini giderir).
+# Tarayıcıda kayıtlı yanıtlar şık konumuyla saklandığı için ilk 42 sorunun yerleri dondurulmuştur (13 Kasım 2026 sürümü);
+# sonradan eklenen sorular (yeni oturumlar) ayrı bir karıştırmayla yerleşir. Var olan bir oturuma soru eklemek ya da soruların
+# sırasını değiştirmek, kayıtlı yanıtları bozar; yeni sorular yalnızca yeni oturumlara eklenmelidir.
+ILK_SORU_SAYISI = 42
 _tum_sorular = [q for o in O.OTURUMLAR for q in o["sorular"]]
-_hedefler = [0, 1, 2, 3] * (len(_tum_sorular) // 4 + 1)
-random.Random(20261113).shuffle(_hedefler)
+assert len(_tum_sorular) >= ILK_SORU_SAYISI
+_h1 = [0, 1, 2, 3] * (ILK_SORU_SAYISI // 4 + 1)
+random.Random(20261113).shuffle(_h1)
+_h2 = [0, 1, 2, 3] * ((len(_tum_sorular) - ILK_SORU_SAYISI) // 4 + 1)
+random.Random(20261114).shuffle(_h2)
+_hedefler = _h1[:ILK_SORU_SAYISI] + _h2
 HEDEF = {id(q): _hedefler[i] for i, q in enumerate(_tum_sorular)}
 
 
@@ -191,6 +200,23 @@ girdiler = "".join(
     f'<input type="range" data-tr-r="{k}" min="{mn}" max="{mx}" step="{st}" value="{v}" aria-label="{esc(ad)} kaydırıcı">'
     f'<span class="tg-sayi"><input type="number" id="tr-{k}" data-tr="{k}" min="{mn}" max="{mx}" step="{st}" value="{v}" '
     f'inputmode="decimal"><span aria-hidden="true">%</span></span></div></div>' for k, ad, mn, mx, st, v in GIRDI)
+GIRDI2 = [("d2", "İkinci testin duyarlılığı", "50", "99.9", "0.1", 90),
+          ("o2", "İkinci testin özgüllüğü", "50", "99.9", "0.1", 90)]
+girdiler2 = "".join(
+    f'<div class="tg"><label for="tr-{k}">{esc(ad)}</label><div class="tg-satir">'
+    f'<input type="range" data-tr-r="{k}" min="{mn}" max="{mx}" step="{st}" value="{v}" aria-label="{esc(ad)} kaydırıcı">'
+    f'<span class="tg-sayi"><input type="number" id="tr-{k}" data-tr="{k}" min="{mn}" max="{mx}" step="{st}" value="{v}" '
+    f'inputmode="decimal"><span aria-hidden="true">%</span></span></div></div>' for k, ad, mn, mx, st, v in GIRDI2)
+
+
+def ol_satir(k, ad):
+    return (f'<div class="ol-satir"><span class="ol-ad">{esc(ad)}</span><span class="ol-cubuk"><span class="ol-dolu ol-{k}" '
+            f'data-ol="{k}"></span></span><span class="ol-deger" data-old="{k}">–</span></div>')
+
+
+olasilik = ('<div class="olasilik" role="img" aria-label="Test öncesi ve sonrası olasılık"><p class="olasilik-baslik">Olasılık nasıl değişiyor?</p>'
+            + ol_satir("once", "Testten önce") + ol_satir("poz", "Test pozitifse") + ol_satir("neg", "Test negatifse")
+            + '<div class="ol-olcek" aria-hidden="true"><span>%0</span><span>%25</span><span>%50</span><span>%75</span><span>%100</span></div></div>')
 tarama_ic = (f'<p class="giris-metin" data-ara>{md(A.TARAMA_GIRIS)}</p>'
              '<div class="tarama" id="tarama-hesap">'
              f'<div class="tarama-ayarlar" role="group" aria-label="Hazır örnekler">{ayar_btn}</div>'
@@ -202,8 +228,11 @@ tarama_ic = (f'<p class="giris-metin" data-ara>{md(A.TARAMA_GIRIS)}</p>'
              '<div class="kpi"><span class="kpi-ad">Negatif öngörü değeri</span><span class="kpi-deger" data-c="npv">–</span>'
              '<span class="kpi-alt">Negatiflerin gerçekten sağlıklı olanı</span></div>'
              '<div class="kpi"><span class="kpi-ad">Pozitif olabilirlik oranı</span><span class="kpi-deger" data-c="lr">–</span>'
-             '<span class="kpi-alt">Pozitif sonucun olasılığı ne kadar artırdığı</span></div></div>'
+             '<span class="kpi-alt">Pozitif sonucun olasılığı ne kadar artırdığı</span></div>'
+             '<div class="kpi"><span class="kpi-ad">Negatif olabilirlik oranı</span><span class="kpi-deger" data-c="lrn">–</span>'
+             '<span class="kpi-alt">Negatif sonucun olasılığı ne kadar azalttığı</span></div></div>'
              '<p class="tarama-cumle" aria-live="polite"></p>'
+             + olasilik +
              '<div class="tablo-kap"><table class="tablo tarama-tablo"><caption class="gizli">1000 çocukta test sonuçları</caption>'
              '<thead><tr><th scope="col">1000 çocuk</th><th scope="col">Durum var</th><th scope="col">Durum yok</th><th scope="col">Toplam</th></tr></thead>'
              '<tbody><tr><th scope="row">Test pozitif</th><td data-label="Durum var" data-h="gp" class="h-gp"></td>'
@@ -212,9 +241,20 @@ tarama_ic = (f'<p class="giris-metin" data-ara>{md(A.TARAMA_GIRIS)}</p>'
              '<td data-label="Durum yok" data-h="gn" class="h-gn"></td><td data-label="Toplam" data-h="neg"></td></tr>'
              '<tr><th scope="row">Toplam</th><td data-label="Durum var" data-h="hasta"></td><td data-label="Durum yok" data-h="saglam"></td>'
              '<td data-label="Toplam">1000</td></tr></tbody></table></div>'
+             '<div class="izgara-ust"><span class="kucuk">1000 çocuk; her kare bir çocuk.</span>'
+             '<span class="izgara-sira" role="group" aria-label="Kareleri sırala">'
+             '<button type="button" class="filtre" data-sira="durum" aria-pressed="true">Duruma göre</button>'
+             '<button type="button" class="filtre" data-sira="sonuc" aria-pressed="false">Test sonucuna göre</button></span></div>'
              '<div class="tarama-izgara" aria-hidden="true"></div>'
              '<ul class="tarama-lejant"><li><span class="lj lj-gp"></span>Gerçek pozitif</li><li><span class="lj lj-yp"></span>Yanlış pozitif</li>'
              '<li><span class="lj lj-yn"></span>Yanlış negatif</li><li><span class="lj lj-gn"></span>Gerçek negatif</li></ul>'
+             '<details class="ikinci-test"><summary>Pozitif çıkanlara ikinci bir test uygulanırsa ne olur?</summary>'
+             '<p class="kucuk">Seri test: yalnızca ilk testte pozitif çıkan çocuklara ikinci bir test uygulanır; iki test de pozitifse sonuç '
+             'pozitif sayılır.</p>'
+             f'<div class="tarama-girdiler tarama-girdiler-2">{girdiler2}</div>'
+             '<p class="ikinci-cumle" aria-live="polite"></p>'
+             '<p class="not">İki testin hatalarının birbirinden bağımsız olduğu varsayılır. Aynı belirtilere dayanan iki ölçek benzer '
+             'hatalar yapar; gerçek kazanç bu hesaplananın altında kalır.</p></details>'
              '<p class="sim-js-yok">Hesaplayıcı için tarayıcıda JavaScript açık olmalı. Örnek: yaygınlık %2, duyarlılık ve özgüllük %80 '
              'ise 1000 çocukta 16 gerçek pozitif ve 196 yanlış pozitif olur; pozitiflerin yalnızca %7,5’i gerçekten hastadır.</p>'
              '<p class="not">Değerler varsayımsaldır ve gerçek bir testin özelliklerini yansıtmaz. Sayılar yuvarlanmıştır.</p></div>'
@@ -247,6 +287,75 @@ za_ic = ('<p class="giris-metin">Görüşme, aile ve sürtüşme oturumlarındak
          '<p class="not">Durumlar kurgusaldır ve ilkeleri tartışmak için sadeleştirilmiştir; gerçek klinikte tek bir doğru yanıt nadirdir.</p>')
 zor_anlar = dict(id="zor-anlar", label="Zor anlar", html=view("zor-anlar", "Zor anlar: en uygun yanıt hangisi?", "Araçlar", za_ic,
                                                               data_baslik="Zor anlar"))
+
+# ---------------------------------------------------------------- vaka simülasyonu
+baglam("simulasyon", "", "Vaka simülasyonu")
+
+
+def sim_dogrula(s):
+    """Hedefler var mı, puanlar geçerli mi, her sahneye ulaşılıyor mu, döngü var mı? En uzun karar yolunu döndürür."""
+    sah = s["sahneler"]
+    assert s["baslangic"] in sah, s["id"]
+    assert all(n in OTAD for n in s["oturumlar"]), s["id"]
+    for sid, x in sah.items():
+        if "son" in x:
+            assert x["son"] in ("iyi", "orta", "kotu") and x["baslik"] and x["metin"], (s["id"], sid)
+            continue
+        assert 2 <= len(x["secenekler"]) <= 4, (s["id"], sid)
+        for metin, hedef, puan, gb in x["secenekler"]:
+            assert hedef in sah and hedef != sid, (s["id"], sid, hedef)
+            assert puan in SIM.PUAN_ETIKET and metin and gb, (s["id"], sid, puan)
+    gorulen = set()
+
+    def gez(sid, yigin):
+        assert sid not in yigin, ("döngü", s["id"], sid)
+        gorulen.add(sid)
+        x = sah[sid]
+        if "son" in x:
+            return 0
+        return 1 + max(gez(h, yigin | {sid}) for _, h, _, _ in x["secenekler"])
+    en_uzun = gez(s["baslangic"], frozenset())
+    assert gorulen == set(sah), ("ulaşılamayan sahne", s["id"], set(sah) - gorulen)
+    assert any(x.get("son") == "iyi" for x in sah.values()), s["id"]
+    return en_uzun
+
+
+sim_veri, sim_kartlar = [], []
+for s in SIM.SIMULASYONLAR:
+    sim_dogrula(s)
+    sahneler = {}
+    for sid, x in s["sahneler"].items():
+        if "son" in x:
+            sahneler[sid] = {"son": x["son"], "baslik": esc(x["baslik"]), "metin": md(x["metin"])}
+        else:
+            sahneler[sid] = {"metin": md(x["metin"]), "secenekler": [[md(m), h, p, md(g)] for m, h, p, g in x["secenekler"]]}
+    sim_veri.append({"id": s["id"], "baslik": esc(s["baslik"]), "baslangic": s["baslangic"], "sahneler": sahneler,
+                     "oturumlar": [[n, esc(OTAD[n])] for n in s["oturumlar"]],
+                     "sonSayi": sum(1 for x in s["sahneler"].values() if "son" in x)})
+    bag = ", ".join(f'<a href="#/oturum-{n}">Oturum {n}</a>' for n in s["oturumlar"])
+    sim_kartlar.append(f'<li class="sim-kart" data-ara><h3>{esc(s["baslik"])}</h3><p>{md(s["ozet"])}</p>'
+                       f'<p class="ders-ref">İlgili oturumlar: {bag}</p><p class="sim-kart-durum kucuk" data-sim-durum="{s["id"]}"></p>'
+                       f'<button type="button" class="dugme sim-basla" data-sim="{s["id"]}">Vakayı başlat</button></li>')
+sim_json = json.dumps({"puan": {str(k): v for k, v in SIM.PUAN_ETIKET.items()}, "vakalar": sim_veri},
+                      ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
+sim_ic = (f'<p class="giris-metin">{len(SIM.SIMULASYONLAR)} kurgusal vakada kararları siz veriyorsunuz. Vaka seçtiğiniz yola göre dallanır '
+          've farklı sonlara varır. Her karardan sonra seçiminizin gerekçesini, vakanın sonunda da izlediğiniz yolu puanlarıyla '
+          'görürsünüz. Dilediğiniz karara dönüp başka bir yolu deneyebilirsiniz.</p>'
+          '<p class="sim-lejant"><span class="sp sp-2">En uygun</span><span class="sp sp-1">Kabul edilebilir</span>'
+          '<span class="sp sp-0">Zayıf</span><span class="sp sp-n">Zarar verebilir</span></p>'
+          f'<div class="vs" id="sim"><ol class="sim-liste">{"".join(sim_kartlar)}</ol>'
+          '<div class="sim-oyun" hidden></div>'
+          '<p class="sim-js-yok">Simülasyon için tarayıcıda JavaScript açık olmalı.</p></div>'
+          f'<script type="application/json" id="sim-veri">{sim_json}</script>'
+          '<h3 class="tekrar-baslik"><span aria-hidden="true">🎯</span> Simülasyonların ilkeleri</h3><ul class="akilda">'
+          '<li data-ara>Önce çerçeveyi kurun: kiminle, hangi sırayla konuşacaksınız ve gizliliğin sınırı nerede?</li>'
+          '<li data-ara>Riski doğrudan sorun; dolaylı sorular dolaylı yanıtlar getirir.</li>'
+          '<li data-ara>İsteğin altındaki ihtiyacı bulun; reddederken bir alternatif sunun.</li>'
+          '<li data-ara>Devralınan tanı bir hipotezdir: zaman seyriyle sınayın, meslektaşı suçlamadan güncelleyin.</li></ul>'
+          '<p class="not">Vakalar kurgusaldır ve ilkeleri tartışmak için sadeleştirilmiştir; kitabın vakalarından alınmamıştır. Puanlar '
+          'öğretim amaçlıdır. Gerçek klinikte çoğu zaman birden fazla makul yol vardır ve kararlar kurumunuzun protokollerine göre verilir.</p>')
+simulasyon = dict(id="simulasyon", label="Vaka simülasyonu",
+                  html=view("simulasyon", "Vaka simülasyonu: kararları siz verin", "Araçlar", sim_ic, data_baslik="Vaka simülasyonu"))
 
 # ---------------------------------------------------------------- formülasyon çalışma sayfası
 baglam("formulasyon", "", "Formülasyon çalışma sayfası")
@@ -306,8 +415,9 @@ for i, (terim, tanim, ornek, ots) in enumerate(A.KAVRAMLAR):
     kav_li.append(f'<li class="kavram" id="kavram-{i}" data-id="kavram-{i}" data-ara><p class="kavram-terim">{esc(terim)}</p>'
                   f'<p class="kavram-tanim">{md(tanim)}</p><p class="kavram-ornek"><span class="guncel-etiket">ÇRS’de</span> '
                   f'{md(ornek)}</p><p class="ders-ref">{bag}</p></li>')
-kavram_ic = ('<p class="giris-metin">Rehberdeki temel kavramlar, kendi tanımlarımızla. Kartı çevirin, bildiklerinizi işaretleyin; '
-             'bilmedikleriniz daha sık karşınıza çıkar. Boşluk tuşu kartı çevirir.</p>'
+kavram_ic = ('<p class="giris-metin">Rehberdeki temel kavramlar, kendi tanımlarımızla. Kartı çevirin, bildiklerinizi işaretleyin. '
+             'Kartlar aralıklı tekrarla sıralanır: bilmedikleriniz ve tekrar zamanı gelenler önce gelir, bildikleriniz giderek daha seyrek '
+             'sorulur. Boşluk tuşu kartı çevirir.</p>'
              '<div class="kart-araclar"><button type="button" class="dugme dugme-ikincil kart-karistir">Karıştır</button>'
              '<button type="button" class="sina-sifirla kart-sifirla">Bilinenleri sıfırla</button></div>'
              '<div class="kart-sahne" aria-live="polite"></div><p class="kart-ilerleme"></p>'
@@ -339,14 +449,28 @@ turkiye = dict(id="turkiye", label="Türkiye notları",
 baglam("tekrar", "", "Karışık test")
 n_soru = sum(len(o["sorular"]) for o in O.OTURUMLAR)
 akil = "".join(f'<li><a href="#/oturum-{o["no"]}">Oturum {o["no"]}</a> {md(o["akilda"])}</li>' for o in O.OTURUMLAR)
-tekrar_ic = ('<div class="karisik" id="karisik"><h3><span aria-hidden="true">🎲</span> Karışık test</h3>'
-             f'<p>Bütün oturumların {n_soru} vaka sorusu karışık sırayla. Yanıtınızı verin; açıklama hemen ardından açılır.</p>'
+LT_KUTU = [("0", "Yeniden", "aynı gün"), ("1", "Kutu 1", "1 gün sonra"), ("2", "Kutu 2", "3 gün sonra"),
+           ("3", "Kutu 3", "7 gün sonra"), ("4", "Kutu 4", "21 gün sonra")]
+lt_kutular = "".join(f'<li class="lt-kutu lt-k{k}"><span class="lt-ad">{ad}</span><span class="lt-sayi" data-lt-kutu="{k}">0</span>'
+                     f'<span class="lt-aralik">{ar}</span></li>' for k, ad, ar in LT_KUTU)
+tekrar_ic = ('<div class="lt-panel" id="lt-panel"><h3><span aria-hidden="true">🗓️</span> Aralıklı tekrar</h3>'
+             '<p>Yanıtladığınız vaka soruları ve işaretlediğiniz kavram kartları beş kutuda izlenir. Bildiğiniz bir madde bir üst kutuya '
+             'çıkar ve giderek daha seyrek sorulur; bilemediğiniz madde ilk kutuya döner ve aynı gün yeniden gelir. Her gün yalnızca tekrar '
+             'zamanı gelenleri çalışmak yeterlidir.</p>'
+             f'<ol class="lt-kutular" aria-label="Kutulara göre madde sayısı">{lt_kutular}</ol>'
+             '<p class="lt-bilgi" aria-live="polite"></p></div>'
+             '<div class="karisik" id="karisik"><h3><span aria-hidden="true">🎲</span> Karışık test</h3>'
+             f'<p>Bütün oturumların {n_soru} vaka sorusu ya da yalnızca tekrar zamanı gelenler, karışık sırayla. Yanıtınızı verin; açıklama '
+             'hemen ardından açılır. Yanıtlarınız aralıklı tekrar kutularını günceller.</p>'
              '<div class="karisik-alan" aria-live="polite"></div><p class="karisik-dugmeler">'
-             f'<button type="button" class="dugme karisik-basla" data-tur="test">Testi başlat ({n_soru} soru)</button></p></div>'
+             f'<button type="button" class="dugme karisik-basla" data-tur="test">Bütün sorular ({n_soru})</button>'
+             '<button type="button" class="dugme dugme-ikincil karisik-basla" data-tur="vade">Bugünün tekrarı</button>'
+             '<button type="button" class="dugme dugme-ikincil karisik-basla" data-tur="yanlis">Yanlışlarım</button>'
+             '<a class="dugme dugme-ikincil lt-kart-bag" href="#/kavramlar">Kavram kartları</a></p></div>'
              '<h3 class="tekrar-baslik"><span aria-hidden="true">🎯</span> Akılda kalsın: oturum oturum</h3>'
              f'<ul class="akilda akilda-kucuk akilda-liste">{akil}</ul>')
-tekrar = dict(id="tekrar", label="Karışık test", html=view("tekrar", "Karışık test ve hızlı tekrar", "Araçlar", tekrar_ic,
-                                                           data_baslik="Karışık test"))
+tekrar = dict(id="tekrar", label="Karışık test", html=view("tekrar", "Karışık test ve aralıklı tekrar", "Araçlar", tekrar_ic,
+                                                           data_baslik="Karışık test ve tekrar"))
 
 # ---------------------------------------------------------------- giriş
 baglam("giris", "", "Giriş")
@@ -366,10 +490,11 @@ arac_kartlari = "".join(
     for i, ik, ad, ac in [
         ("tarama", "🧮", "Tarama hesaplayıcısı", "Yaygınlık, duyarlılık ve özgüllükle 1000 çocukta ne olduğunu görün."),
         ("zor-anlar", "🧯", "Zor anlar", f"{len(A.ZOR_ANLAR)} kurgusal durumda en uygun yanıtı seçin."),
+        ("simulasyon", "🎭", "Vaka simülasyonu", f"{len(SIM.SIMULASYONLAR)} dallanan vakada kararları siz verin; her yol başka bir sona varır."),
         ("formulasyon", "✎", "Formülasyon çalışma sayfası", "Zaman seyri, dört P, %100 ayırıcı tanı ve kısır döngü; yazdırılabilir."),
-        ("kavramlar", "🃏", "Kavram kartları", f"{len(A.KAVRAMLAR)} temel kavram, kendi tanımlarımızla."),
+        ("kavramlar", "🃏", "Kavram kartları", f"{len(A.KAVRAMLAR)} temel kavram, kendi tanımlarımızla; aralıklı tekrarla."),
         ("turkiye", "🇹🇷", "Türkiye notları", "e-Nabız, ÇÖZGER, RAM ve diğer yerel konular tek sayfada."),
-        ("tekrar", "🎲", "Karışık test", f"{n_soru} vaka sorusu karışık sırayla."),
+        ("tekrar", "🎲", "Karışık test ve tekrar", f"{n_soru} vaka sorusu; bildikleriniz seyrek, bilemedikleriniz sık sorulur."),
     ])
 giris_ic = f"""
 <div class="kahraman">
@@ -380,14 +505,23 @@ giris_ic = f"""
   sağlığı ve hastalıkları (ÇRS) pratiğine çevirerek okumak için hazırlandı. Her oturumda okurken sorulacak sorular, ana fikirler,
   ÇRS’deki ve Türkiye’deki karşılığı, güncel kanıtla tartışmaya açık noktalar ve kurgusal vaka soruları var.</p>
   <p class="kahraman-dugmeler"><a class="dugme" href="#/oturum-1">Oturum 1’den başla <span aria-hidden="true">→</span></a>
-  <a class="dugme dugme-ikincil" href="#/tarama">Tarama hesaplayıcısı</a> <a class="dugme dugme-ikincil" href="#/zor-anlar">Zor anlar</a>
-  <a class="dugme dugme-ikincil" href="#/formulasyon">Formülasyon çalışma sayfası</a></p>
+  <a class="dugme dugme-ikincil" href="#/simulasyon">Vaka simülasyonu</a> <a class="dugme dugme-ikincil" href="#/tarama">Tarama hesaplayıcısı</a>
+  <a class="dugme dugme-ikincil" href="#/zor-anlar">Zor anlar</a> <a class="dugme dugme-ikincil" href="#/formulasyon">Formülasyon çalışma sayfası</a></p>
   <aside class="yeni-not"><strong>Bu bir okuma rehberidir, kitabın yerine geçmez.</strong> Kitaptan alıntı, kitabın vakaları ya da
   bölümlerin ayrıntılı özeti yoktur; fikirler kendi sözcüklerimizle yazıldı. Her oturumun bölümlerini önce kitaptan okuyun, sonra buraya dönün.</aside>
 </div>
 <section class="ilerlemem" id="ilerlemem" hidden aria-labelledby="ilerleme-b"><h2 id="ilerleme-b" class="bolum-baslik">İlerlemem</h2>
 <div class="ilerleme-kutular"></div>
 <p class="kucuk">İlerleme yalnızca bu tarayıcıda saklanır. <button type="button" class="sina-sifirla hepsini-sil">Bütün ilerlemeyi sil</button></p></section>
+<section class="verilerim js-gerek" id="verilerim" aria-labelledby="veri-b"><h2 id="veri-b" class="bolum-baslik">Verilerim</h2>
+<p>İlerlemeniz, notlarınız ve formülasyon taslağınız yalnızca bu tarayıcıda saklanır, hiçbir sunucuya gönderilmez. Başka bir cihaza
+taşımak ya da yedeklemek için dosya olarak indirin; öbür cihazda “Dosyadan yükle” ile geri alın.</p>
+<p class="veri-dugmeler"><button type="button" class="dugme dugme-ikincil veri-indir">İlerlemeyi indir (.json)</button>
+<button type="button" class="dugme dugme-ikincil veri-yukle">Dosyadan yükle</button>
+<input type="file" class="veri-dosya" accept=".json,application/json" hidden aria-label="İlerleme dosyası seçin">
+<button type="button" class="dugme dugme-ikincil notlar-indir">Notlarımı indir (.md)</button></p>
+<div class="veri-onay uyari" hidden aria-live="polite"></div>
+<p class="veri-durum kucuk" aria-live="polite"></p></section>
 <section class="kurallar kullanim" aria-labelledby="kurallar-b"><h2 id="kurallar-b" class="bolum-baslik">Nasıl kullanılır?</h2>
 <ol><li data-ara><span class="kural-no">1</span> Oturumun bölümlerini kitaptan okuyun; “Okurken” sorularını yanınızda tutun.</li>
 <li data-ara><span class="kural-no">2</span> Buraya dönün: ana fikirleri kendi okumanızla karşılaştırın, ÇRS’deki karşılığını ve tartışmalı noktaları okuyun.</li>
@@ -402,9 +536,11 @@ giris = dict(id="giris", label="Giriş",
              html=f'<section class="view aktif" id="v-giris" data-view="giris" data-baslik="Giriş" aria-label="Giriş">{giris_ic}</section>')
 
 # ---------------------------------------------------------------- kaynakça (en son: kullanım bilgisi gerekiyor)
-SIRA = ["giris"] + [v["id"] for v in oturum_views] + ["tarama", "zor-anlar", "formulasyon", "kavramlar", "turkiye", "tekrar"]
-ETIKET = {"giris": "Giriş", "tarama": "Tarama hesaplayıcısı", "zor-anlar": "Zor anlar", "formulasyon": "Formülasyon çalışma sayfası",
-          "kavramlar": "Kavram kartları", "turkiye": "Türkiye notları", "tekrar": "Karışık test"}
+SIRA = ["giris"] + [v["id"] for v in oturum_views] + ["tarama", "zor-anlar", "simulasyon", "formulasyon", "kavramlar", "turkiye",
+                                                       "tekrar"]
+ETIKET = {"giris": "Giriş", "tarama": "Tarama hesaplayıcısı", "zor-anlar": "Zor anlar", "simulasyon": "Vaka simülasyonu",
+          "formulasyon": "Formülasyon çalışma sayfası", "kavramlar": "Kavram kartları", "turkiye": "Türkiye notları",
+          "tekrar": "Karışık test"}
 ETIKET.update({v["id"]: f'Oturum {v["no"]}' for v in oturum_views})
 
 
@@ -441,7 +577,7 @@ kay_ic = ('<p class="giris-metin">Rehberde anılan bütün kaynaklar. Makaleleri
           + "".join(kaynak_li(k) for k in makaleler) + "</ol></section>")
 kaynakca = dict(id="kaynakca", label="Kaynakça", html=view("kaynakca", "Kaynakça", "Araçlar", kay_ic))
 
-ORDER = [giris] + oturum_views + [tarama, zor_anlar, formulasyon, kavramlar, turkiye, tekrar, kaynakca]
+ORDER = [giris] + oturum_views + [tarama, zor_anlar, simulasyon, formulasyon, kavramlar, turkiye, tekrar, kaynakca]
 
 
 # ---------------------------------------------------------------- gezinti
@@ -458,14 +594,16 @@ nav = ('<nav class="yan" id="yan" aria-label="Rehber içeriği"><div class="yan-
                  for k, ad in O.KESIMLER.items())
        + '<p class="nav-baslik">Araçlar</p><ol class="nav-liste">'
        + nav_item("tarama", "🧮", "Tarama hesaplayıcısı") + nav_item("zor-anlar", "🧯", "Zor anlar")
+       + nav_item("simulasyon", "🎭", "Vaka simülasyonu")
        + nav_item("formulasyon", "✎", "Formülasyon sayfası") + nav_item("kavramlar", "🃏", "Kavram kartları")
-       + nav_item("turkiye", "TR", "Türkiye notları") + nav_item("tekrar", "🎲", "Karışık test")
+       + nav_item("turkiye", "TR", "Türkiye notları") + nav_item("tekrar", "🎲", "Karışık test ve tekrar")
        + nav_item("kaynakca", "§", "Kaynakça") + "</ol>"
        '<p class="ilerleme" data-ilerleme></p></div></nav>')
 
 DESC = ("Williams ve Hill’in The Art of Child and Adolescent Psychiatry kitabına eşlik eden etkileşimli okuma rehberi: görüşme, aile, "
-        "sürtüşme ve formülasyon kesimlerinden 14 oturum için ana fikirler, ÇRS ve Türkiye karşılığı, tartışmaya açık noktalar, kurgusal "
-        "vaka soruları, tarama hesaplayıcısı, zor anlar alıştırması ve formülasyon çalışma sayfası.")
+        f"sürtüşme ve formülasyon kesimlerinden {len(oturum_views)} oturum için ana fikirler, ÇRS ve Türkiye karşılığı, tartışmaya açık "
+        "noktalar, kurgusal vaka soruları, dallanan vaka simülasyonları, aralıklı tekrar, tarama hesaplayıcısı, zor anlar alıştırması ve "
+        "formülasyon çalışma sayfası.")
 
 page = f"""<!doctype html>
 <html lang="tr">
@@ -523,7 +661,9 @@ kullanilmayan = sorted(k for k in KAYNAK if k not in KULLANIM and k != KITAP)
 dagilim = [0, 0, 0, 0]
 for q in _tum_sorular:
     dagilim[karistir_soru(q)[1]] += 1
+n_sahne = sum(len(s["sahneler"]) for s in SIM.SIMULASYONLAR)
 print(f"{len(ORDER)} görünüm, {len(oturum_views)} oturum, {n_soru} vaka sorusu (doğru şık dağılımı A–D: {dagilim}), "
+      f"{sum(v['n_tart'] for v in oturum_views)} tartışma noktası, {len(SIM.SIMULASYONLAR)} simülasyon ({n_sahne} sahne), "
       f"{len(A.KAVRAMLAR)} kavram, {len(A.ZOR_ANLAR)} zor an, {sum(v['tr'] for v in oturum_views)} TR notu, {len(KAYNAK)} kaynak, "
       f"{page.count('class=\"atif\"')} atıf → {KOK / 'index.html'} ({len(page) // 1024} KB)")
 if BILINMEYEN:

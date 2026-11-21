@@ -87,6 +87,8 @@
     goster(v.dataset.view, null, false);
     var det = el.closest("details");
     if (det) det.open = true;
+    var kapAdim = el.closest(".adim.kapali");
+    if (kapAdim) kapAdim.classList.remove("kapali");
     el.scrollIntoView({ block: "center" });
     parla(el);
   }
@@ -1052,4 +1054,49 @@
   }
 
   rota();
+})();
+
+/* Telefon: bölüm adımları başlığına dokununca açılır (Kasım 2026) */
+(function () {
+  "use strict";
+  var mq = window.matchMedia("(max-width: 640px)");
+  var adimlar = [].slice.call(document.querySelectorAll("section.view .adim"));
+  function ayarla(sec, acik) {
+    sec.classList.toggle("kapali", !acik);
+    var h = sec.querySelector("h3");
+    if (h) h.setAttribute("aria-expanded", acik ? "true" : "false");
+  }
+  function kur() {
+    document.documentElement.classList.toggle("kat-mobil", mq.matches);
+    adimlar.forEach(function (sec) {
+      var h = sec.querySelector("h3");
+      if (!h) return;
+      if (mq.matches) {
+        h.setAttribute("role", "button"); h.tabIndex = 0;
+        if (!sec.dataset.katKuruldu) { sec.dataset.katKuruldu = "1"; ayarla(sec, sec === sec.parentNode.querySelector(".adim")); }
+      } else {
+        h.removeAttribute("role"); h.removeAttribute("tabindex"); h.removeAttribute("aria-expanded");
+        sec.classList.remove("kapali"); delete sec.dataset.katKuruldu;
+      }
+    });
+  }
+  function hedefAc() {
+    var m = (location.hash || "").match(/^#\/([\w-]+)\/([\w-]+)$/);
+    var e = m && document.getElementById(m[1] + "-" + m[2]);
+    if (e && e.classList.contains("adim") && e.classList.contains("kapali")) { ayarla(e, true); e.scrollIntoView({ block: "start" }); }
+  }
+  document.addEventListener("click", function (e) {
+    if (!mq.matches) return;
+    var h = e.target.closest && e.target.closest(".adim > h3");
+    if (h && !e.target.closest("a, button")) ayarla(h.parentNode, h.parentNode.classList.contains("kapali"));
+  });
+  document.addEventListener("keydown", function (e) {
+    if (!mq.matches || (e.key !== "Enter" && e.key !== " ")) return;
+    var h = e.target.matches && e.target.matches(".adim > h3") ? e.target : null;
+    if (h) { e.preventDefault(); ayarla(h.parentNode, h.parentNode.classList.contains("kapali")); }
+  });
+  window.addEventListener("hashchange", function () { setTimeout(hedefAc, 0); });
+  window.addEventListener("beforeprint", function () { adimlar.forEach(function (s) { s.classList.remove("kapali"); }); });
+  if (mq.addEventListener) mq.addEventListener("change", kur);
+  kur(); setTimeout(hedefAc, 0);
 })();

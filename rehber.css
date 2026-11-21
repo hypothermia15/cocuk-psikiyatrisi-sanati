@@ -841,3 +841,15 @@ html.js #sim .sim-js-yok { display: none; }
   #sim, .sim-lejant, .lt-panel, .verilerim, .izgara-sira, .ikinci-test { display: none !important; }
 }
 @media (prefers-reduced-motion: reduce) { .ol-dolu { transition: none; } }
+
+/* ---------- Telefon: katlanır bölüm adımları (Kasım 2026) ---------- */
+.kat-mobil .adim > h3 { cursor: pointer; padding: 10px 12px; margin: 0 -4px 12px; border-radius: 12px; -webkit-tap-highlight-color: transparent; }
+.kat-mobil .adim > h3::after { content: "\2212"; margin-left: auto; font: 700 20px/1 var(--sans); color: var(--soluk); }
+.kat-mobil .adim.kapali > h3 { margin-bottom: 0; background: var(--kart); border: 1px solid var(--cizgi); font-size: 19px; }
+.kat-mobil .adim.kapali > h3::after { content: "+"; }
+.kat-mobil .adim.kapali > :not(h3) { display: none; }
+.kat-mobil .adim.kapali { margin-top: 10px; }
+.kat-mobil .adim.kapali + .adim:not(.kapali) { margin-top: 26px; }
+@media print { .adim.kapali > :not(h3) { display: revert !important; } }
+
+@media (max-width: 640px) { .ust .geri { display: inline-flex; align-items: center; min-height: 40px; } }

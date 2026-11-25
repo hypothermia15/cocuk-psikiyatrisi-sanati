@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fikrini hangi bilgi değiştirdi? · Çocuk Psikiyatrisinin Sanatı</title>
+<link rel="stylesheet" href="rehber.css">
+<style>
+main { max-width: 48rem; margin: auto; padding: 1.5rem 1rem 4rem; }
+h1 { font-size: clamp(2rem, 6vw, 3.2rem); line-height: 1.1; }
+fieldset, .karsilastir article { min-width: 0; margin: 1rem 0; padding: 1rem; border: 1px solid var(--cizgi); border-radius: 12px; background: var(--kart); }
+legend, label { font-weight: 650; } label, textarea { display: block; }
+textarea { margin: .4rem 0 1rem; } summary { cursor: pointer; padding: .5rem 0; }
+blockquote { margin: .3rem 0 .7rem; padding-left: 1rem; border-left: 3px solid var(--teal); }
+.karsilastir { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(16rem,100%), 1fr)); gap: .7rem; }
+.karsilastir article { margin: 0; } .yanit { white-space: pre-wrap; overflow-wrap: anywhere; }
+</style>
+</head>
+<body><main>
+<a href="index.html#/simulasyon">← Vaka simülasyonları</a>
+<h1>Fikrini hangi bilgi değiştirdi?</h1>
+<p><strong>Kurgusal olgu · Ece, 9 yaşında, 3. sınıfta.</strong> Annesi “Ödev masasında iki saat geçiyor” diyor. Sınıf öğretmeninin ilk mesajı kısa: “Sessiz, dersi bozmuyor.” Ece görüşmeye gelirken “Yarın sınıfta okuma var mı?” diye sormuş.</p>
+<form id="ilk" class="formulasyon">
+<label for="hipotez">Bu farkı şimdilik nasıl açıklarsınız? İlk düşüncenizi bir cümleyle yazın.</label>
+<textarea id="hipotez" rows="2" required></textarea>
+<button class="dugme">Görüşmeye başla</button>
+</form>
+<noscript>Görüşmeyi başlatmak için JavaScript açık olmalı.</noscript>
+<section id="gorusme" hidden><h2 tabindex="-1">Kime ne sorarsınız?</h2>
+<p>Her kişiden en az bir yanıt alın. Aynı kişiye farklı bir soru sorabilir ve önceki yanıtları yeniden okuyabilirsiniz.</p>
+<div id="kisiler"></div>
+<p id="ilerleme" role="status"></p>
+<button type="button" class="dugme" id="yaz" disabled>Formülasyonu yeniden yaz</button>
+</section>
+<form class="formulasyon" id="son" hidden>
+<h2 tabindex="-1">Görüşmeden sonra</h2>
+<label for="guncel">Ev ve okul anlatımlarını şimdi nasıl bir araya getiriyorsunuz?</label><textarea id="guncel" rows="3" required></textarea>
+<label for="bulgu">İlk düşüncenizi değiştiren veya güçlendiren somut gözlem hangisiydi?</label><textarea id="bulgu" rows="2" required></textarea>
+<label for="eksik">Hâlâ bilmeniz gereken ne var? Bunu kimden, nasıl öğrenirsiniz?</label><textarea id="eksik" rows="2" required></textarea>
+<button class="dugme">İki değerlendirmeyi karşılaştır</button>
+</form>
+<section id="sonuc" hidden><h2 tabindex="-1">İlk ve son değerlendirmeniz</h2>
+<div class="karsilastir"><article><strong>İlk düşüncem</strong><p class="yanit" id="once"></p></article><article><strong>Görüşmeden sonra</strong><p class="yanit" id="sonra"></p></article></div>
+<h3>Dayandığım gözlem</h3><p class="yanit" id="dayanak"></p>
+<h3>Açık kalan soru</h3><p class="yanit" id="soru"></p>
+<h3>Olgu tartışması</h3>
+<p>“Dersi bozmuyor” öğretmenin davranış gözlemi. Bu cümleden Ece’nin verilen işi tamamladığı sonucunu çıkarabilir miyiz? Görüşmede açtığınız yanıtlar arasından bu soruyu sınayan bir örnek bulun.</p>
+<p>Okuma yükünü, başkalarının önünde hata yapma kaygısını ve işe başlamayı ayrı ayrı düşünün. Örneğin aynı uzunluktaki yönerge Ece’ye yüksek sesle okunduğunda ne değişiyor? Böyle bir karşılaştırmanın ilk açıklamanızı nasıl güçlendireceğini veya zayıflatacağını tartışın.</p>
+<button type="button" class="dugme dugme-ikincil" id="duzenle">Son değerlendirmemi düzenle</button>
+<p><a href="index.html#/formulasyon" target="_blank" rel="noopener">Formülasyon çalışma sayfasını ayrı sekmede aç</a></p>
+</section>
+<p class="not">Yalnızca kurgusal olgu için yazın. Yanıtlar bu sayfada kalır ve sunucuya gönderilmez.</p>
+</main>
+<script>
+const kisiler = [
+  ["Anne", [
+    ["Ödevler genelde nasıl geçiyor?", "“Zor geçiyor. Yanına oturmazsam başlamıyor gibi geliyor.”"],
+    ["Dün akşam ilk on dakikada ne oldu?", "“Kitabı açtı. Problemin ilk satırını üç kez okudu, sonra kalemini aramaya kalktı. Soruyu ben okuyunca işlemi kendi yaptı.”"],
+    ["Hangi işte yanında oturmanız gerekmiyor?", "“Sözlü anlattığım oyunun malzemelerini kendi topluyor. Resim ödevini de dün tek başına bitirdi.”"]
+  ]],
+  ["Öğretmen", [
+    ["Sizce dikkati nasıl?", "“Pencereye bakarken görmüyorum. Tahtaya dönük oturuyor. Defterine ne kadar geçirdiğini her derste kontrol etmiyorum.”"],
+    ["Son üç yazılı çalışmanın kaçını sınıfta tamamladı?", "“Birini bitirdi. Diğer ikisinde ilk yanıtta kaldı. Boş bıraktığı sorulardan birini teneffüste sözlü sorunca yanıtladı.”"],
+    ["Okuma sırası yaklaşırken ne gözlemliyorsunuz?", "“Parmağıyla ilerideki satırları sayıyor. Dün sırası gelmeden su içmek için izin istedi.”"]
+  ]],
+  ["Ece", [
+    ["Sence ödev neden bu kadar uzun sürüyor?", "“Bilmiyorum. Annem kızınca daha da uzuyor.”"],
+    ["Sınıfta sırayla okurken aklından ne geçiyor?", "“Bana hangi satır gelecek diye sayıyorum. Geçen hafta bir kelimeyi yanlış söyledim, biri güldü. O zamandan beri sıram gelsin istemiyorum.”"],
+    ["Bir soruyu annen okuduğunda ne değişiyor?", "“Sayıları duyunca ne yapacağımı biliyorum. Kendim okurken bazen başa dönüyorum. Evde kimse gülmese de oluyor.”"]
+  ]]
+];
+const el = id => document.getElementById(id);
+const gorusulen = new Set();
+function odak(id) {
+  el(id).hidden = false;
+  el(id).querySelector("h2").focus();
+}
+function alanDolu(id) {
+  const alan = el(id);
+  if (alan.value.trim()) return true;
+  alan.value = "";
+  alan.reportValidity();
+  return false;
+}
+for (const [kisi, sorular] of kisiler) {
+  const grup = document.createElement("fieldset");
+  const ad = document.createElement("legend");
+  ad.textContent = kisi;
+  grup.append(ad);
+  for (const [soru, yanit] of sorular) {
+    const detay = document.createElement("details");
+    const baslik = document.createElement("summary");
+    const cevap = document.createElement("blockquote");
+    baslik.textContent = soru;
+    cevap.textContent = yanit;
+    detay.append(baslik, cevap);
+    detay.addEventListener("toggle", () => {
+      if (!detay.open) return;
+      gorusulen.add(kisi);
+      el("ilerleme").textContent = gorusulen.size + " / 3 bilgi kaynağıyla görüşüldü.";
+      el("yaz").disabled = gorusulen.size < 3;
+    });
+    grup.append(detay);
+  }
+  el("kisiler").append(grup);
+}
+el("ilk").onsubmit = event => {
+  event.preventDefault();
+  if (!alanDolu("hipotez")) return;
+  el("hipotez").readOnly = true;
+  el("ilk").querySelector("button").hidden = true;
+  odak("gorusme");
+};
+el("yaz").onclick = () => { el("yaz").hidden = true; odak("son"); };
+el("son").onsubmit = event => {
+  event.preventDefault();
+  if (!["guncel","bulgu","eksik"].every(alanDolu)) return;
+  for (const [kaynak, hedef] of [["hipotez","once"],["guncel","sonra"],["bulgu","dayanak"],["eksik","soru"]]) {
+    el(hedef).textContent = el(kaynak).value.trim();
+  }
+  el("son").hidden = true;
+  odak("sonuc");
+};
+el("duzenle").onclick = () => { el("sonuc").hidden = true; odak("son"); };
+</script></body></html>

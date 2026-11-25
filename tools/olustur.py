@@ -359,6 +359,7 @@ sim_ic = (f'<p class="giris-metin">{len(SIM.SIMULASYONLAR)} kurgusal vakada kara
           'görürsünüz. Dilediğiniz karara dönüp başka bir yolu deneyebilirsiniz.</p>'
           '<p class="sim-lejant"><span class="sp sp-2">En uygun</span><span class="sp sp-1">Kabul edilebilir</span>'
           '<span class="sp sp-0">Zayıf</span><span class="sp sp-n">Zarar verebilir</span></p>'
+          '<p><a class="dugme dugme-ikincil" href="klinik-gorusme.html">Görüşme provası · Fikrini hangi bilgi değiştirdi?</a></p>'
           f'<div class="vs" id="sim"><ol class="sim-liste">{"".join(sim_kartlar)}</ol>'
           '<div class="sim-oyun" hidden></div>'
           '<p class="sim-js-yok">Simülasyon için tarayıcıda JavaScript açık olmalı.</p></div>'
@@ -416,6 +417,7 @@ form_ic = ('<p class="giris-metin">Kendi vakanızı oturumlardaki araçlarla dü
            '<button type="button" class="sina-sifirla form-temizle">Formu temizle</button>'
            '<span class="form-durum kucuk" aria-live="polite"></span></div>'
            f'<p class="kucuk form-ornek-ad">Örnek: {esc(A.FORM_ORNEK_AD)}</p>'
+           '<p><a href="klinik-gorusme.html">Tek olguda ilk ve son formülasyonunuzu karşılaştırın</a></p>'
            f'<form class="formulasyon" id="formulasyon" autocomplete="off" data-ornek="{esc(json.dumps(A.FORM_ORNEK, ensure_ascii=False))}">'
            f'{"".join(bolum_html)}</form>'
            '<div class="form-baski" aria-hidden="true"></div>')
